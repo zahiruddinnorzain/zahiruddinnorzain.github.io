@@ -2,8 +2,10 @@
 sudo service nginx stop
 printf "STOP NGINX SERVICE\n"
 
+cd ssipr-php-laravel
 sudo git checkout .
 sudo git pull
+sudo git status
 printf "Done Update Repo\n"
 
 sudo composer install 
