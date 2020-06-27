@@ -3,6 +3,7 @@ sudo service nginx stop
 printf "STOP NGINX SERVICE\n"
 
 cd ssipr-php-laravel
+cat .env
 sudo git checkout .
 sudo git pull
 sudo git status
