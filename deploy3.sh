@@ -26,5 +26,5 @@ sudo service nginx start
 
 # printf "Please edit .env file\n"
 # printf "then, start your NGINX\n"
-printf "-----ALL DONE-----\n"
+printf "===== ALL DONE =====\n"
 
