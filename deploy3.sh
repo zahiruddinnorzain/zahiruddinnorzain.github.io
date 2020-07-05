@@ -7,7 +7,7 @@ sudo cp .env ../.env
 sudo git checkout .
 sudo git pull
 sudo git status
-sudo cp .env ssipr-php-laravel/.env
+sudo cp ../.env .env
 printf "DONE UPDATE REPO AND ENV FILE\n"
 
 sudo composer install
