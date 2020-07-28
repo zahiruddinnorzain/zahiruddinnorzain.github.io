@@ -1,3 +1,4 @@
+printf "===== bodeploy V3.4 =====\n"
 # stop nginx
 sudo service nginx stop
 printf "STOP NGINX SERVICE\n"
@@ -20,6 +21,9 @@ php artisan passport:install
 php artisan storage:link
 sudo chmod -R 777 storage
 printf "DONE CONFIGURATION ARTISAN\n"
+
+printf "CLEARING CACHE\n"
+sudo php artisan config:cache
 
 printf "STARTING NGINX SERVICE\n"
 sudo service nginx start
