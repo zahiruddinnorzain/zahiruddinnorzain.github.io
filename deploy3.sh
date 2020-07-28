@@ -1,4 +1,6 @@
 printf "===== bodeploy V3.4 =====\n"
+# 28 july 2020 by zahiruddin
+
 # stop nginx
 sudo service nginx stop
 printf "STOP NGINX SERVICE\n"
