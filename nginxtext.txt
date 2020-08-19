@@ -1,0 +1,28 @@
+server {
+        listen 443 ssl;
+        listen [::]:443 ssl;
+
+	    ssl_certificate /etc/nginx/ssl/generated-csr.crt;
+	    ssl_certificate_key /etc/nginx/ssl/generated-private-key.key;
+
+
+        root /var/www/html/ssipr-php-laravel/public;
+
+        index  index.php index.html index.htm;
+
+        server_name <IP SERVER HERE>;
+
+        location / {
+                try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        location ~ \.php$ {
+         try_files $uri =404;
+         fastcgi_split_path_info  ^(.+\.php)(/.+)$;
+         fastcgi_index            index.php;
+         fastcgi_pass             unix:/var/run/php/php7.3-fpm.sock;
+         include                  fastcgi_params;
+         fastcgi_param   PATH_INFO       $fastcgi_path_info;
+         fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        }
+}
