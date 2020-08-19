@@ -17,6 +17,7 @@ printf "=====PASTE THIS IN NGINX SITES-AVAILABLE FILE=====\n"
 # printf "ssl_certificate /etc/nginx/ssl/generate-csr.crt"
 # printf "ssl_certificate_key /etc/nginx/ssl/generated-private-key.key"
 
+cd /home/ubuntu/
 sudo wget https://raw.githubusercontent.com/zahiruddinnorzain/zahiruddinnorzain.github.io/master/nginxtext.txt
 sudo cat nginxtext.txt
 
