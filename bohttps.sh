@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf "=====bohttps V 1.0=====\n"
+printf "=====bohttps V 1.1=====\n"
 printf "Make sure you install nginx first\nkepaknaga@gmail.com\n"
 printf "SHOW SSL VERSION\n"
 sudo openssl version -a
@@ -23,3 +23,4 @@ sudo cat nginxtext.txt
 
 printf "=====DONE, YOU CAN RUN YOUR SYMLINK COMMAND=====\n"
 printf "Example: sudo ln -s /etc/nginx/sites-available/laravel /etc/nginx/sites-enabled/"
+printf " \n"
