@@ -1,7 +1,7 @@
 #!/bin/bash
 
 printf "=====bohttps V 1.0=====\n"
-printf "make sure you install nginx first\nkepaknaga@gmail.com\n"
+printf "Make sure you install nginx first\nkepaknaga@gmail.com\n"
 printf "SHOW SSL VERSION\n"
 sudo openssl version -a
 
@@ -21,5 +21,5 @@ cd /home/ubuntu/
 sudo wget https://raw.githubusercontent.com/zahiruddinnorzain/zahiruddinnorzain.github.io/master/nginxtext.txt
 sudo cat nginxtext.txt
 
-printf "=====DONE, YOU CAN RUN YOUR SYMLINK=====\n"
-# sudo ln -s /etc/nginx/sites-available/laravel /etc/nginx/sites-enabled/
+printf "=====DONE, YOU CAN RUN YOUR SYMLINK COMMAND=====\n"
+printf "Example: sudo ln -s /etc/nginx/sites-available/laravel /etc/nginx/sites-enabled/"
