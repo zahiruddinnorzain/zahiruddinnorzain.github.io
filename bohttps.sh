@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf "=====bohttps V 1.1=====\n"
+printf "=====bohttps V 1.2=====\n"
 printf "Make sure you install nginx first\nkepaknaga@gmail.com\n"
 printf "SHOW SSL VERSION\n"
 sudo openssl version -a
@@ -14,7 +14,7 @@ sudo mkdir ssl
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/generated-private-key.key -out /etc/nginx/ssl/generated-csr.crt
 
 printf "=====PASTE THIS IN NGINX SITES-AVAILABLE FILE=====\n"
-# printf "ssl_certificate /etc/nginx/ssl/generate-csr.crt"
+# printf "ssl_certificate /etc/nginx/ssl/generated-csr.crt"
 # printf "ssl_certificate_key /etc/nginx/ssl/generated-private-key.key"
 
 cd /home/ubuntu/
