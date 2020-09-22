@@ -1,3 +1,5 @@
+# laravel
+
 server {
         listen 443 ssl;
         listen [::]:443 ssl;
@@ -25,4 +27,35 @@ server {
          fastcgi_param   PATH_INFO       $fastcgi_path_info;
          fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
         }
+}
+
+# django
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    ssl_certificate /etc/nginx/ssl/generated-csr.crt;
+    ssl_certificate_key /etc/nginx/ssl/generated-private-key.key;
+
+    server_name <IP SERVER HERE>;
+    client_max_body_size 500K;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/zebo/dev/maxism402/maxism40_2.0.0/maxism40_2;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/zebo/dev/maxism402/maxism40_2.sock;
+    }
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name <IP SERVER HERE>;
+
+    return 302 https://$server_name$request_uri;
 }
