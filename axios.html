@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<meta charset="utf-8">
+<title>Cryptocurrency Pricing Application</title>
+<body>
+
+<div id="app_show">{{ BTCinUSD }}</div>
+
+<hr>
+
+<div id="app">
+
+	<div class="columns medium-4" v-for="(result, index) in results">
+		{{ index }} >> {{ result.USD }}
+	</div>
+
+</div>
+
+<div id="app_post"></div>
+
+<script>
+
+// url
+const url = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,EUR";
+const url_bas = "https://13.212.76.82/admin_dashboard/api/bas/"
+const url_post = "http://localhost:5000/api/v1.0/testpost"
+
+const json = JSON.stringify({ "username": "apo lak" });
+
+// app 1
+const vm = new Vue({
+	el: '#app_show',
+		//Mock data for the value of BTC in USD
+		data: { BTCinUSD: 3759.91}
+	});
+
+// app 2
+const vm2 = new Vue({
+        el: '#app',
+        data: {
+          results: []
+        },
+        mounted() {
+          axios.get(url).then(response => {
+            this.results = response.data
+          })
+        .catch(e => {
+      		this.errors.push(e)
+      		})
+        }
+      });
+
+// app post
+const vm3 = new Vue({
+        el: '#app_post',
+        data: {
+          results: []
+        },
+        mounted() {
+          axios.post(url_post, json)
+          .then(response => {})
+        }
+      });
+
+</script>
+
+
+</body>
+</html>
+<!-- 
+https://www.digitalocean.com/community/tutorials/how-to-use-vue-js-and-axios-to-display-data-from-an-api
+
+https://www.digitalocean.com/community/tutorials/vuejs-rest-api-axios
+
+curl 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,EUR'
+{"BTC":{"USD":10603.33,"EUR":9115.99},"ETH":{"USD":341.24,"EUR":293.16}}
+
+ -->
