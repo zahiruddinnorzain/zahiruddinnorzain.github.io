@@ -19,7 +19,7 @@
 
 </div>
 
-<div id="app_post"></div>
+<div id="app_post">{{ results }}</div>
 
 <script>
 
@@ -29,6 +29,7 @@ const url_bas = "https://13.212.76.82/admin_dashboard/api/bas/"
 const url_post = "http://localhost:5000/api/v1.0/testpost"
 
 const json = JSON.stringify({ "username": "apo lak" });
+const json2 = { "username": "aku lai apo" };
 
 // app 1
 const vm = new Vue({
@@ -60,8 +61,8 @@ const vm3 = new Vue({
           results: []
         },
         mounted() {
-          axios.post(url_post, json)
-          .then(response => {})
+          axios.post(url_post, json2 )
+          .then(response => this.results = response.data)
         }
       });
 
