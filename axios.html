@@ -4,7 +4,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <meta charset="utf-8">
-<title>Cryptocurrency Pricing Application</title>
+<title>Bo API Flask</title>
 <body>
 
 <div id="app_show">{{ BTCinUSD }}</div>
@@ -28,7 +28,7 @@ const url = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsy
 const url_bas = "https://13.212.76.82/admin_dashboard/api/bas/"
 const url_post = "http://localhost:5000/api/v1.0/testpost"
 
-const json = JSON.stringify({ "username": "apo lak" });
+// const json = JSON.stringify({ "username": "apo lak" });
 const json2 = { "username": "aku lai apo" };
 
 // app 1
@@ -62,7 +62,12 @@ const vm3 = new Vue({
         },
         mounted() {
           axios.post(url_post, json2 )
-          .then(response => this.results = response.data)
+          .then(response => {
+            this.results = response.data
+          })
+          .catch(e => {
+            this.errors.push(e)
+          })
         }
       });
 
@@ -78,5 +83,11 @@ https://www.digitalocean.com/community/tutorials/vuejs-rest-api-axios
 
 curl 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,EUR'
 {"BTC":{"USD":10603.33,"EUR":9115.99},"ETH":{"USD":341.24,"EUR":293.16}}
+
+const res = await axios.post('//localhost:5001/upload', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  });
 
  -->
