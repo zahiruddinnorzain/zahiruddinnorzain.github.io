@@ -68,7 +68,8 @@ for r in range(len(out)):
 
 		# a[4]+a[5] for dun
 		# print(out[r]["id_kemasukan"])
-		namadun = out[r]["id_kemasukan"]
+		if out[r]["id_kemasukan"] != "":
+			namadun = out[r]["id_kemasukan"]
 
 		if out[r]["id_kemasukan"] == 'azizah' and out[r]["dun_pembayar"] == '':
 			out[r]["id_kemasukan"] = "2" #sabak
@@ -327,11 +328,18 @@ for r in range(len(out)):
 
 		if keyboard.is_pressed('s'):
 			print('exiting..')
+			# close
+			cur2.close()
+			con2.close()
 			exit()
 
-		percent = float((total/total_data)*100)
-		print(str(round(percent, 3))+' %')
-		system('clear')
+		# Print status every 1000 addresses
+		if total % 10000 == 0:
+			print("Completed {} of {} data".format( total, len(out) ))
+
+		# percent = float((total/total_data)*100)
+		# print(str(round(percent, 3))+' %')
+		# system('clear')
 
 
 
