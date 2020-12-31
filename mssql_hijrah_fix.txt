@@ -1,0 +1,22 @@
+# https://medium.com/@nahomt/using-sql-server-from-your-php-apps-on-ubuntu-16-04-c85671249c45
+
+sudo su
+curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add
+exit 
+
+sudo nano /etc/apt/sources.list.d/mssql-release.list
+
+PASTE:
+deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main
+
+sudo apt-get update
+sudo ACCEPT_EULA=Y apt-get install msodbcsql17
+sudo apt-get install unixodbc-dev mssql-tools
+
+sudo ln -s /etc/php/7.3/mods-available/sqlsrv.ini /etc/php/7.3/cli/conf.d/20-sqlsrv.ini
+
+sudo ln -s /etc/php/7.3/mods-available/pdo_sqlsrv.ini /etc/php/7.3/cli/conf.d/20-pdo_sqlsrv.ini
+
+sudo ln -s /etc/php/7.3/mods-available/sqlsrv.ini /etc/php/7.3/fpm/conf.d/20-sqlsrv.ini
+
+sudo ln -s /etc/php/7.3/mods-available/pdo_sqlsrv.ini /etc/php/7.3/fpm/conf.d/20-pdo_sqlsrv.ini
