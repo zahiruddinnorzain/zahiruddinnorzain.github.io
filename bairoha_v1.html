@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bairoha Food</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="row m-2">
+	<div class="col-sm-6">
+		<h3>Bairoha Food</h3>
+		<small>version 1.0</small><br>
+		<img src="https://raw.githubusercontent.com/zahiruddinnorzain/zahiruddinnorzain.github.io/master/bairoha2.jpeg" class="img mb-2" width="200px">
+		<div class="card">
+			<div class="card-body">
+				<div class="form-check">
+		  <label class="form-check-label">
+		    <input type="checkbox" class="form-check-input" id="karipap_kentang" value="Karipap Kentang">Karipap Kentang
+		  </label>
+		</div>
+		<div class="form-check">
+		  <label class="form-check-label">
+		    <input type="checkbox" class="form-check-input" id="Koci_pisang" value="Koci pisang">Koci pisang
+		  </label>
+		</div>
+		<div class="form-check">
+		  <label class="form-check-label">
+		    <input type="checkbox" class="form-check-input" id="Keria_gula_merah" value="Keria gula merah">Keria gula merah
+		  </label>
+		</div>
+		<div class="form-check">
+		  <label class="form-check-label">
+		    <input type="checkbox" class="form-check-input" id="Tauhu_sumbat" value="Tauhu sumbat">Tauhu sumbat
+		  </label>
+		</div>
+		<div class="form-check">
+		  <label class="form-check-label">
+		    <input type="checkbox" class="form-check-input" id="Laksa" value="Laksa">Laksa
+		  </label>
+		</div>
+		<div class="form-check">
+		  <label class="form-check-label">
+		    <input type="checkbox" class="form-check-input" id="Tauhu_begedil" value="Tauhu begedil">Tauhu begedil
+		  </label>
+		</div>
+		<div class="form-check">
+		  <label class="form-check-label">
+		    <input type="checkbox" class="form-check-input" id="Bijan_bom_inti_kelapa" value="Bijan bom inti kelapa">Bijan bom inti kelapa
+		  </label>
+		</div>
+		<div class="form-check">
+		  <label class="form-check-label">
+		    <input type="checkbox" class="form-check-input" id="Bijan_bom_Inti_kacang" value="Bijan bom Inti kacang">Bijan bom Inti kacang
+		  </label>
+		</div>
+		<div class="form-check">
+		  <label class="form-check-label">
+		    <input type="checkbox" class="form-check-input" id="Chara_manis" value="Chara manis">Chara manis
+		  </label>
+		</div>
+		<div class="form-check">
+		  <label class="form-check-label">
+		    <input type="checkbox" class="form-check-input" id="Chara_berlauk" value="Chara berlauk">Chara berlauk
+		  </label>
+		</div>
+		<div class="form-check">
+		  <label class="form-check-label">
+		    <input type="checkbox" class="form-check-input" id="Kuih_Kasturi" value="Kuih Kasturi">Kuih Kasturi
+		  </label>
+		</div>
+		<div class="form-check">
+		  <label class="form-check-label">
+		    <input type="checkbox" class="form-check-input" id="Kuih_Badak" value="Kuih Badak">Kuih Badak
+		  </label>
+		</div>
+		<div class="form-check">
+		  <label class="form-check-label">
+		    <input type="checkbox" class="form-check-input" id="Cek_mek_molek" value="Cek mek molek">Cek mek molek
+		  </label>
+		</div>
+		<div class="form-check">
+		  <label class="form-check-label">
+		    <input type="checkbox" class="form-check-input" id="Karipap_black_paper" value="Karipap black paper">Karipap black paper
+		  </label>
+		</div>
+			</div>
+		</div>
+
+	<a href="#" class="btn btn-info mt-2" id="clear" role="button">Clear</a>
+	</div>
+	<div class="col-sm-6">
+		<div class="form-group">
+			<label for="output">Output:</label>
+			<textarea class="form-control" rows="15" id="output"></textarea>
+		</div>
+	</div>
+</div>
+
+<script>
+$(document).ready(function(){
+
+	// date
+	var currentdate = new Date(); 
+    var datetime = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear();
+	$("#output").append(datetime+"\n\n");
+
+	//clear
+	$('#clear').click(function() {
+		$("#output").text(datetime+"\n\n");
+
+		$("#karipap_kentang" ).prop( "disabled", false );
+		$("#karipap_kentang").prop('checked', false);
+		$("#Koci_pisang" ).prop( "disabled", false );
+		$("#Koci_pisang").prop('checked', false);
+		$("#Keria_gula_merah" ).prop( "disabled", false );
+		$("#Keria_gula_merah").prop('checked', false);
+		$("#Tauhu_sumbat" ).prop( "disabled", false );
+		$("#Tauhu_sumbat").prop('checked', false);
+		$("#Laksa" ).prop( "disabled", false );
+		$("#Laksa").prop('checked', false);
+		$("#Tauhu_begedil" ).prop( "disabled", false );
+		$("#Tauhu_begedil").prop('checked', false);
+		$("#Bijan_bom_inti_kelapa" ).prop( "disabled", false );
+		$("#Bijan_bom_inti_kelapa").prop('checked', false);
+		$("#Bijan_bom_Inti_kacang" ).prop( "disabled", false );
+		$("#Bijan_bom_Inti_kacang").prop('checked', false);
+		$("#Chara_manis" ).prop( "disabled", false );
+		$("#Chara_manis").prop('checked', false);
+		$("#Chara_berlauk" ).prop( "disabled", false );
+		$("#Chara_berlauk").prop('checked', false);
+		$("#Kuih_Kasturi" ).prop( "disabled", false );
+		$("#Kuih_Kasturi").prop('checked', false);
+		$("#Kuih_Badak" ).prop( "disabled", false );
+		$("#Kuih_Badak").prop('checked', false);
+		$("#Cek_mek_molek" ).prop( "disabled", false );
+		$("#Cek_mek_molek").prop('checked', false);
+		$("#Karipap_black_paper" ).prop( "disabled", false );
+		$("#Karipap_black_paper").prop('checked', false);
+	});
+
+	// food
+	$('#karipap_kentang').click(function() {
+		let food = $('#karipap_kentang').val();
+	    $("#output").append(food+"\n");
+	    $( "#karipap_kentang" ).prop( "disabled", true );
+	});
+
+	$('#Koci_pisang').click(function() {
+		let food = $('#Koci_pisang').val();
+	    $("#output").append(food+"\n");
+	    $( "#Koci_pisang" ).prop( "disabled", true );
+	});
+
+	$('#Keria_gula_merah').click(function() {
+		let food = $('#Keria_gula_merah').val();
+	    $("#output").append(food+"\n");
+	    $( "#Keria_gula_merah" ).prop( "disabled", true );
+	});
+
+	$('#Tauhu_sumbat').click(function() {
+		let food = $('#Tauhu_sumbat').val();
+	    $("#output").append(food+"\n");
+	    $( "#Tauhu_sumbat" ).prop( "disabled", true );
+	});
+
+	$('#Laksa').click(function() {
+		let food = $('#Laksa').val();
+	    $("#output").append(food+"\n");
+	    $( "#Laksa" ).prop( "disabled", true );
+	});
+
+	$('#Tauhu_begedil').click(function() {
+		let food = $('#Tauhu_begedil').val();
+	    $("#output").append(food+"\n");
+	    $( "#Tauhu_begedil" ).prop( "disabled", true );
+	});
+
+	$('#Bijan_bom_inti_kelapa').click(function() {
+		let food = $('#Bijan_bom_inti_kelapa').val();
+	    $("#output").append(food+"\n");
+	    $( "#Bijan_bom_inti_kelapa" ).prop( "disabled", true );
+	});
+
+	$('#Bijan_bom_Inti_kacang').click(function() {
+		let food = $('#Bijan_bom_Inti_kacang').val();
+	    $("#output").append(food+"\n");
+	    $( "#Bijan_bom_Inti_kacang" ).prop( "disabled", true );
+	});
+
+	$('#Chara_manis').click(function() {
+		let food = $('#Chara_manis').val();
+	    $("#output").append(food+"\n");
+	    $( "#Chara_manis" ).prop( "disabled", true );
+	});
+
+	$('#Chara_berlauk').click(function() {
+		let food = $('#Chara_berlauk').val();
+	    $("#output").append(food+"\n");
+	    $( "#Chara_berlauk" ).prop( "disabled", true );
+	});
+
+	$('#Kuih_Kasturi').click(function() {
+		let food = $('#Kuih_Kasturi').val();
+	    $("#output").append(food+"\n");
+	    $( "#Kuih_Kasturi" ).prop( "disabled", true );
+	});
+
+	$('#Kuih_Badak').click(function() {
+		let food = $('#Kuih_Badak').val();
+	    $("#output").append(food+"\n");
+	    $( "#Kuih_Badak" ).prop( "disabled", true );
+	});
+
+	$('#Cek_mek_molek').click(function() {
+		let food = $('#Cek_mek_molek').val();
+	    $("#output").append(food+"\n");
+	    $( "#Cek_mek_molek" ).prop( "disabled", true );
+	});
+
+	$('#Karipap_black_paper').click(function() {
+		let food = $('#Karipap_black_paper').val();
+	    $("#output").append(food+"\n");
+	    $( "#Karipap_black_paper" ).prop( "disabled", true );
+	});
+
+
+});
+</script>
+</body>
+</html>
