@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>vue axios reference zaibo</title>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+<!-- body start -->
+<div id="counter">
+  Counter: {{ counter }}
+</div>
+
+<div id="advice">
+  {{ results.slip }}
+</div>
+
+<div id="send_id">
+	<button onclick="send()">hantar</button>
+</div>
+
+<div id="send_protected">
+	<button onclick="send_protected()">protected</button>
+</div>
+
+
+<!-- body end -->
+
+<!-- <script type="text/javascript" src="index.js"></script> -->
+<script>
+// show local data
+const Counter = {
+  data() {
+    return {
+      counter: 24
+    }
+  }
+}
+
+Vue.createApp(Counter).mount('#counter')
+
+
+// get api
+const api_url = 'https://api.adviceslip.com/advice'
+
+const apidata = {
+	data() {
+		return{
+			results: []
+		}
+	},
+	mounted(){
+		axios.get(api_url)
+		.then(response => {
+			this.results = response.data
+		})
+		.catch(e => {
+			this.errors.push(e)
+		})
+	}
+}
+
+Vue.createApp(apidata).mount('#advice')
+
+// post api
+function send(){
+
+	const api_url_local = 'http://localhost:8000/add'
+
+		var SendInfo = {
+	    "data_device_id": 14,
+	    "data_smoke": 300,
+	    "data_vibration": 450,
+	    "data_mic": 100,
+	    "data_motion": 654,
+	    "data_key": "Z0912A"
+	}
+	console.log(SendInfo);
+
+	const send_data = {
+		data() {
+			return{
+				results: []
+			}
+		},
+		mounted(){
+			axios.post(api_url_local, SendInfo)
+			.then(response => {
+				this.results = response.data
+				console.log(this.results)
+				console.log(response.status)
+			})
+			.catch((error)=>{
+				console.log(error)
+			})
+		}
+	}
+	Vue.createApp(send_data).mount('#send_id')
+
+}
+
+
+// post api token
+function send_protected(){
+
+	const api_url_local_protected = 'http://localhost:8000/protected'
+
+	// var SendInfo = {
+	//    "username": "zaibo",
+	//    "password": "password"
+	// }
+
+	var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjYwMTU4OTIsImlhdCI6MTYyNjAxNTU5Miwic3ViIjoiemFpYm8ifQ.hw1NMCLDlxHpMnnOVakFXXtlKh0YCDyzeDCF29zDO_g';
+	const headers = { Authorization: `Bearer ${token}` };
+
+	// console.log(SendInfo);
+
+	const send_data_protected = {
+		data() {
+			return{
+				results: []
+			}
+		},
+		mounted(){
+			axios.get(api_url_local_protected, { headers })
+			.then(response => {
+				this.results = response.data
+				console.log(this.results)
+				console.log(response.status)
+			})
+			.catch((error)=>{
+				console.log(error)
+			})
+		}
+	}
+	Vue.createApp(send_data_protected).mount('#send_protected')
+}
+
+</script>
+
+</body>
+</html>
