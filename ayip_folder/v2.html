@@ -1,0 +1,1507 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>epizyMovie</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@next"></script>
+  
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+::-webkit-scrollbar {width: 5px; height: 10px; background: black; }
+::-webkit-scrollbar-thumb { background-color: #353534 ; -webkit-border-radius: 1ex;opacity: 0.1; }
+body {
+  margin: 0;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  background-color: black;
+  color: #fff;
+}
+
+.jumbotron{
+	background-color: #000;
+	color: #ddd;
+}
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  
+}
+
+.scrolling-wrapper {
+  -webkit-overflow-scrolling: touch;
+  padding: 10px;
+}
+
+.card {
+    display: inline-block;
+	background-color: #000;
+}
+
+.share .fa {
+	padding: 15px;
+	font-size: 20px;
+	text-align: center;
+	text-decoration: none;
+	margin: 5px 2px;
+	border-radius: 100px;
+	height: 100%;
+	width: 50px;
+	box-shadow: 1px 0px 10px black;
+}
+
+.fa:hover {
+	opacity: 0.7;
+}
+
+.fa-facebook {
+	background: #514DB5;
+	color: white;
+}
+.fa-twitter {
+	background: #55ACEE;
+	color: white;
+}
+.fa-instagram {
+	background: #125688;
+	color: white;
+}
+.fa-youtube {
+	background: #bb0000;
+	color: white;
+}
+.fa-google {
+	background: #dd4b39;
+	color: white;
+}
+
+#quality {
+    height: 30px;
+    box-shadow: none;
+    border-radius: 10px;
+    opacity: 1.5;
+    position: absolute;
+    z-index: 3;
+    padding-left: 5px;
+    padding-top: 3px;
+}
+#qualityads {
+	height: 50px;
+    position: absolute;
+    z-index: 3;
+    padding-left: 5px;
+    padding-top: 3px;
+}
+.modal-content{
+	background-image: linear-gradient(to bottom, #30CFD0 0%, #330867 100%);
+	border-radius: 20px;
+	box-shadow: 0px 0px 20px blue;
+}
+.modal-body	{
+	margin-top: 5px;
+	float: right;
+	margin-right: 5px;
+	border-radius: 20px;
+	/* text-shadow: 2px 5px 5px #000; */
+	color: white;
+}
+#kanan{
+	border-radius: 20px;
+	float: right;
+	margin-left: 5px;
+	text-shadow: 2px 5px 5px #000;
+}
+#kanan:hover{
+	box-shadow: 0px 0px 20px #00ECFF;
+}
+#butangmovie{
+	border-radius: 50px;
+	background-image: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+	border:none;
+	padding: 8px;
+	text-shadow: 2px 5px 5px #000;
+	/*font-weight: 1000px;*/
+	font-size: 15px;
+}
+#butangmovie:hover{
+	box-shadow: 0px 0px 20px #00ECFF;
+	transform: translateY(-2px);
+	transition: .5s ease;
+}
+#new_movie_list{
+	color: white;
+	font-size: 25px;
+	/*text-shadow: 0px 5px 2px red;*/
+}
+#top_movie_list{
+	color: white;
+	font-size: 25px;
+	/*text-shadow: 0px 5px 2px red;*/
+}
+#Banned_movie_list{
+	color: white;
+	font-size: 25px;
+	/*text-shadow: 0px 5px 2px red;*/
+}
+#Malaysia_movie_list{
+	color: white;
+	font-size: 25px;
+	/*text-shadow: 0px 5px 2px red;*/
+}
+#Horror_movie_list{
+	color: white;
+	font-size: 25px;
+	/*text-shadow: 0px 5px 2px red;*/
+}
+#Action_movie_list{
+	color: white;
+	font-size: 25px;
+	/*text-shadow: 0px 5px 2px red;*/
+}
+#Animation_movie_list{
+	color: white;
+	font-size: 25px;
+	/*text-shadow: 0px 5px 2px red;*/
+}
+#Thriller_movie_list{
+	color: white;
+	font-size: 25px;
+	/*text-shadow: 0px 5px 2px red;*/
+}
+#Anime_movie_list{
+	color: white;
+	font-size: 25px;
+	/*text-shadow: 0px 5px 2px red;*/
+}
+#gambarmoviehomepage{
+	width: 150px;
+	height: 180px;
+	border-radius: 10px;
+	box-shadow: 0px 10px 15px blue;
+}
+#gambarmoviehomepage:hover{
+	box-shadow: 0px 10px 20px orange;
+	transform: scale(1.1);
+	transition: .5s ease;
+}
+.checked{
+	color: orange;
+	text-shadow: 0px 0px 20px yellow;
+}
+#gambarmodalmovie{
+	border-radius: 10px;
+	box-shadow: 0px 0px 20px #00ECFF;
+}
+#logoepizymovie{
+	box-shadow: 3px 8px 20px black;
+	border-radius: 10px;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: white;
+  transform: translateY(-4px);
+	transition: .3s ease;
+	opacity: 0.5;
+}
+#genre button{
+	color: black;
+	border-radius: 20px;
+	box-shadow: 0px 0px 20px #FFC300;
+}
+#genre button:hover {
+	transform: translateY(-4px);
+	transition: .5s ease;
+}
+.wrapper{
+	max-width: 450px;
+    margin: 10px auto;
+}
+.wrapper .search-input{
+  background: #FFC300;
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
+  margin: 0px;
+}
+.search-input input{
+  height: 50px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0 60px 0 20px;
+  font-size: 18px;
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+  background: #FFC300;
+}
+.search-input.active input{
+  border-radius: 5px 5px 0 0;
+}
+.search-input .autocom-box{
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  max-height: 280px;
+  overflow-y: auto;
+  width: 100%;
+}
+.search-input.active .autocom-box{
+  padding: 10px 8px;
+  opacity: 1;
+  pointer-events: auto;
+}
+.autocom-box li{
+  list-style: none;
+  padding: 8px 12px;
+  display: none;
+  width: 100%;
+  cursor: default;
+  border-radius: 3px;
+  color: black;
+}
+.search-input.active .autocom-box li{
+  display: block;
+}
+.autocom-box li:hover{
+  background: #efefef;
+}
+.search-input .icon{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 50px;
+  width: 55px;
+  text-align: center;
+  line-height: 55px;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+  background-color: #FFC300 ;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  box-shadow: -10px 0px 10px rgba(0,0,0,0.3); 
+}
+.search-input .icon:hover{
+	transform: scale(1.1);
+	transition: .5s ease;
+}	
+.carousel-item #postercarousel {
+	height: 230px;
+	width: 100%;
+	box-shadow: none;
+	border-radius: 20px;
+	opacity: 1.5;
+}
+
+
+</style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000;">
+	<a class="navbar-brand" href="https://epizymovie.my.id/"><img id="logoepizymovie" src="logo.png" width="30" height="30"></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav">
+			<li class="nav-item active">
+				<a class="nav-link" href="#"><b>Home</b></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#"><b>Features</b></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#"><b>Join Club</b></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#"><b>About Us</b></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#"><b style="color: #FFC300;">Donation &#129321;</b></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#"><b>Remove Ads</b></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#"><b>Report Issue</b></a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+<div class="jumbotron jumbotron-fluid" style="padding-top: 10px;padding-bottom: 10px;">
+  <div class="container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+		<!-- The slideshow carousel -->
+		<div class="carousel-inner" style="border-radius: 20px;">
+		  <div class="carousel-item active">
+		  	<img id="qualityads" src="adsicon.png">
+			<img id="postercarousel" src="movienight.gif" alt="movienight" width="1100" height="500">
+		  </div>
+		  <div class="carousel-item">
+			<img id="postercarousel" src="zombitopiaposter.jpg"  alt="zombitopiamovie" width="1100" height="500">
+		  </div>
+		  <div class="carousel-item">
+			<img id="postercarousel" src="try7.jpg" alt="godzillavskong" width="1100" height="500">
+		  </div>
+		  <div class="carousel-item">
+			<img id="postercarousel" src="try8.jpg" alt="raya" width="1100" height="500">
+		  </div>
+		  <div class="carousel-item">
+			<img id="postercarousel" src="try10.jpg" alt="theforeverpurge" width="1100" height="500">
+		  </div>
+		  <div class="carousel-item">
+			<img id="postercarousel" src="try14.jpg" alt="luca" width="1100" height="500">
+		  </div>
+		  <div class="carousel-item">
+			<img id="postercarousel" src="try12.jpg" alt="armyofthedead" width="1100" height="500">
+		  </div>
+		  <div class="carousel-item">
+			<img id="postercarousel" src="spacejamposter.jpg" alt="spacejam" width="1100" height="500">
+		  </div>
+		  <div class="carousel-item">
+			<img id="postercarousel" src="suicidesquadposter.jpg" alt="suicidesquad2021" width="1100" height="500">
+		  </div>
+		</div>
+		
+		<!-- Left and right controls -->
+		<a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+		  <span class="carousel-control-prev-icon"></span>
+		</a>
+		<a class="carousel-control-next" href="#myCarousel" data-slide="next">
+		  <span class="carousel-control-next-icon"></span>
+		</a>
+	</div>
+
+	<!------------------------search and button--------------------------------->
+	<center>
+			<div class="wrapper">
+		      <div class="search-input" >
+		        <a href="" target="_blank" hidden></a>
+		        <input type="text" placeholder="Cari Movie..(tajuk full)" oninput="this.value=this.value.toLowerCase()"/>
+		        <div class="autocom-box" >
+		          <!-- here list are inserted from javascript -->
+		        </div>
+		        <div class="icon"><i class="fa fa-search"></i></div>
+		      </div>
+		    </div>
+
+
+		<div class="Pengetahuan" style="text-align: center;font-size: 1.2em;font-weight: 500;color: grey;margin-top: 5px;">
+			epizyMovie.com - Watch Free Movies Online
+			<p style="font-size: 0.7em;font-weight: 500;"> 
+				Malay | HD | New | Subtitle 
+			</p>
+
+			<div id="genre">
+			<a href="#new_movie_list" id="newmovie"><button type="button" class="btn btn-warning ml-2 mt-3"><b>New Movie</b></button></a>
+			<a href="#upper2" id="horror"><button type="button" class="btn btn-warning ml-2 mt-3"><b>Horror</b></button></a>
+			<a href="#bottom" id="action"><button type="button" class="btn btn-warning ml-2 mt-3"><b>Action</b></button></a>
+			<a href="#bottom" id="animation"><button type="button" class="btn btn-warning ml-2 mt-3"><b>Animation</b></button></a>
+			<a href="#bottom" id="thriller"><button type="button" class="btn btn-warning ml-2 mt-3"><b>Thriller</b></button></a>
+			<a href="#bottom" id="anime"><button type="button" class="btn btn-warning ml-2 mt-3"><b>Anime</b></button></a>
+			<a href="#bottom" id="comedy"><button type="button" class="btn btn-warning ml-2 mt-3"><b>Comedy</b></button></a>
+			<a href="#bottom" id="korean"><button type="button" class="btn btn-warning ml-2 mt-3"><b>Korean</b></button></a>
+			<a href="#bottom" id="romance"><button type="button" class="btn btn-warning ml-2 mt-3"><b>Romance</b></button></a>
+			<a href="#bottom" id="series"><button type="button" class="btn btn-warning ml-2 mt-3"><b>Series</b></button></a>
+			<a href="#bottom" id="pramlee"><button type="button" class="btn btn-warning ml-2 mt-3"><b>P.Ramlee</b></button></a>
+			</div>
+
+		</div>
+
+	</center>
+	
+	<!----------------------------------------------------------->
+	  
+  </div>
+</div>
+
+<div class="container">
+
+<!-- new movies -->
+  <p class="h3 mt-2" id="new_movie_list">New Movies<img src="new.png" style="height: 20px;box-shadow: none;"></p>
+  <div class="scrolling-wrapper" id="movie_new">
+
+	<div class="card ml-5" v-for="(result, index) in results">
+
+		<!-- card repeat -->
+		<img id="quality" src="http://epizymovie.my.id/hd4.png">
+		<img id="gambarmoviehomepage" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic">
+		<center>
+			<a id="butangmovie" href="#" class="btn btn-sm btn-primary mt-3" data-toggle="modal" v-bind:data-target="'#movie_new' + index" style="width:150px;">Watch Now</a>		
+		</center>
+		<!-- end card repeat -->
+
+		<!-- modal repeat -->
+		<div class="modal fade" :id="'movie_new'+index">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+					<div class="modal-body">
+						<h3 class="text-wrap"><b>{{ result.stream_tajuk }}<br>
+							<span class="fa fa-star checked" v-for="n in result.stream_star"></span>
+						</b></h3> 
+						<img id="gambarmodalmovie" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic" width="200" height="300">
+						<li class="mt-3 ml-2"><h7 class="text-wrap"><b>Pelakon:</b> {{ result.stream_pelakon }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Diterbitkan:</b> {{ result.stream_date_terbitan }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Oleh:</b> {{ result.stream_oleh }}</h7></li>
+						<button id="kanan" type="button" class="btn btn-danger" data-dismiss="modal" >close</button>
+						<a :href="'http://epizymovie.my.id/movie_area.php?id='+result.id"><button id="kanan" type="button" class="btn btn-info" style="background-image: linear-gradient(to right, #30CFD0 0%, #330867 100%);">
+							Watch Now
+						</button></a>
+						
+					</div>
+				  </div>
+			</div>
+		</div>
+		<!-- end modal repeat -->
+
+	</div>
+
+  </div>
+<!-- end new movies -->
+
+<!-- top movies -->
+  <p class="h3 mt-2" id="top_movie_list">Top 5 Watch<img src="hot.gif" style="height: 30px;box-shadow: none;"></p>
+  <div class="scrolling-wrapper" id="movie_top">
+
+	<div class="card ml-5" v-for="(result, index) in results">
+
+		<!-- card repeat -->
+		<img id="quality" src="http://epizymovie.my.id/hd4.png">
+		<img id="gambarmoviehomepage" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic">
+		<center>
+			<a id="butangmovie" href="#" class="btn btn-sm btn-primary mt-3" data-toggle="modal" v-bind:data-target="'#movie_top' + index" style="width:150px;">Watch Now</a>		
+		</center>
+		<!-- end card repeat -->
+
+		<!-- modal repeat -->
+		<div class="modal fade" :id="'movie_top'+index">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+					<div class="modal-body">
+						<h3 class="text-wrap"><b>{{ result.stream_tajuk }}<br>
+							<span class="fa fa-star checked" v-for="n in result.stream_star"></span>
+						</b></h3> 
+						<img id="gambarmodalmovie" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic" width="200" height="300">
+						<li class="mt-3 ml-2"><h7 class="text-wrap"><b>Pelakon:</b> {{ result.stream_pelakon }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Diterbitkan:</b> {{ result.stream_date_terbitan }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Oleh:</b> {{ result.stream_oleh }}</h7></li>
+						<button id="kanan" type="button" class="btn btn-danger" data-dismiss="modal" >close</button>
+						<a :href="'http://epizymovie.my.id/movie_area.php?id='+result.id"><button id="kanan" type="button" class="btn btn-info" style="background-image: linear-gradient(to right, #30CFD0 0%, #330867 100%);">
+							Watch Now
+						</button></a>
+						
+					</div>
+				  </div>
+			</div>
+		</div>
+		<!-- end modal repeat -->
+
+	</div>
+
+  </div>
+<!-- end top movies -->
+
+<!-- Banned movies -->
+  <p class="h3 mt-2" id="Banned_movie_list">Banned Movies &#128683;</p>
+  <div class="scrolling-wrapper" id="movie_Banned">
+
+	<div class="card ml-5" v-for="(result, index) in results">
+
+		<!-- card repeat -->
+		<img id="quality" src="http://epizymovie.my.id/hd4.png">
+		<img id="gambarmoviehomepage" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic">
+		<center>
+			<a id="butangmovie" href="#" class="btn btn-sm btn-primary mt-3" data-toggle="modal" v-bind:data-target="'#movie_Banned' + index" style="width:150px;">Watch Now</a>		
+		</center>
+		<!-- end card repeat -->
+
+		<!-- modal repeat -->
+		<div class="modal fade" :id="'movie_Banned'+index">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+					<div class="modal-body">
+						<h3 class="text-wrap"><b>{{ result.stream_tajuk }}<br>
+							<span class="fa fa-star checked" v-for="n in result.stream_star"></span>
+						</b></h3> 
+						<img id="gambarmodalmovie" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic" width="200" height="300">
+						<li class="mt-3 ml-2"><h7 class="text-wrap"><b>Pelakon:</b> {{ result.stream_pelakon }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Diterbitkan:</b> {{ result.stream_date_terbitan }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Oleh:</b> {{ result.stream_oleh }}</h7></li>
+						<button id="kanan" type="button" class="btn btn-danger" data-dismiss="modal" >close</button>
+						<a :href="'http://epizymovie.my.id/movie_area.php?id='+result.id"><button id="kanan" type="button" class="btn btn-info" style="background-image: linear-gradient(to right, #30CFD0 0%, #330867 100%);">
+							Watch Now
+						</button></a>
+						
+					</div>
+				  </div>
+			</div>
+		</div>
+		<!-- end modal repeat -->
+
+	</div>
+
+  </div>
+<!-- end Banned movies -->
+
+<!-- Malaysia movies -->
+  <p class="h3 mt-2" id="Malaysia_movie_list">Malaysia Movies</p>
+  <div class="scrolling-wrapper" id="movie_Malaysia">
+
+	<div class="card ml-5" v-for="(result, index) in results">
+
+		<!-- card repeat -->
+		<img id="quality" src="http://epizymovie.my.id/hd4.png">
+		<img id="gambarmoviehomepage" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic">
+		<center>
+			<a id="butangmovie" href="#" class="btn btn-sm btn-primary mt-3" data-toggle="modal" v-bind:data-target="'#movie_Malaysia' + index" style="width:150px;">Watch Now</a>		
+		</center>
+		<!-- end card repeat -->
+
+		<!-- modal repeat -->
+		<div class="modal fade" :id="'movie_Malaysia'+index">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+					<div class="modal-body">
+						<h3 class="text-wrap"><b>{{ result.stream_tajuk }}<br>
+							<span class="fa fa-star checked" v-for="n in result.stream_star"></span>
+						</b></h3> 
+						<img id="gambarmodalmovie" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic" width="200" height="300">
+						<li class="mt-3 ml-2"><h7 class="text-wrap"><b>Pelakon:</b> {{ result.stream_pelakon }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Diterbitkan:</b> {{ result.stream_date_terbitan }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Oleh:</b> {{ result.stream_oleh }}</h7></li>
+						<button id="kanan" type="button" class="btn btn-danger" data-dismiss="modal" >close</button>
+						<a :href="'http://epizymovie.my.id/movie_area.php?id='+result.id"><button id="kanan" type="button" class="btn btn-info" style="background-image: linear-gradient(to right, #30CFD0 0%, #330867 100%);">
+							Watch Now
+						</button></a>
+						
+					</div>
+				  </div>
+			</div>
+		</div>
+		<!-- end modal repeat -->
+
+	</div>
+
+  </div>
+<!-- end Malaysia movies -->
+
+<!-- Horror movies -->
+  <p class="h3 mt-2" id="Horror_movie_list">Horror</p>
+  <div class="scrolling-wrapper" id="movie_Horror">
+
+	<div class="card ml-5" v-for="(result, index) in results">
+
+		<!-- card repeat -->
+		<img id="quality" src="http://epizymovie.my.id/hd4.png">
+		<img id="gambarmoviehomepage" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic">
+		<center>
+			<a id="butangmovie" href="#" class="btn btn-sm btn-primary mt-3" data-toggle="modal" v-bind:data-target="'#movie_Horror' + index" style="width:150px;">Watch Now</a>		
+		</center>
+		<!-- end card repeat -->
+
+		<!-- modal repeat -->
+		<div class="modal fade" :id="'movie_Horror'+index">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+					<div class="modal-body">
+						<h3 class="text-wrap"><b>{{ result.stream_tajuk }}<br>
+							<span class="fa fa-star checked" v-for="n in result.stream_star"></span>
+						</b></h3> 
+						<img id="gambarmodalmovie" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic" width="200" height="300">
+						<li class="mt-3 ml-2"><h7 class="text-wrap"><b>Pelakon:</b> {{ result.stream_pelakon }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Diterbitkan:</b> {{ result.stream_date_terbitan }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Oleh:</b> {{ result.stream_oleh }}</h7></li>
+						<button id="kanan" type="button" class="btn btn-danger" data-dismiss="modal" >close</button>
+						<a :href="'http://epizymovie.my.id/movie_area.php?id='+result.id"><button id="kanan" type="button" class="btn btn-info" style="background-image: linear-gradient(to right, #30CFD0 0%, #330867 100%);">
+							Watch Now
+						</button></a>
+						
+					</div>
+				  </div>
+			</div>
+		</div>
+		<!-- end modal repeat -->
+
+	</div>
+
+  </div>
+<!-- end Horror movies -->
+
+<!-- Action movies -->
+  <p class="h3 mt-2" id="Action_movie_list">Action</p>
+  <div class="scrolling-wrapper" id="movie_Action">
+
+	<div class="card ml-5" v-for="(result, index) in results">
+
+		<!-- card repeat -->
+		<img id="quality" src="http://epizymovie.my.id/hd4.png">
+		<img id="gambarmoviehomepage" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic">
+		<center>
+			<a id="butangmovie" href="#" class="btn btn-sm btn-primary mt-3" data-toggle="modal" v-bind:data-target="'#movie_Action' + index" style="width:150px;">Watch Now</a>		
+		</center>
+		<!-- end card repeat -->
+
+		<!-- modal repeat -->
+		<div class="modal fade" :id="'movie_Action'+index">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+					<div class="modal-body">
+						<h3 class="text-wrap"><b>{{ result.stream_tajuk }}<br>
+							<span class="fa fa-star checked" v-for="n in result.stream_star"></span>
+						</b></h3> 
+						<img id="gambarmodalmovie" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic" width="200" height="300">
+						<li class="mt-3 ml-2"><h7 class="text-wrap"><b>Pelakon:</b> {{ result.stream_pelakon }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Diterbitkan:</b> {{ result.stream_date_terbitan }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Oleh:</b> {{ result.stream_oleh }}</h7></li>
+						<button id="kanan" type="button" class="btn btn-danger" data-dismiss="modal" >close</button>
+						<a :href="'http://epizymovie.my.id/movie_area.php?id='+result.id"><button id="kanan" type="button" class="btn btn-info" style="background-image: linear-gradient(to right, #30CFD0 0%, #330867 100%);">
+							Watch Now
+						</button></a>
+						
+					</div>
+				  </div>
+			</div>
+		</div>
+		<!-- end modal repeat -->
+
+	</div>
+
+  </div>
+<!-- end Action movies -->
+
+<!-- Animation movies -->
+  <p class="h3 mt-2" id="Animation_movie_list">Animation</p>
+  <div class="scrolling-wrapper" id="movie_Animation">
+
+	<div class="card ml-5" v-for="(result, index) in results">
+
+		<!-- card repeat -->
+		<img id="quality" src="http://epizymovie.my.id/hd4.png">
+		<img id="gambarmoviehomepage" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic">
+		<center>
+			<a id="butangmovie" href="#" class="btn btn-sm btn-primary mt-3" data-toggle="modal" v-bind:data-target="'#movie_Animation' + index" style="width:150px;">Watch Now</a>		
+		</center>
+		<!-- end card repeat -->
+
+		<!-- modal repeat -->
+		<div class="modal fade" :id="'movie_Animation'+index">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+					<div class="modal-body">
+						<h3 class="text-wrap"><b>{{ result.stream_tajuk }}<br>
+							<span class="fa fa-star checked" v-for="n in result.stream_star"></span>
+						</b></h3> 
+						<img id="gambarmodalmovie" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic" width="200" height="300">
+						<li class="mt-3 ml-2"><h7 class="text-wrap"><b>Pelakon:</b> {{ result.stream_pelakon }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Diterbitkan:</b> {{ result.stream_date_terbitan }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Oleh:</b> {{ result.stream_oleh }}</h7></li>
+						<button id="kanan" type="button" class="btn btn-danger" data-dismiss="modal" >close</button>
+						<a :href="'http://epizymovie.my.id/movie_area.php?id='+result.id"><button id="kanan" type="button" class="btn btn-info" style="background-image: linear-gradient(to right, #30CFD0 0%, #330867 100%);">
+							Watch Now
+						</button></a>
+						
+					</div>
+				  </div>
+			</div>
+		</div>
+		<!-- end modal repeat -->
+
+	</div>
+
+  </div>
+<!-- end Animation movies -->
+
+<!-- Thriller movies -->
+  <p class="h3 mt-2" id="Thriller_movie_list">Thriller</p>
+  <div class="scrolling-wrapper" id="movie_Thriller">
+
+	<div class="card ml-5" v-for="(result, index) in results">
+
+		<!-- card repeat -->
+		<img id="quality" src="http://epizymovie.my.id/hd4.png">
+		<img id="gambarmoviehomepage" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic">
+		<center>
+			<a id="butangmovie" href="#" class="btn btn-sm btn-primary mt-3" data-toggle="modal" v-bind:data-target="'#movie_Thriller' + index" style="width:150px;">Watch Now</a>		
+		</center>
+		<!-- end card repeat -->
+
+		<!-- modal repeat -->
+		<div class="modal fade" :id="'movie_Thriller'+index">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+					<div class="modal-body">
+						<h3 class="text-wrap"><b>{{ result.stream_tajuk }}<br>
+							<span class="fa fa-star checked" v-for="n in result.stream_star"></span>
+						</b></h3> 
+						<img id="gambarmodalmovie" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic" width="200" height="300">
+						<li class="mt-3 ml-2"><h7 class="text-wrap"><b>Pelakon:</b> {{ result.stream_pelakon }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Diterbitkan:</b> {{ result.stream_date_terbitan }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Oleh:</b> {{ result.stream_oleh }}</h7></li>
+						<button id="kanan" type="button" class="btn btn-danger" data-dismiss="modal" >close</button>
+						<a :href="'http://epizymovie.my.id/movie_area.php?id='+result.id"><button id="kanan" type="button" class="btn btn-info" style="background-image: linear-gradient(to right, #30CFD0 0%, #330867 100%);">
+							Watch Now
+						</button></a>
+						
+					</div>
+				  </div>
+			</div>
+		</div>
+		<!-- end modal repeat -->
+
+	</div>
+
+  </div>
+<!-- end Thriller movies -->
+
+<!-- Anime movies -->
+  <p class="h3 mt-2" id="Anime_movie_list">Anime</p>
+  <div class="scrolling-wrapper" id="movie_Anime">
+
+	<div class="card ml-5" v-for="(result, index) in results">
+
+		<!-- card repeat -->
+		<img id="quality" src="http://epizymovie.my.id/hd4.png">
+		<img id="gambarmoviehomepage" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic">
+		<center>
+			<a id="butangmovie" href="#" class="btn btn-sm btn-primary mt-3" data-toggle="modal" v-bind:data-target="'#movie_Anime' + index" style="width:150px;">Watch Now</a>		
+		</center>
+		<!-- end card repeat -->
+
+		<!-- modal repeat -->
+		<div class="modal fade" :id="'movie_Anime'+index">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+					<div class="modal-body">
+						<h3 class="text-wrap"><b>{{ result.stream_tajuk }}<br>
+							<span class="fa fa-star checked" v-for="n in result.stream_star"></span>
+						</b></h3> 
+						<img id="gambarmodalmovie" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic" width="200" height="300">
+						<li class="mt-3 ml-2"><h7 class="text-wrap"><b>Pelakon:</b> {{ result.stream_pelakon }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Diterbitkan:</b> {{ result.stream_date_terbitan }}</h7></li>
+						<li class="mt-3 ml-2"><h7><b>Oleh:</b> {{ result.stream_oleh }}</h7></li>
+						<button id="kanan" type="button" class="btn btn-danger" data-dismiss="modal" >close</button>
+						<a :href="'http://epizymovie.my.id/movie_area.php?id='+result.id"><button id="kanan" type="button" class="btn btn-info" style="background-image: linear-gradient(to right, #30CFD0 0%, #330867 100%);">
+							Watch Now
+						</button></a>
+						
+					</div>
+				  </div>
+			</div>
+		</div>
+		<!-- end modal repeat -->
+
+	</div>
+
+  </div>
+<!-- end Anime movies -->
+
+
+<!-- Series movies -->
+<p class="h3 mt-2" id="Series_movie_list">Series</p>
+<div class="scrolling-wrapper" id="movie_Series">
+
+  <div class="card ml-5" v-for="(result, index) in results">
+
+	  <!-- card repeat -->
+	  <img id="quality" src="http://epizymovie.my.id/hd4.png">
+	  <img id="gambarmoviehomepage" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic">
+	  <center>
+		  <a id="butangmovie" href="#" class="btn btn-sm btn-primary mt-3" data-toggle="modal" v-bind:data-target="'#movie_Series' + index" style="width:150px;">Watch Now</a>		
+	  </center>
+	  <!-- end card repeat -->
+
+	  <!-- modal repeat -->
+	  <div class="modal fade" :id="'movie_Series'+index">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+				  <div class="modal-body">
+					  <h3 class="text-wrap"><b>{{ result.stream_tajuk }}<br>
+						  <span class="fa fa-star checked" v-for="n in result.stream_star"></span>
+					  </b></h3> 
+					  <img id="gambarmodalmovie" :src="'https://download.epizymovie.my.id/storage/images_post/' + result.stream_pic" width="200" height="300">
+					  <li class="mt-3 ml-2"><h7 class="text-wrap"><b>Pelakon:</b> {{ result.stream_pelakon }}</h7></li>
+					  <li class="mt-3 ml-2"><h7><b>Diterbitkan:</b> {{ result.stream_date_terbitan }}</h7></li>
+					  <li class="mt-3 ml-2"><h7><b>Oleh:</b> {{ result.stream_oleh }}</h7></li>
+					  <button id="kanan" type="button" class="btn btn-danger" data-dismiss="modal" >close</button>
+					  <a :href="'http://epizymovie.my.id/series_area.php?id='+result.id+'&genre=Series&season=1&episode=1'"><button id="kanan" type="button" class="btn btn-info" style="background-image: linear-gradient(to right, #30CFD0 0%, #330867 100%);">
+						  Watch Now
+					  </button></a>
+					  
+				  </div>
+				</div>
+		  </div>
+	  </div>
+	  <!-- end modal repeat -->
+
+  </div>
+
+</div>
+<!-- end Anime movies -->
+
+
+
+
+
+
+
+<!-- iklan -->
+<br>
+<a href="https://shopee.com.my/aidictator" target="_blank"><img id="adsonline" src="http://epizymovie.my.id/e-book.png" border="0" width="100%" height="200px" /></a>
+<!-- end iklan -->
+
+<!-- footer -->
+<footer class="page-footer mt-2" style="background-color: black;">
+	<div class="titlefooter" style="color: grey;font-size: 1.2em;text-align: center;">follow us on</div>	
+	<div class="share" style="text-align: center;">   
+		<a href="https://www.google.com" style="color: rgb(255, 255, 255);"><i class="fa fa-google"></i></a>
+		<a href="https://www.facebook.com" style="color: black;"><i class="fa fa-facebook"></i></a>
+		<a href="https://www.instagram.com" style="color: black;"><i class="fa fa-instagram"></i></a>
+		<a href="https://www.youtube.com" style="color: black;"><i class="fa fa-youtube"></i></a>
+		<a href="https://www.twitter.com" style="color: black;"><i class="fa fa-twitter"></i></a>
+	</div>
+	<!-- Copyright -->
+	<div class="footer-copyright text-center py-3 text-secondary">© 2021 Copyright
+	  <p class="text-secondary">Created by: Areyip</p>
+	  <p><h8>Viewers:</h8></p>
+	  <p><img id="visitor" src="https://counter2.stat.ovh/private/freecounterstat.php?c=ksy64ahxx8fgeu9ubdmgm318hbumjl23" border="0" title="web counter" alt="web counter" style="box-shadow: 0px 0px 20px blue;"></p>
+	</div>
+	<!-- Copyright -->
+  
+</footer>
+<!-- end footer -->
+
+</div>
+
+<script>
+
+	// get api stream_new
+	const api_url = 'https://download.epizymovie.my.id/api/get/stream?kategori=stream_new'
+	const apidata = {
+		data() {
+			return{
+				results: []
+			}
+		},
+		mounted(){
+			axios.get(api_url)
+			.then(response => {
+				this.results = response.data
+			})
+			.catch(e => {
+				this.errors.push(e)
+			})
+		}
+	}
+	Vue.createApp(apidata).mount('#movie_new')
+
+	// get api stream_top
+	const api_url_top = 'https://download.epizymovie.my.id/api/get/stream?kategori=stream_top'
+	const apidata_top = {
+		data() {
+			return{
+				results: []
+			}
+		},
+		mounted(){
+			axios.get(api_url_top)
+			.then(response => {
+				this.results = response.data
+			})
+			.catch(e => {
+				this.errors.push(e)
+			})
+		}
+	}
+	Vue.createApp(apidata_top).mount('#movie_top')
+
+	// get api stream_Banned
+	const api_url_Banned = 'https://download.epizymovie.my.id/api/get/stream?genre=Banned'
+	const apidata_Banned = {
+		data() {
+			return{
+				results: []
+			}
+		},
+		mounted(){
+			axios.get(api_url_Banned)
+			.then(response => {
+				this.results = response.data
+			})
+			.catch(e => {
+				this.errors.push(e)
+			})
+		}
+	}
+	Vue.createApp(apidata_Banned).mount('#movie_Banned')
+
+	// get api stream_Malaysia
+	const api_url_Malaysia = 'https://download.epizymovie.my.id/api/get/stream?genre=Malaysia'
+	const apidata_Malaysia = {
+		data() {
+			return{
+				results: []
+			}
+		},
+		mounted(){
+			axios.get(api_url_Malaysia)
+			.then(response => {
+				this.results = response.data
+			})
+			.catch(e => {
+				this.errors.push(e)
+			})
+		}
+	}
+	Vue.createApp(apidata_Malaysia).mount('#movie_Malaysia')
+
+	// get api stream_Horror
+	const api_url_Horror = 'https://download.epizymovie.my.id/api/get/stream?genre=Horror'
+	const apidata_Horror = {
+		data() {
+			return{
+				results: []
+			}
+		},
+		mounted(){
+			axios.get(api_url_Horror)
+			.then(response => {
+				this.results = response.data
+			})
+			.catch(e => {
+				this.errors.push(e)
+			})
+		}
+	}
+	Vue.createApp(apidata_Horror).mount('#movie_Horror')
+
+		// get api stream_Action
+	const api_url_Action = 'https://download.epizymovie.my.id/api/get/stream?genre=Action'
+	const apidata_Action = {
+		data() {
+			return{
+				results: []
+			}
+		},
+		mounted(){
+			axios.get(api_url_Action)
+			.then(response => {
+				this.results = response.data
+			})
+			.catch(e => {
+				this.errors.push(e)
+			})
+		}
+	}
+	Vue.createApp(apidata_Action).mount('#movie_Action')
+
+	// get api stream_Animation
+	const api_url_Animation = 'https://download.epizymovie.my.id/api/get/stream?genre=Animation'
+	const apidata_Animation = {
+		data() {
+			return{
+				results: []
+			}
+		},
+		mounted(){
+			axios.get(api_url_Animation)
+			.then(response => {
+				this.results = response.data
+			})
+			.catch(e => {
+				this.errors.push(e)
+			})
+		}
+	}
+	Vue.createApp(apidata_Animation).mount('#movie_Animation')
+
+	// get api stream_Thriller
+	const api_url_Thriller = 'https://download.epizymovie.my.id/api/get/stream?genre=Thriller'
+	const apidata_Thriller = {
+		data() {
+			return{
+				results: []
+			}
+		},
+		mounted(){
+			axios.get(api_url_Thriller)
+			.then(response => {
+				this.results = response.data
+			})
+			.catch(e => {
+				this.errors.push(e)
+			})
+		}
+	}
+	Vue.createApp(apidata_Thriller).mount('#movie_Thriller')
+
+	// get api stream_Anime
+	const api_url_Anime = 'https://download.epizymovie.my.id/api/get/stream?genre=Anime'
+	const apidata_Anime = {
+		data() {
+			return{
+				results: []
+			}
+		},
+		mounted(){
+			axios.get(api_url_Anime)
+			.then(response => {
+				this.results = response.data
+			})
+			.catch(e => {
+				this.errors.push(e)
+			})
+		}
+	}
+	Vue.createApp(apidata_Anime).mount('#movie_Anime')
+
+	// get api stream_Series
+	const api_url_Series = 'https://download.epizymovie.my.id/api/get/stream?genre=Series'
+	const apidata_Series = {
+		data() {
+			return{
+				results: []
+			}
+		},
+		mounted(){
+			axios.get(api_url_Series)
+			.then(response => {
+				this.results = response.data
+			})
+			.catch(e => {
+				this.errors.push(e)
+			})
+		}
+	}
+	Vue.createApp(apidata_Series).mount('#movie_Series')
+
+
+	
+</script>
+<!------- function scroll bila tekan tajuk -------------------> 
+<script>
+$("#newmovie").click(function(){
+		$("html,body").animate({scrollTop: 400},2000);
+	
+	});
+$("#horror").click(function(){
+		$("html,body").animate({scrollTop: 1700},2000);
+	
+	});
+$("#action").click(function(){
+		$("html,body").animate({scrollTop: 2000},2000);
+	
+	});
+$("#animation").click(function(){
+		$("html,body").animate({scrollTop: 2300},2000);
+	
+});
+$("#thriller").click(function(){
+	$("html,body").animate({scrollTop: 2600},2000);
+
+});
+$("#anime").click(function(){
+	$("html,body").animate({scrollTop: 2900},2000);
+
+});
+$("#comedy").click(function(){
+	$("html,body").animate({scrollTop: 3200},2000);
+
+});
+$("#korean").click(function(){
+	$("html,body").animate({scrollTop: 3500},2000);
+
+});
+$("#romance").click(function(){
+	$("html,body").animate({scrollTop: 3800},2000);
+
+});
+$("#series").click(function(){
+	$("html,body").animate({scrollTop: 4100},2000);
+
+});
+$("#pramlee").click(function(){
+	$("html,body").animate({scrollTop: 4400},2000);
+
+});
+</script>
+<script>
+			let suggestions = [
+			"paskal 2018",
+			"mael totey the movie 2020",
+			"munafik 2 2018",
+			"townmall 2020",
+			"antaramasa 2021",
+			"salina 2021",
+			"j2 j retribusi 2021",
+			"moonbound 2021",
+			"old 2021",
+			"nightbooks 2021",
+			"squid game 2021",
+			"ejen ali the movie 2019",
+			"annabelle come home 2019",
+			"the nun 2018",
+			"us 2019",
+			"world war z 2013",
+			"paranormal activity 4 2012",
+			"paranormal activity 3 2011",
+			"paranormal activity 2 2010",
+			"paranormal activity 1 2007",
+			"candyman 2021",
+			"great white 2021",
+			"the meg 2018",
+			"mencari rahmat 2017",
+			"padmaavat 2018",
+			"black mirror 2019",
+			"prisoners of the ghostland 2021",
+			"dota dragon blood 2021",
+			"happier than ever a love letter to los angeles 2021",
+			"what if s1 ep1",
+			"protege 2021",
+			"escape room tournament of champions 2021",
+			"money heist",
+			"tune in for love 2019",
+			"on your wedding day 2018",
+			"outlaws 2017",
+			"great battle 2018",
+			"night in paradise 2020",
+			"along with the gods the last 49 days 2018",
+			"forgotten 2017",
+			"okay madam 2020",
+			"lucid dream 2017",
+			"he all that 2021",
+			"dont breathe 2 2021",
+			"cinderella 2021",
+			"incredibles 2 2018",
+			"coco 2017",
+			"cars 3 2017",
+			"cars 2 2011",
+			"cars 2006",
+			"up 2009",
+			"inside out 2015",
+			"wall e 2008",
+			"brave 2012",
+			"ratatouille 2007",
+			"changeland 2019",
+			"good boys 2019",
+			"guava island 2019",
+			"isnt it romantic 2019",
+			"kevin hart irresponsible 2019",
+			"knives out 2019",
+			"long shot 2019",
+			"oh ramona! 2019",
+			"shazam 2019",
+			"stuber 2019",
+			"army of the dead 2021",
+			"harry potter and the deathly hallows 2 2011",
+			"harry potter and the deathly hallows 1 2010",
+			"harry potter and the half blood prince 2009",
+			"harry potter and the order of the pheonix 2007",
+			"harry potter and the goblet of fire 2005",
+			"harry potter and the prisoner of azkaban 2004",
+			"harry potter and the chamber of secrets 2002",
+			"harry potter and the sorcerer stone 2001",
+			"my hero academia heroes raising 2019",
+			"wind rises 2013",
+			"words bubble up like soda pop 2020",
+			"ponyo 2008",
+			"mobile suit gundam hathaway flash 2020",
+			"flavors of youth 2018",
+			"mirai 2018",
+			"evangelion thrice upon a time 2021",
+			"dragon quest your story 2019",
+			"ada hantu 2021",
+			"reminiscence 2021",
+			"green knight 2021",
+			"snake eyes 2021",
+			"infinite 2021",
+			"marksman 2021",
+			"kill plan 2021",
+			"ferry 2021",
+			"beckett 2021",
+			"hunter plan 2018",
+			"ayat dari langit 2021",
+			"10 tips tipu bini 2021",
+			"makmum 2019",
+			"puaka pak selar 2021",
+			"penunggu soldorm 2021",
+			"my future husband 2021",
+			"motif 2019",
+			"kerana korona 2021",
+			"kelaster 2020",
+			"mimaland 2020",
+			"angry birds movie 2 2019",
+			"peter rabbit 2 2021",
+			"spongebob movie sponge on the run 2020",
+			"secret magic control agency 2021",
+			"dreambuilders 2020",
+			"daisy quokka world scariest animal 2021",
+			"bigfoot family 2020",
+			"peaky blinders 2019",
+			"vault 2021",
+			"scooby doo the sword and the scoob 2021",
+			"below zero 2021",
+			"redemption 2021",
+			"narco sub 2021",
+			"born a champion 2021",
+			"werewolve within 2021",
+			"sin 2021",
+			"spiral 2021",
+			"till death 2021",
+			"gaia 2021",
+			"antidote 2021",
+			"ice road 2021",
+			"simpsons good bart and the loki 2021",
+			"outside the wire 2021",
+			"dig 2021",
+			"pele 2021",
+			"red dot 2021",
+			"tony parker the final shot 2021",
+			"vivo 2021",
+			"it 2017",
+			"suicide squad 2021",
+			"suicide squad 2016",
+			"one piece stampede 2019",
+			"boruto naruto the movie 2017",
+			"the last naruto the movie 2015",
+			"good dinosaur 2015",
+			"holidate 2020",
+			"lovebirds 2020",
+			"to all the boys always and forever 2021",
+			"i still believe 2020",
+			"emma 2020",
+			"sergio 2020",
+			"isi and ossi 2020",
+			"all the bright places 2020",
+			"chemical hearts 2020",
+			"spiderman far from home 2019",
+			"captain marvel 2019",
+			"gunpowder milkshake 2021",
+			"kingdom ashin of the north 2021",
+			"jolt 2021",
+			"the falcon and the winter soldier",
+			"minions holiday special 2020",
+			"despicable me 3 2017",
+			"toy story 4 2019",
+			"toy story 3 2010",
+			"toy story 2 1999",
+			"toy story 1995",
+			"toy story of terror 2013",
+			"toy story that time forgot 2014",
+			"train to busan 2016",
+			"alive 2020",
+			"call 2020",
+			"mulan 2020",
+			"lion king 2019",
+			"avengers end game 2019",
+			"avengers infinity war 2018",
+			"avengers age of ultron 2015",
+			"avengers 2012",
+			"jungle cruise 2021",
+			"boboiboy 2 2019",
+			"jebat 2020",
+			"fast and furious 9 2021",
+			"jumanji the next level 2019",
+			"cruella 2021",
+			"fatherhood 2021",
+			"friends the reunion 2021",
+			"aladdin 2019",
+			"deadpool 2 2018",
+			"love and monsters 2020",
+			"frozen 2 2019",
+			"lupin 2021",
+			"penunggang agama 2021",
+			"zombitopia 2020",
+			"petaka 2021",
+			"kenderaan berat ikut kiri 2021",
+			"hantu bonceng 2.0 2021",
+			"mulut masin 2021",
+			"saka nan sepi 2020",
+			"selamat hari tak jadi 2021",
+			"hitmans wifes bodyguard 2021",
+			"da vinci code 2006",
+			"blood red sky 2021",
+			"a clockwork orange 1971",
+			"cannibal holocaust 1980",
+			"exorcist 1973",
+			"poughkeepsie tapes 2009",
+			"evil dead 1983",
+			"texas chain saw massacre 1983",
+			"trollhunters rise of the titans 2021",
+			"space jam a new legacy 2021",
+			"barbie the pearl princess 2014",
+			"barbie princess adventure 2020",
+			"barbie the princess and the popstar 2012",
+			"barbie and the secret door 2014",
+			"barbie in princess power 2015",
+			"barbie dolphin magic 2017",
+			"barbie and chelsea the lost birthday 2021",
+			"autopsy of jane doe 2016",
+			"forever purge 2021",
+		    "luca 2021",
+		    "black widow 2021",
+		    "godzilla vs kong 2021",
+		    "boss baby 2 2021",
+		    "phobias 2021",
+		    "conjuring 3 devil made me do it 2021",
+		    "bad president 2021",
+		    "darkweb cicada 3301 2021",
+		    "space sweepers 2021",
+		    "dreamcatcher 2021",
+		    "paranormal prison 2021",
+		    "zack synder's justice league 2021",
+		    "raya & the last dragon 2021",
+		    "fear street part 2 2021",
+		    "a quite place 2",
+		    "amusement park 2021",
+		    "censor 2021",
+		    "wrong turn 2021",
+		    "come true 2020",
+		    "freaky 2020",
+		    "insidious 2010",
+		    "poltergeist 2015",
+		    "friend request 2016",
+		    "possessionn of hannah grace 2018",
+		    "hell fest 2018",
+		    "nobody 2021",
+		    "wrath of man 2021",
+		    "mortal kombat 2021",
+		    "just another dream 2021",
+		    "greenland 2020",
+		    "run hide fight 2020",
+		    "jungle run 2021",
+		    "tomorrow war 2021",
+		    "those who whish me dead 2021",
+		    "jailbreak pact 2020",
+		    "the gentleman 2019",
+		    "kingsman the golden circle 2017",
+		    "tom and jerry 2021",
+		    "mitchells vs machine 2021",
+		    "wish dragon 2021",
+		    "soul 2020",
+		    "stand by me doraemon 2014",
+		    "stand by me doraemon 2 2020",
+		    "lego star wars holiday special 2020",
+		    "onward 2020",
+		    "croods a new age 2020",
+		    "phinease and ferb the movie candice against the universe 2020",
+		    "over the moon 2020",
+		    "justice league dark apokolips war 2020",
+		    "upin dan ipin keris siamang tunggal 2018",
+		    "a shaun the sheep movie farmageddon 2020",
+		    "sausage party 2016",
+		    "sensation 2021",
+		    "little things 2021",
+		    "flashback 2020",
+		    "profile 2018",
+		    "i care a lot 2021",
+		    "courier 2021",
+		    "oxygen 2021",
+		    "the first purge 2018",
+		    "adverse 2020",
+		    "promising young women 2020",
+		    "peninsula train to busan 2 2020",
+		    "girl in the basement 2021",
+		    "deliver us from evil 2020",
+		    "barot house 2019",
+		    "ratsasan 2018",
+		    "hush 2016",
+		    "22 july 2018",
+		    "freehold 2017",
+		    "digimon adventure last evolution kizuna 2020",
+		    "a whisker away 2020",
+		    "goblin slayer goblin's crown 2020",
+		    "made in abyss dawn of the deep soul 2020",
+		    "wolfwalkers 2020",
+		    "blackfox 2019",
+		    "your name 2016",
+		    "demon slayer mugen train 2020",
+		    "royal tailor 2014",
+		    "love conquest 2020",
+		    "psychokinesis 2018",
+		    "jo pil ho the dawning rage 2019",
+		    "parasite 2019",
+		    "extreme job 2019",
+		    "birthday saeng il 2019",
+		    "bad guys the movie 2019",
+		    "loki 2021",
+		    "superman and lois 2021",
+		];
+</script>
+<script>
+	// getting all required elements
+	const searchWrapper = document.querySelector(".search-input");
+	const inputBox = searchWrapper.querySelector("input");
+	const suggBox = searchWrapper.querySelector(".autocom-box");
+	const icon = searchWrapper.querySelector(".icon");
+	let linkTag = searchWrapper.querySelector("a");
+	let webLink;
+	// if user press any key and release
+	inputBox.onkeyup = (e)=>{
+	    let userData = e.target.value; //user enetered data
+	    let emptyArray = [];
+	    if(userData){
+	        icon.onclick = ()=>{
+	            webLink = `http://epizymovie.my.id/${userData}.html`;
+	            linkTag.setAttribute("href", webLink);
+	            linkTag.click();
+	        }
+	        emptyArray = suggestions.filter((data)=>{
+	            //filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
+	            return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
+	        });
+	        emptyArray = emptyArray.map((data)=>{
+	            // passing return data inside li tag
+	            return data = `<li>${data}</li>`;
+	        });
+	        searchWrapper.classList.add("active"); //show autocomplete box
+	        showSuggestions(emptyArray);
+	        let allList = suggBox.querySelectorAll("li");
+	        for (let i = 0; i < allList.length; i++) {
+	            //adding onclick attribute in all li tag
+	            allList[i].setAttribute("onclick", "select(this)");
+	        }
+	    }else{
+	        searchWrapper.classList.remove("active"); //hide autocomplete box
+	    }
+	}
+	function select(element){
+	    let selectData = element.textContent;
+	    inputBox.value = selectData;
+	    icon.onclick = ()=>{
+	        webLink = `http://epizymovie.my.id/${selectData}.html`;
+	        linkTag.setAttribute("href", webLink);
+	        linkTag.click();
+	    }
+	    searchWrapper.classList.remove("active");
+	}
+	function showSuggestions(list){
+	    let listData;
+	    if(!list.length){
+	        userValue = inputBox.value;
+	        listData = `<li>${userValue}</li>`;
+	    }else{
+	      listData = list.join('');
+	    }
+	    suggBox.innerHTML = listData;
+	}
+</script>
+
+</body>
+</html>
