@@ -7,7 +7,7 @@ $episode = $_GET["episode"];
 $option = $_GET["option"];
 
 if(($id != '') && ($genre != '')){
-    $response = file_get_contents('https://download.epizy.my.id/api/get/stream?id='.$id.'&genre='.$genre.'&season='.$season.'&episode='.$episode);
+    $response = file_get_contents('https://download.epizymovie.my.id/api/get/stream?id='.$id.'&genre='.$genre.'&season='.$season.'&episode='.$episode);
     // $response = file_get_contents('http://localhost:8000/api/get/stream?id=2');
     $response = trim($response, '"[]"');
     $response = json_decode($response, true);
@@ -146,16 +146,16 @@ body {
 
                         $id_series = strval($response["id"]);
 
-                        $url = 'https://download.epizy.my.id/api/get/stream?series_id_list_episode='.$id_series;
+                        $url = 'https://download.epizymovie.my.id/api/get/stream?series_id_list_episode='.$id_series;
 
-                        if($response["id"] != ''){
+                        if($id_series != ''){
                             $response_episode = file_get_contents($url);
                             $response_episode = json_decode($response_episode, true);
                         }
                         // print_r($response_episode);
                         foreach($response_episode as $list){
                             // echo $list['id'];
-                            echo '<a href="https://download.epizy.my.id/series_area.php?id='.$response["id"].'&genre=Series&season='.$list['series_season'].'&episode='.$list['series_episode'].'" class=" mb-2 btn btn-sm btn-info">Season '.$list['series_season'].' Episode '.$list['series_episode'].'</a><br>';
+                            echo '<a href="https://download.epizymovie.my.id/series_area.php?id='.$response["id"].'&genre=Series&season='.$list['series_season'].'&episode='.$list['series_episode'].'" class=" mb-2 btn btn-sm btn-info">Season '.$list['series_season'].' Episode '.$list['series_episode'].'</a><br>';
                         }
 
                     ?>
