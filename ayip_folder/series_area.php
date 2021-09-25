@@ -155,7 +155,7 @@ body {
                         // print_r($response_episode);
                         foreach($response_episode as $list){
                             // echo $list['id'];
-                            echo '<a href="https://download.epizymovie.my.id/series_area.php?id='.$response["id"].'&genre=Series&season='.$list['series_season'].'&episode='.$list['series_episode'].'" class=" mb-2 btn btn-sm btn-info">Season '.$list['series_season'].' Episode '.$list['series_episode'].'</a><br>';
+                            echo '<a href="http://epizymovie.my.id/series_area.php?id='.$response["id"].'&genre=Series&season='.$list['series_season'].'&episode='.$list['series_episode'].'" class=" mb-2 btn btn-sm btn-info">Season '.$list['series_season'].' Episode '.$list['series_episode'].'</a><br>';
                         }
 
                     ?>
