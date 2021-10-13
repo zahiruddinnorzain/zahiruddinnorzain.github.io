@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>epizyMovie LOCAL v1.0</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <meta name="theme-color" content="#FFC500">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#FFC500">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#FFC500">
+</head>
+<body>
+
+<div class="container">
+    <p class="h3">EpizyMovie Local V1.0</p><hr>
+
+    <div id="movie_new">
+        <div id="card_movie_new" v-for="(result, index) in results">
+            <b>{{ result.stream_tajuk }}</b><br>
+            <b class="text-muted">{{ result.stream_genre }}</b><br>
+            <i class="fa fa-television" aria-hidden="true"></i> 
+                <a class="ml-2" :href="result.stream_movie_1_embedcode">{{ result.stream_movie_1_embedcode }}</a><br>
+            <i class="fa fa-television" aria-hidden="true"></i> 
+                <a class="ml-2" :href="result.stream_movie_2_embedcode">{{ result.stream_movie_2_embedcode }}</a><br>
+            <hr>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+	// get api stream_new
+	const api_url = 'https://raw.githubusercontent.com/zahiruddinnorzain/zahiruddinnorzain.github.io/master/ayip_folder/stream_data.json'
+	const apidata = {
+		data() {
+			return{
+				results: []
+			}
+		},
+		mounted(){
+			axios.get(api_url)
+			.then(response => {
+				this.results = response.data
+			})
+			.catch(e => {
+				this.errors.push(e)
+			})
+		}
+	}
+	Vue.createApp(apidata).mount('#movie_new')
+
+	
+	
+</script>
+
+</body>
+</html>
