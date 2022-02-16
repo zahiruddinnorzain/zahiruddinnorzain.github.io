@@ -1,0 +1,187 @@
+var saya = {
+	"profile": { 
+		"nama":"ZAHIRUDDIN",
+		"nama_bapa":"NORZAIN",
+		"phone":"-",
+		"email":"zahiruddin.norzain@gmail.com",
+		"alamat_simple":"Shah Alam, Selangor",
+		"github_link":"https://github.com/zahiruddinnorzain",
+		"linkedin_link":"https://www.linkedin.com/in/zahiruddin-norzain-359154173/",
+		"position":"Software Engineer",
+		"besday":"1st November, 1994",
+		"resume_link":"dist/pdf/zahiruddin_18Dec.pdf",
+		"about_yourself":"Open for opportunities to develope skills.",
+		"about_myself":"Committed to learning and self-development so that we can consistently achieve better results.",
+		"expme":"In my engineer software field, I have experience in Linux environment such as Ubuntu and Ubuntu server. Also, I have been using git version control for 4 years, with the github hosting service. For management project, I have experience using the Trello service from my team. In developing software, I had used a Continuous Integration & Deployment system (CI/CD) with github action to maintain the stability. And for a better result, I deploy my team project using the Amazon Web Service (AWS) & Google Cloud Platform (GCP). I also had been using the Nginx technology in my team projects. For me, the most important thing in this field is teamwork.",
+		"expme_quote":"Talent wins games, but teamwork and intelligence win championships",
+		"expme_quote_by":"Michael Jordan"
+	},
+
+	"ability": [
+		{
+			"abi_name":"Python",
+			"abi_value": "85"
+		},
+		{
+			"abi_name":"Laravel Framework",
+			"abi_value": "80"
+		},
+		{
+			"abi_name":"Github",
+			"abi_value": "70"
+		},
+		{
+			"abi_name":"Linux",
+			"abi_value": "70"
+		},
+		{
+			"abi_name":"C++",
+			"abi_value": "65"
+		},
+		{
+			"abi_name":"DevOps",
+			"abi_value": "80"
+		}
+
+	],
+	
+	"education" : [
+		{
+			"edu_date": "Jan 2010 to 2011",
+			"edu_company": "SM Teknik Gombak",
+			"edu_place": "Gombak, Selangor",
+			"edu_position": "Electronic Engineer"
+		},
+		{
+			"edu_date": "Jun 2012 to 2015",
+			"edu_company": "UiTM Dungun",
+			"edu_place": "Dungun, Terengganu",
+			"edu_position": "Electrical Electronic Engineer"
+		},
+		{
+			"edu_date": "Jun 2016 to 2019",
+			"edu_company": "UiTM Permatang Pauh",
+			"edu_place": "Permatang Pauh, Pulau Pinang",
+			"edu_position": "Electrical Electronic Engineer"
+		}
+	],
+
+	"experience" : [
+		{
+			"exp_date": "July 2018 - Sept 2018",
+			"exp_company": "Dual Dignity Sdn Bhd",
+			"exp_place": "Bukit Mertajam, Pulau Pinang",
+			"exp_position": "Wiring Contractor (internship)"
+		},
+		{
+			"exp_date": "Feb 2019 to Dec 2019",
+			"exp_company": "CTC",
+			"exp_place": "Petaling Jaya, Selangor",
+			"exp_position": "IT Service Engineer"
+		},
+		{
+			"exp_date": "Feb 2020 to July 2021",
+			"exp_company": "Smart Tech Tank Sdn. Bhd.",
+			"exp_place": "Bukit Jelutong, Selangor",
+			"exp_position": "Software Engineer"
+		}
+	],
+
+	"award" : [
+		{
+			"award_text":"Awarded The Silver Medal For The Invention In International Engineering And Sciences Innovation July 2018 - September 2018 Exhibition",
+			"award_title": "I-ESIX2018",
+			"award_year": "2018"
+		},
+		{
+			"award_text":"Participate In PETROSAINS RBTX CHALLENGE As A Mentor",
+			"award_title": "PETROSAINS RBTX CHALLENGE",
+			"award_year": "2018"
+		},
+		{
+			"award_text":"Registered as a BOARD OF ENGINEERS MALAYSIA",
+			"award_title": "ELECTRICAL ENGINEER",
+			"award_year": "2020"
+		}
+	],
+
+	"myproject" : [
+		{
+			"proj_imglink":"dist/img/dermawan.png",
+			"proj_title":"Dermawan",
+			"proj_text":"Application for charity in our society.",
+			"proj_link":"https://dermawan.herokuapp.com"
+		},
+		{
+			"proj_imglink":"dist/img/postuisyenv3.png",
+			"proj_title":"PosTuisyenV3",
+			"proj_text":"Home Tuition management for teacher. Written in PHP.",
+			"proj_link":"http://postuisyen.000webhostapp.com/"
+		},
+		{
+			"proj_imglink":"dist/img/mascv.png",
+			"proj_title":"MasCV",
+			"proj_text":"Realtime news from Kementerian Kesihatan Malaysia, KKM about Covid-19 pandemic. using web crawler python",
+			"proj_link":"https://mascv.herokuapp.com/"
+		},
+		{
+			"proj_imglink":"dist/img/gitku.png",
+			"proj_title":"gitku",
+			"proj_text":"Application for handling git process using python.",
+			"proj_link":"https://github.com/zahiruddinnorzain/gitku"
+		},
+		{
+			"proj_imglink":"dist/img/bords.png",
+			"proj_title":"BoRDS",
+			"proj_text":"Web service running 'in the cloud' designed to simplify the setup and operation of a relational database for use in applications.",
+			"proj_link":"https://github.com/zahiruddinnorzain/bords"
+		},
+		{
+			"proj_imglink":"dist/img/ssipr.png",
+			"proj_title":"SSIPR",
+			"proj_text":"Sistem Smart Inisiatif Peduli Rakyat yang diperkenalkan oleh Kerajaan Negeri Selangor adalah bertujuan untuk membantu masyarakat terutama golongan yang berpendapatan rendah.",
+			"proj_link":"https://ssipr-daftar.selangor.gov.my"
+		},
+		{
+			"proj_imglink":"dist/img/sism40.png",
+			"proj_title":"SIS M40",
+			"proj_text":"SISM40 atau Skim internet Selangor M40 merupakan pakej insentif rangsangan internet dibawah Kerajaan Negeri Selangor dengan kerjasama Telekom Malaysia Berhad.",
+			"proj_link":"https://sism40.com.my"
+		},
+		{
+			"proj_imglink":"dist/img/regionheal.png",
+			"proj_title":"Region Heal",
+			"proj_text":"Region Heal merupakan website untuk mengurangkan stress atau tekanan.",
+			"proj_link":"https://regionheal.herokuapp.com/"
+		}
+	],
+
+	"otherproject" : [
+		{
+			"mproj_title":"gitku",
+			"mproj_text":"Application for handling git process using python.",
+			"mproj_link":"https://github.com/zahiruddinnorzain/gitku"
+		},
+		{
+			"mproj_title":"MasCV",
+			"mproj_text":"Realtime news from Kementerian Kesihatan Malaysia, KKM about Covid-19 pandemic. using web crawler python",
+			"mproj_link":"https://mascv.herokuapp.com/"
+		},
+		{
+			"mproj_title":"zpiano",
+			"mproj_text":"Auto generate piano sound",
+			"mproj_link":"https://github.com/zahiruddinnorzain/zpiano"
+		},
+		{
+			"mproj_title":"bomail",
+			"mproj_text":"Email list client",
+			"mproj_link":"https://github.com/zahiruddinnorzain/bomail"
+		},
+		{
+			"mproj_title":"bobugs",
+			"mproj_text":"Client feedback platform",
+			"mproj_link":"https://github.com/zahiruddinnorzain/bobugs"
+		}
+	]
+
+};

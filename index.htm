@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="dist/js/bootstrap.bundle.min.js"></script>
+  <script src="dist/js/bootstrap.bundle.min.js"></script>
+  <script src="dist/js/jquery.min.js"></script>
+  <script src="dist/js/dataku.json"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Sacramento" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+  <!-- Important Owl stylesheet -->
+  <link rel="stylesheet" href="dist/owl-carousel/owl.carousel.css">
+  
+  <!-- Default Theme -->
+  <link rel="stylesheet" href="dist/owl-carousel/owl.theme.css">
+    
+  <!--  jQuery 1.7+  -->
+  <!-- <script src="jquery-1.9.1.min.js"></script> -->
+    
+  <!-- Include js plugin -->
+  <script src="dist/owl-carousel/owl.carousel.js"></script>
+
+  <title>Zahiruddin</title>
+
+<style>
+body{
+    /* font-family: sacramento; */
+    font-family: montserrat;
+}
+
+.signku{
+  font-family: sacramento;
+}
+
+.warna1-bg{
+    background-color: #2B4141;
+}
+.warna2-bg{
+    background-color: #a9ddd6;
+}
+.warna3-bg{
+    background-color: #eae0d5;
+}
+
+a{
+  color: #fff !important;
+}
+
+ul.timeline {
+list-style-type: none;
+position: relative;
+}
+ul.timeline:before {
+    content: ' ';
+    background: #d4d9df;
+    display: inline-block;
+    position: absolute;
+    left: 29px;
+    width: 2px;
+    height: 100%;
+    z-index: 400;
+}
+ul.timeline > li {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+ul.timeline > li:before {
+    content: ' ';
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #22c0e8;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    z-index: 400;
+}
+
+#owl-demo .item{
+  margin: 3px;
+}
+#owl-demo .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.kuning {
+  color: yellow;
+}
+
+
+
+
+  </style>
+
+  <script>
+
+    // console.log(saya);
+    // console.log(saya['profile']['nama']);
+
+    $(document).ready(function(){
+        $('#nama').text(saya['profile']['nama']);
+        $('#nama_profile').text(saya['profile']['nama']);
+        $('#nama_profile_bapa').text(saya['profile']['nama_bapa']);
+        $('#about_myself').text(saya['profile']['about_myself']);
+        $('#alamat_simple').text(saya['profile']['alamat_simple']);
+        $('#besday').text(saya['profile']['besday']);
+        $('#about_yourself').text(saya['profile']['about_yourself']);
+        $('#expme').text(saya['profile']['expme']);
+        $('#expme_quote').text("\""+saya['profile']['expme_quote']+"\"");
+        $('#expme_quote_by').text(saya['profile']['expme_quote_by']);
+        
+        var job_exp, education_exp;
+
+        $.each(saya['experience'], function(index,jsonObject){
+            // console.log(jsonObject["exp_company"]);
+            job_exp = `<li>
+                <p class="linkku">
+                <span class="kuning"><i class="fas fa-arrow-right"></i></span> ${jsonObject["exp_date"]}<br>
+                <b>${jsonObject["exp_company"]}</b><br>
+                ${jsonObject["exp_place"]}<br>
+                ${jsonObject["exp_position"]}</p>
+            </li>`;
+
+            $('#job_exp').append(job_exp);
+        });
+
+        $.each(saya['education'], function(index,jsonObject){
+            // console.log(jsonObject["exp_company"]);
+            edu_exp = `<li>
+                <p class="linkku">
+                <span class="kuning"><i class="fas fa-arrow-right"></i></span> ${jsonObject["edu_date"]}<br>
+                <b>${jsonObject["edu_company"]}</b><br>
+                ${jsonObject["edu_place"]}<br>
+                ${jsonObject["edu_position"]}</p>
+            </li>`;
+
+            $('#education_exp').append(edu_exp);
+        });
+
+        $.each(saya['award'], function(index,jsonObject){
+            // console.log(jsonObject["exp_company"]);
+            award_exp = `<li>
+                <p class="linkku">
+                <span class="kuning"><i class="fas fa-arrow-right"></i></span> ${jsonObject["award_year"]}<br>
+                <b>${jsonObject["award_title"]}</b><br>
+                ${jsonObject["award_text"]}<br>
+            </li>`;
+
+            $('#award_exp').append(award_exp);
+        });
+
+        // projek
+        $.each(saya['myproject'], function(index,jsonObject){
+            // console.log(jsonObject["exp_company"]);
+            myproject_list = `<div class="item warna1-bg text-white rounded-3"><a target=_blank href="${jsonObject["proj_link"]}"><img src="${jsonObject["proj_imglink"]}" alt="Owl Image"></a><center><p class="py-3 px-2"><b>${jsonObject["proj_title"]}</b><br>${jsonObject["proj_text"]}</p></center></div>`;
+            $('#owl-demo').append(myproject_list);
+        });
+
+        $("#owl-demo").owlCarousel({
+ 
+          autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+          items : 2,
+          itemsDesktop : [1199,3],
+          itemsDesktopSmall : [979,3]
+
+        });
+
+        // small projek
+        $.each(saya['otherproject'], function(index,jsonObject){
+            // console.log(jsonObject["exp_company"]);
+            myproject_list_otherproject = `<div class="item warna1-bg text-white mx-2 pt-2 rounded-3"><a target=_blank href="${jsonObject["mproj_link"]}" class="fw-bold"><center>${jsonObject["mproj_title"]}</a><p class="py-3 px-2">${jsonObject["mproj_text"]}</p></center></div>`;
+            $('#owl-demo-small-project').append(myproject_list_otherproject);
+        });
+
+        $("#owl-demo-small-project").owlCarousel({
+ 
+          autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+          items : 2,
+          itemsDesktop : [1199,3],
+          itemsDesktopSmall : [979,3]
+
+        });
+
+
+
+
+    });
+
+
+
+  </script>
+</head>
+<body>
+
+    <main>
+        <div class="container py-4">
+          <header class="pb-3 border-bottom">
+            <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
+              <span class="fs-4">Portfolio</span>
+            </a>
+          </header>
+      
+          <div class="p-5 warna2-bg bg-gradient rounded-3">
+            <div class="container-fluid py-5">
+              <div class="row">
+                <div class="col-md-6">
+                  <center>
+                    <img src="dist/img/zahir1.png" width="500px" class="img-fluid mb-3" alt="...">
+                  </center>
+                </div>
+                <div class="col-md-6">
+                  <h2 class="dfw-bold signku">Hello, I am</h2>
+                  <h1 class="display-5 fw-bold" id="nama">nama</h1>
+                  <p class="col-md-8 fs-4" id="about_myself">about_myself</p>
+                  <button class="btn btn-primary btn-lg" type="button">Example button <i class="far fa-arrow-alt-circle-down"></i></button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+      
+          <div class="row align-items-md-stretch">
+            <div class="col-md-6 mt-4">
+              <div class="h-100 p-5 text-white warna1-bg rounded-3">
+                <h2><i class="fas fa-user"></i> Profile</h2>
+
+                    <table>
+                        <tr>
+                            <td width="150px">Name</td>
+                            <td><span class="fw-bold" id="nama_profile">nama_profile</span> <span class="fw-bold" id="nama_profile_bapa">nama_profile_bapa</span></td>
+                        </tr>
+                        <tr>
+                            <td width="150px">Address</td>
+                            <td><span class="fw-bold" id="alamat_simple">alamat_simple</span></td>
+                        </tr>
+                        <tr>
+                            <td width="150px">Birthday</td>
+                            <td><span class="fw-bold" id="besday">besday</span></td>
+                        </tr>
+                    </table>
+                    
+                <button class="btn btn-outline-light mt-3" type="button">call me</button>
+              </div>
+            </div>
+            <div class="col-md-6 mt-4">
+              <div class="h-100 p-5 warna2-bg bg-gradient border rounded-3">
+                <!-- <h2>Add borders</h2> -->
+                <p class="text-center h2 mt-4" id="about_yourself">about_yourself</p>
+                <!-- <button class="btn btn-outline-secondary" type="button">Example button</button> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="row align-items-md-stretch">
+            <div class="col-md-12 mt-4">
+                <div class="h-100 p-5 warna2-bg bg-gradient border rounded-3">
+                    <h2><i class="fas fa-cog"></i> Skills</h2>
+                    <p>timeline dekat sini</p>
+                    <p id="expme">expme</p>
+                </div>
+            </div>
+          </div>
+
+          <div class="row align-items-md-stretch">
+            <div class="col-md-6 mt-4">
+                <div class="h-100 p-5 warna1-bg text-white border rounded-3">
+                    <h2><i class="fas fa-briefcase"></i> Job Experience</h2>
+                    <p>timeline dekat sini</p>
+                    <ul class="timeline" id="job_exp">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 mt-4">
+              <div class="h-100 p-5 warna1-bg text-white border rounded-3">
+                  <h2><i class="fad fa-graduation-cap"></i> Education</h2>
+                  <p>timeline dekat sini</p>
+                  <ul class="timeline" id="education_exp">
+
+                  </ul>
+              </div>
+          </div>
+          </div>
+
+          <div class="row align-items-md-stretch">
+            <div class="col-md-8 mt-4">
+                <div class="h-100 p-5 warna2-bg bg-gradient border rounded-3">
+                    <h2><i class="fas fa-browser"></i> Project</h2>
+                    <p>kotak kotak</p>
+
+                    <div id="owl-demo">
+                              
+                      <!-- <div class="item"><img src="dist/img/dermawan.png" alt="Owl Image"></div> -->
+                    
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4 mt-4">
+                <div class="h-100 p-5 warna1-bg text-white border rounded-3">
+                    <h2><i class="fas fa-award"></i> Award</h2>
+                    <p>timeline dekat sini</p>
+                    <ul class="timeline" id="award_exp">
+
+                    </ul>
+                </div>
+            </div>
+          </div>
+
+          <div class="row align-items-md-stretch">
+            <div class="col-md-12 mt-4">
+                <div class="h-100 p-5 warna2-bg bg-gradient border rounded-3">
+                    <h2>Small Project</h2>
+                    <p>kotak kotak</p>
+
+                    <div id="owl-demo-small-project">
+                              
+                      <!-- <div class="item"><img src="dist/img/dermawan.png" alt="Owl Image"></div> -->
+                    
+                    </div>
+
+                </div>
+            </div>
+          </div>
+
+          <div class="row align-items-md-stretch">
+            <div class="col-md-12 mt-4">
+                <div class="h-100 p-5 bg-light bg-gradient border rounded-3">
+                    <p class="text-center h3 mt-4" id="expme_quote">expme_quote</p>
+                    <p class="text-center h5 mt-4 signku" id="expme_quote_by">expme_quote_by</p>
+                </div>
+            </div>
+          </div>
+      
+          <footer class="pt-3 mt-4 text-muted border-top">
+            &copy; <span id="year"></span>
+            <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+          </footer>
+        </div>
+      </main>
+
+</body>
+</html>
