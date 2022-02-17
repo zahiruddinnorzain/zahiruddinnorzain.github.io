@@ -7,6 +7,7 @@
   <script src="dist/js/bootstrap.bundle.min.js"></script>
   <script src="dist/js/jquery.min.js"></script>
   <script src="dist/js/dataku.json"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Sacramento" rel="stylesheet">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
@@ -39,7 +40,9 @@ body{
     background-color: #2B4141;
 }
 .warna2-bg{
-    background-color: #a9ddd6;
+    /* background-color: #a9ddd6; */
+    background-color: #2B4141;
+    color: #fff;
 }
 .warna3-bg{
     background-color: #eae0d5;
@@ -91,6 +94,12 @@ ul.timeline > li:before {
 
 .kuning {
   color: yellow;
+}
+
+#chart {
+  max-width: 450px;
+  margin: 35px auto;
+  background-color: #fff;
 }
 
 
@@ -189,6 +198,39 @@ ul.timeline > li:before {
 
         });
 
+        // console.log(saya["ability"]);
+        var abi_name = [];
+        var abi_value = [];
+        for (var key in saya["ability"]){
+          // console.log(saya["ability"][key]["abi_name"]);
+          abi_name.push(saya["ability"][key]["abi_name"]);
+          abi_value.push(saya["ability"][key]["abi_value"]);
+        };
+        // console.log(abi_name);
+        // console.log(abi_value);
+
+        // apex chart
+        var options = {
+          series: [{
+          name: 'Series 1',
+          // colors: ['#FF4560'],
+          data: abi_value,
+        }],
+          chart: {
+          height: 350,
+          type: 'radar',
+        },
+        title: {
+          text: 'SKILLS'
+        },
+        xaxis: {
+          categories: abi_name
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
 
 
 
@@ -265,7 +307,9 @@ ul.timeline > li:before {
                 <div class="h-100 p-5 warna2-bg bg-gradient border rounded-3">
                     <h2><i class="fas fa-cog"></i> Skills</h2>
                     <p>timeline dekat sini</p>
-                    <p id="expme">expme</p>
+                    <!-- <p id="expme">expme</p> -->
+                    <div id="chart">
+                    </div>
                 </div>
             </div>
           </div>
