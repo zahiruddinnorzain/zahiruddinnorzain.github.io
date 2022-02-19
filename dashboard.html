@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="dist/js/bootstrap.bundle.min.js"></script>
+  <script src="dist/js/bootstrap.bundle.min.js"></script>
+  <script src="dist/js/jquery.min.js"></script>
+  <!-- <script src="dist/js/dataku.json"></script> -->
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Sacramento" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Exo">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+  <title>Zahiruddin</title>
+
+<style>
+body{
+    /* font-family: sacramento; */
+    font-family: montserrat;
+}
+
+#tt{
+    font-family: Exo;
+}
+
+.signku{
+  font-family: sacramento;
+}
+
+.warna1-bg{
+    background-color: #2B4141;
+}
+.warna2-bg{
+    /* background-color: #a9ddd6; */
+    background-color: #2B4141;
+    color: #fff;
+}
+.warna3-bg{
+    background-color: #eae0d5;
+}
+
+a{
+  color: #fff !important;
+}
+</style>
+
+</head>
+<body onload="digi()">
+
+    <main>
+        <div class="container py-4">
+          <header class="pb-3 border-bottom">
+            <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              </svg>
+              <span class="fs-4">zahiruddin</span>
+            </a>
+          </header>
+      
+          <div class="p-5 pb-2 warna2-bg rounded-3">
+            <div class="container-fluid py-5">
+              <div class="row">
+                
+                <div class="col-md-12">
+                    
+                    <p class="text-center h3 mb-3 text-muted">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+                    <p class="text-center h1 text-warning" id="tt">Loading..</p>
+                    <p class="text-center h5 text-muted" id="tarikh_now">Loading..</p>
+                    <p class="text-center h5 text-muted" id="tarikh_now_hijri">Loading..</p>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+      
+          <div class="row align-items-md-stretch">
+            <div class="col-md-6 mt-4">
+              <div class="h-100 p-5 text-white warna1-bg rounded-3">
+                <p class="h3">WAKTU SOLAT</p>
+                <center>
+                    <div class="table text-white mt-3">
+                        <table border="0">
+                            <tr>
+                                <td colspan="2" class="px-5">
+                                    <div class="text-center">
+                                        <span id="id_lokasi"></span><br>
+                                        <span id="id_tarikh"></span><br>
+                                        <span id="id_tarikh_arab"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-5" width="100px">Subuh</td>
+                                <td class="px-5"><span id="id_subuh"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-5">Syuruk</td>
+                                <td class="px-5"><span id="id_syuruk"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-5">Zohor</td>
+                                <td class="px-5"><span id="id_zohor"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-5">Asar</td>
+                                <td class="px-5"><span id="id_asar"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-5">Maghrib</td>
+                                <td class="px-5"><span id="id_maghrib"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-5">Isyak</td>
+                                <td class="px-5"><span id="id_isyak"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </center>
+              </div>
+            </div>
+            <div class="col-md-6 mt-4">
+              <div class="h-100 p-5 warna2-bg border rounded-3">
+                <p class="h3"><i class="fas fa-paw"></i> KUCING</p>
+                <img id="id_cat" width="500px" class="img-thumbnail">
+                <div class="text-center mt-2">
+                    <button class="btn btn-success px-4" onclick="cat()"><i class="fas fa-sync"></i></button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row align-items-md-stretch">
+            <div class="col-md-12 mt-4">
+                <div class="h-100 p-5 warna2-bg border rounded-3">
+                    <h2><i class="fas fa-comment-alt-check"></i> ADVICE</h2>
+                    <p class="text-center h4" id="id_advice">Loading...</p>
+                    <div class="text-center mt-2">
+                        <button class="btn btn-success px-4" onclick="advice()"><i class="fas fa-sync"></i></button>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="row align-items-md-stretch">
+            <div class="col-md-6 mt-4">
+                <div class="h-100 p-5 warna1-bg text-white border rounded-3">
+                    <h2><i class="fas fa-running"></i> SENAMAN</h2>
+                    <img id="id_senam" width="500px" class="img-thumbnail">
+                    <div class="text-center mt-2">
+                        <button class="btn btn-success px-4" onclick="senam()"><i class="fas fa-sync"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-4">
+              <div class="h-100 p-5 warna1-bg text-white border rounded-3">
+                  <h2><i class="far fa-laugh-squint"></i> LAWAK</h2>
+                  <img id="id_gag" width="500px" class="img-thumbnail">
+                  <div class="text-center mt-2">
+                    <button class="btn btn-success px-4" onclick="lawak()"><i class="fas fa-sync"></i></button>
+                </div>
+              </div>
+          </div>
+          </div>
+
+          <div class="row align-items-md-stretch">
+            <div class="col-md-8 mt-4">
+                <div class="h-100 p-5 warna2-bg border rounded-3">
+                    <h2><i class="fas fa-browser"></i> NOTES</h2>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+
+            </div>
+            <div class="col-md-4 mt-4">
+                <div class="h-100 p-5 warna2-bg border rounded-3">
+                    <h2><i class="fas fa-browser"></i> TASK</h2>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+
+            </div>
+          </div>
+
+
+          <div class="row align-items-md-stretch">
+            <div class="col-md-12 mt-4">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                    <p class="text-center h3 mt-4" id="expme_quote">ALHAMDULILLAH</p>
+                    <p class="text-center h5 mt-4 signku" id="expme_quote_by">zahiruddiny</p>
+                    <p class="text-center">
+                      <button type="button" class="btn btn-danger px-3 mb-2 mt-3" onclick="emailku()"><i class="fas fa-envelope"></i> zahiruddin.norzain@gmail.com</button><br>
+                      <button type="button" class="btn btn-success px-3 mb-2" onclick="githubku()"><i class="fab fa-github"></i> zahiruddinnorzain</button><br>
+                      <button type="button" class="btn btn-warning px-3 mb-2" onclick="phoneku()"><i class="fas fa-phone text-white"></i> +6011-11276709</button><br>
+
+                      <a href="#top"><i class="fas fa-chevron-up text-dark"></i></a>
+                    </p>
+                </div>
+            </div>
+          </div>
+      
+          <footer class="pt-3 mt-4 text-muted border-top">
+            &copy; <span id="year"></span>
+            <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+          </footer>
+        </div>
+      </main>
+
+<script>
+  
+</script>
+
+<script>
+
+function emailku() {
+  Swal.fire('<a href="mailto:zahiruddin.norzain@gmail.com" target=_blank class="text-dark fs-4 text-decoration-none">zahiruddin.norzain@gmail.com</a>');
+}
+
+function phoneku() {
+  Swal.fire('<a href="tel:+601111276709" target=_blank class="text-dark fs-4 text-decoration-none">+601111276709</a>');
+}
+
+function githubku() {
+  Swal.fire('<a href="https://github.com/zahiruddinnorzain" target=_blank class="text-dark fs-4 text-decoration-none">https://github.com/zahiruddinnorzain</a>');
+}
+
+function cat(){
+    //cat
+    // https://docs.thecatapi.com/
+    $.ajax({
+        type: 'get',
+        url: 'https://api.thecatapi.com/v1/images/search',
+        success: function (data) {
+            output = data[0].url;
+            $("#id_cat").attr("src",output);
+            // console.log(output);
+        }
+    });
+}
+
+function advice(){
+    //advice
+    $("#id_advice").html("Loading...");
+    $.ajax({
+        type: 'get',
+        url: 'https://api.adviceslip.com/advice',
+        success: function (data) {
+            data = JSON.parse(data);
+            output = data.slip.advice;
+            $("#id_advice").html(output);
+            // console.log(output);
+        }
+    });
+}
+
+function lawak(){
+    //gag
+    // https://github.com/D3vd/Meme_Api
+    $.ajax({
+        type: 'get',
+        url: 'https://meme-api.herokuapp.com/gimme',
+        success: function (data) {
+            output = data.url;
+            $("#id_gag").attr("src",output);
+            // console.log(output);
+        }
+    });
+}
+
+function solat(){
+    //solat
+    // https://api.pray.zone/v2/times/today.json?city=shah-alam
+    $.ajax({
+        type: 'get',
+        url: 'https://api.pray.zone/v2/times/today.json?city=shah-alam',
+        success: function (data) {
+            output = data.results.datetime[0].times;
+            jamsolat = data.results;
+            // $("#id_subuh").text(output.Asr);
+            // $("#id_syuruk").text(output.Asr);
+            $("#id_zohor").text(output.Dhuhr);
+            $("#id_asar").text(output.Asr);
+            $("#id_maghrib").text(output.Maghrib);
+            $("#id_isyak").text(output.Isha);
+
+            $("#id_lokasi").text(jamsolat.location.city);
+            $("#id_tarikh").text(data.results.datetime[0].date.gregorian);
+            $("#id_tarikh_arab").text(data.results.datetime[0].date.hijri);
+            $("#tarikh_now").text(data.results.datetime[0].date.gregorian);
+            $("#tarikh_now_hijri").text(data.results.datetime[0].date.hijri);
+            console.log(output);
+        }
+    });
+}
+
+function senam(){
+    // exercise senaman
+    let senaman = [
+        {"url":"https://dailyburn.com/life/wp-content/uploads/2016/04/circle-gif-2.gif"},
+        {"url":"https://sites.google.com/site/activecarephysiotherapyclinic/_/rsrc/1472868012109/neck-exercises/NECKPAIN_EXERCISES1.png"},
+        {"url":"https://cdn.painlessmovement.com/wp-content/uploads/2018/02/nhs-neck-workout.jpg"},
+        {"url":"https://image.shutterstock.com/image-vector/exercises-neck-head-vector-illustration-260nw-635430884.jpg"},
+        {"url":"https://media.istockphoto.com/vectors/exercises-for-the-head-and-neck-in-the-office-at-the-workplace-vector-vector-id982833788?k=6&m=982833788&s=612x612&w=0&h=3Z_OCdbZfTPnKBnxTVvRLKlZHqu6JZ7j5qSp22LCbTY="},
+    ]
+    let nombor_random = Math.floor(Math.random() * 5);
+    $("#id_senam").attr("src",senaman[nombor_random]["url"]);
+}
+
+// jam
+function digi(){
+    var date = new Date(),
+        hour = date.getHours(),
+        minute = checkTime(date.getMinutes()),
+        ss = checkTime(date.getSeconds());
+
+    function checkTime(i) {
+        if( i < 10 ) {
+        i = "0" + i;
+        }
+        return i;
+    }
+
+    if ( hour > 12 ) {
+    hour = hour - 12;
+    if ( hour == 12 ) {
+        hour = checkTime(hour);
+    document.getElementById("tt").innerHTML = hour+":"+minute+":"+ss+" AM";
+    }
+    else {
+        hour = checkTime(hour);
+        document.getElementById("tt").innerHTML = hour+":"+minute+":"+ss+" PM";
+    }
+    }
+    else {
+    document.getElementById("tt").innerHTML = hour+":"+minute+":"+ss+" AM";;
+    }
+    var time = setTimeout(digi,1000);
+}
+
+
+$(document).ready(function(){
+    //   $('#nama').text(saya['profile']['nama']);
+    solat();
+    cat();
+    advice();
+    lawak();
+    senam();
+
+});
+
+
+  
+
+
+</script>
+
+
+
+</body>
+</html>
