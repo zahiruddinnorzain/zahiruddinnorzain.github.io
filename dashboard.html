@@ -291,7 +291,7 @@ function solat(){
             $("#id_lokasi").text(jamsolat.location.city);
             $("#id_tarikh").text(data.results.datetime[0].date.gregorian);
             $("#id_tarikh_arab").text(data.results.datetime[0].date.hijri);
-            $("#tarikh_now").text(data.results.datetime[0].date.gregorian);
+            // $("#tarikh_now").text(data.results.datetime[0].date.gregorian);
             $("#tarikh_now_hijri").text(data.results.datetime[0].date.hijri);
             console.log(output);
         }
@@ -342,9 +342,21 @@ function digi(){
     var time = setTimeout(digi,1000);
 }
 
+function tarikh(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = dd + '-' + mm + '-' + yyyy;
+    // document.write(today);
+    $("#tarikh_now").text(today);
+}
+
 
 $(document).ready(function(){
     //   $('#nama').text(saya['profile']['nama']);
+    tarikh();
     solat();
     cat();
     advice();
