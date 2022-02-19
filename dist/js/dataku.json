@@ -10,7 +10,7 @@ var saya = {
 		"position":"Software Engineer",
 		"besday":"1st November, 1994",
 		"resume_link":"dist/pdf/zahiruddin_18Dec.pdf",
-		"about_yourself":"Open for opportunities to develope skills.",
+		"about_yourself":"Open for opportunities to develope skills",
 		"about_myself":"Committed to learning and self-development so that we can consistently achieve better results.",
 		"expme":"In my engineer software field, I have experience in Linux environment such as Ubuntu and Ubuntu server. Also, I have been using git version control for 4 years, with the github hosting service. For management project, I have experience using the Trello service from my team. In developing software, I had used a Continuous Integration & Deployment system (CI/CD) with github action to maintain the stability. And for a better result, I deploy my team project using the Amazon Web Service (AWS) & Google Cloud Platform (GCP). I also had been using the Nginx technology in my team projects. For me, the most important thing in this field is teamwork.",
 		"expme_quote":"Talent wins games, but teamwork and intelligence win championships",
@@ -20,14 +20,14 @@ var saya = {
 	"ability": [
 		{
 			"abi_name":"Python",
-			"abi_value": "80"
+			"abi_value": "60"
 		},
 		{
 			"abi_name":"PHP",
 			"abi_value": "80"
 		},
 		{
-			"abi_name":"Laravel Framework",
+			"abi_name":"Laravel",
 			"abi_value": "80"
 		},
 		{
@@ -37,10 +37,6 @@ var saya = {
 		{
 			"abi_name":"Linux",
 			"abi_value": "70"
-		},
-		{
-			"abi_name":"C++",
-			"abi_value": "65"
 		},
 		{
 			"abi_name":"DevOps",
@@ -87,6 +83,12 @@ var saya = {
 			"exp_date": "Feb 2020 to July 2021",
 			"exp_company": "Smart Tech Tank Sdn. Bhd.",
 			"exp_place": "Bukit Jelutong, Selangor",
+			"exp_position": "Software Engineer"
+		},
+		{
+			"exp_date": "Aug 2021 to Present",
+			"exp_company": "Rania Resources Sdn. Bhd.",
+			"exp_place": "Cyberjaya, Selangor",
 			"exp_position": "Software Engineer"
 		}
 	],
