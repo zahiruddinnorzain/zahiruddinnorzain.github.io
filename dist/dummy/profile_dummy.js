@@ -1,3 +1,5 @@
+// <script src="https://cdn.rawgit.com/zahiruddinnorzain/zahiruddinnorzain.github.io/master/dist/dummy/profile_dummy.js"></script>
+
 var dummy = {
     "profile": { 
         "nama":"ZAHIRUDDIN",
