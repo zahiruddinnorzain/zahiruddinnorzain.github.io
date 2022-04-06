@@ -13,7 +13,7 @@
     <title>Stop Loss Calculator</title>
   </head>
   <body>
-    <h1 class="m-3">Stop Loss Calculator</h1>
+    <h5 class="m-3">Stop Loss Calculator</h5>
 
     <div class="m-3">
         <label for="exampleFormControlInput1" class="form-label">Original Price:</label>
@@ -29,10 +29,42 @@
     <h3 id="ans" class="m-3"></h3>
 
 
+    <hr>
+
+
+    <h5 class="m-3">ATR Calculator</h5>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">Original Price:</label>
+        <input type="number" class="form-control" id="ori_atr" placeholder="50">
+    </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">ATR Value:</label>
+        <input type="number" class="form-control" id="atr" value="0.3">
+    </div>
+
+    <button id="calc_atr" class="btn btn-primary m-3">Calculate</button><br>
+    <span>ATAS = </span><span id="ans_atr_tambah" class="m-3"></span><br>
+    <span>BAWAH = </span><span id="ans_atr_tolak" class="m-3"></span>
+
+    <hr>
+
+
     <script>
         function formula(ori, percent){
             let stop_loss = ((percent)*(ori)/100)+ori;
             return stop_loss;
+        }
+
+        function tambah(ori_atr, atr){
+            let jwpn = ori_atr + atr;
+            return jwpn;
+        }
+
+        function tolak(ori_atr, atr){
+            let jwpn = ori_atr - atr;
+            return jwpn;
         }
 
         $( "#calc" ).click(function() {
@@ -42,6 +74,18 @@
             let ans = formula(parseFloat(ori),parseFloat(percent));
             console.log(ans);
             let output = $('#ans').html(ans);
+        });
+
+        $( "#calc_atr" ).click(function() {
+            let ori = $('#ori_atr').val();
+            let percent = $('#atr').val();
+            
+            let ans_tambah = tambah(parseFloat(ori),parseFloat(percent));
+            let ans_tolak = tolak(parseFloat(ori),parseFloat(percent));
+            console.log('atr_tambah = '+ ans_tambah);
+            console.log('atr_tolak = '+ ans_tolak);
+            let output_tambah = $('#ans_atr_tambah').html(ans_tambah);
+            let output_tolak = $('#ans_atr_tolak').html(ans_tolak);
         });
         
     </script>
