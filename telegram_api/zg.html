@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <title>zg</title>
+    <script>
+
+        $(document).ready(function(){
+    
+            $.get("https://forex-data-feed.swissquote.com/public-quotes/bboquotes/instrument/XAU/USD", function(data, status){
+                let gold = data[5]['spreadProfilePrices'][1]['bid'];   
+                console.log(gold);
+
+                $.get("https://api.telegram.org/bot2041486796:AAHe5rC_HQ64jCjXw6TgYx__W3pdp8OI4GE/sendMessage?chat_id=-1001540152981&text=Mula+Meniaga: %0A"+gold, function(data, status){
+                    // let gold = data[5]['spreadProfilePrices'][1]['bid'];
+                });
+
+            });
+    
+        }); 
+    
+            
+    </script>
+  </head>
+  <body>
+    <h1>ZG</h1>
+
+    
+
+
+</body>
+</html>
