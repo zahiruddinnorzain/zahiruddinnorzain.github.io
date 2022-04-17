@@ -24,17 +24,13 @@ if($input == 'emassilver'){
     // var_dump( $data[5]['spreadProfilePrices'][1]['bid'] );
     $data = $data[5]['spreadProfilePrices'][1]['bid'];
 
-    $masej = 'Mula+Meniaga %0A'.'Silver&Emas: %0A'.'+'.$date.'+%0A %0A+'.$data;
+    $masej = 'Mula+Meniaga %0A'.'Silver+dan+Emas: %0A'.'+'.$date.'+%0A %0A+'.$data;
     // echo $masej;
 
     $output_init = file_get_contents('https://api.telegram.org/bot2041486796:AAHe5rC_HQ64jCjXw6TgYx__W3pdp8OI4GE/sendMessage?chat_id=-1001540152981&text='.$masej);
 
 
-}else{
-    echo 'error_emassilver';
-}
-
-if($input == 'minyak'){
+}elseif($input == 'minyak'){
 
     $masej = 'Mula+Meniaga+WTI Crude Oil';
     // echo $masej;
@@ -42,7 +38,7 @@ if($input == 'minyak'){
     $output_init = file_get_contents('https://api.telegram.org/bot2041486796:AAHe5rC_HQ64jCjXw6TgYx__W3pdp8OI4GE/sendMessage?chat_id=-1001540152981&text='.$masej);
 
 }else{
-    echo 'error_minyak';
+    echo 'error';
 }
 
 
