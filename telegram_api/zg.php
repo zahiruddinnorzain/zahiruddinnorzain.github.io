@@ -14,6 +14,7 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
 
 //date
 $date = date("l - d/m/Y H:i:s");
+$masej = '';
 
 
 if($input == 'emassilver'){
@@ -29,7 +30,11 @@ if($input == 'emassilver'){
     $output_init = file_get_contents('https://api.telegram.org/bot2041486796:AAHe5rC_HQ64jCjXw6TgYx__W3pdp8OI4GE/sendMessage?chat_id=-1001540152981&text='.$masej);
 
 
-}elseif($input == 'minyak'){
+}else{
+    echo 'error_emassilver';
+}
+
+if($input == 'minyak'){
 
     $masej = 'Mula+Meniaga+WTI Crude Oil';
     // echo $masej;
@@ -37,7 +42,7 @@ if($input == 'emassilver'){
     $output_init = file_get_contents('https://api.telegram.org/bot2041486796:AAHe5rC_HQ64jCjXw6TgYx__W3pdp8OI4GE/sendMessage?chat_id=-1001540152981&text='.$masej);
 
 }else{
-    echo 'error';
+    echo 'error_minyak';
 }
 
 
