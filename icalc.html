@@ -13,6 +13,59 @@
     <title>Take Profit Calculator</title>
   </head>
   <body>
+
+    <h5 class="m-3">ATR 2 Calculator (uptrend)</h5>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">Original Price:</label>
+        <input type="number" class="form-control" id="ori_price_2" placeholder="50">
+    </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">Pagar Stop Loss:</label>
+        <input type="number" class="form-control" id="pagar_stop_loss_2" placeholder="50">
+    </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">ATR:</label>
+        <input type="number" class="form-control" id="atr_2" placeholder="50">
+    </div>
+
+    <button id="calc_atr_2" class="btn btn-primary m-3">Calculate</button><br>
+    <span class="mx-3">TP = </span><span id="id_ans_tp_atr2" class=""></span><br>
+    <span class="mx-3">SL = </span><span id="id_ans_sl_atr2" class=""></span>
+
+    <script>
+        // ATR 2
+        function formula_tp_atr2(ori_price_2,atr_2){
+            let tp_atr2 = ori_price_2+(atr_2*2);
+            return tp_atr2;
+        }
+
+        function formula_sl_atr2(ori_price_2,pagar_stop_loss_2,atr_2){
+            let beza = ori_price_2-pagar_stop_loss_2;
+            let a = beza+atr_2;
+            let sl_atr2 = ori_price_2-a;
+            return sl_atr2;
+        }
+
+
+        $( "#calc_atr_2" ).click(function() {
+            let ori_price_2 = $('#ori_price_2').val();
+            let pagar_stop_loss_2 = $('#pagar_stop_loss_2').val();
+            let atr_2 = $('#atr_2').val();
+            
+            let ans_tp_atr_2 = formula_tp_atr2(parseFloat(ori_price_2),parseFloat(atr_2));
+            let ans_sl_atr_2 = formula_sl_atr2(parseFloat(ori_price_2),parseFloat(pagar_stop_loss_2),parseFloat(atr_2));
+            
+            let output_tp = $('#id_ans_tp_atr2').html(ans_tp_atr_2);
+            let output_al = $('#id_ans_sl_atr2').html(ans_sl_atr_2);
+        });
+
+    </script>
+
+    <hr>
+
     <h5 class="m-3">Take Profit Calculator</h5>
 
     <div class="m-3">
@@ -30,7 +83,9 @@
 
 
     <hr>
+    
 
+    <!-- <hr>
 
     <h5 class="m-3">ATR Calculator</h5>
 
@@ -48,7 +103,8 @@
     <span>ATAS = </span><span id="ans_atr_tambah" class="m-3"></span><br>
     <span>BAWAH = </span><span id="ans_atr_tolak" class="m-3"></span>
 
-    <hr>
+    <hr> -->
+    
 
 
     <script>
