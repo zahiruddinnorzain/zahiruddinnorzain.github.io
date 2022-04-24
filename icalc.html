@@ -33,8 +33,9 @@
 
     <button id="calc_stock" class="btn btn-primary m-3">Calculate</button><br>
     <span class="mx-3">Percent = </span><span id="out_percent" style="font-weight: bold;"></span><b> %</b><br>
-    <span class="mx-3">Profit = RM </span><span id="out_profit" style="font-weight: bold;"></span><br>
-    <span class="mx-3">Total Share Value = RM </span><span id="out_result" style="font-weight: bold;"></span><br><br>
+    <span class="mx-3">Total Share Value before = RM </span><span id="out_result_before" style="font-weight: bold;"></span><br>
+    <span class="mx-3">Total Share Value now = RM </span><span id="out_result" style="font-weight: bold;"></span><br>
+    <span class="mx-3">Profit = RM </span><span id="out_profit" style="font-weight: bold;"></span><br><br>
     <span class="mx-3">Sell </span><span id="share_to_sell" style="font-weight: bold;">x</span> share, and take profit RM 
     <span id="profit_will_take" style="font-weight: bold;">x</span><br>
     <span class="mx-3">Share balance is </span>
@@ -42,15 +43,15 @@
 
     <script>
         // ATR 2
-        function formula_percent(percent_now,percent_before){
-            let result_percent = ( (percent_now / percent_before) * 100 ) - 100;
+        function formula_percent(price_now,price_before){
+            let result_percent = ( (price_now / price_before * 100 ) ) - 100;
             return result_percent;
         }
 
-        function formula_profit(result_percent,share){
-            let profit = (result_percent/100)*share;
-            return profit;
-        }
+        // function formula_profit(result_percent,share){
+        //     let profit = (result_percent/100)*share;
+        //     return profit;
+        // }
 
 
         $( "#calc_stock" ).click(function() {
@@ -59,14 +60,16 @@
             let share = $('#share').val();
             
             let ans_formula_percent = formula_percent(parseFloat(price_now),parseFloat(price_before));
-            let ans_formula_profit = formula_profit(parseFloat(ans_formula_percent),parseFloat(share));
-            let ans_result = parseFloat(share) + parseFloat(ans_formula_profit);
+            let ans_result_before = parseFloat(share) * parseFloat(price_before);
+            let ans_result_now = parseFloat(share) * parseFloat(price_now);
+            let ans_formula_profit = parseFloat(ans_result_now) - parseFloat(ans_result_before);
             let ans_sell_n_take_profit = parseFloat(ans_formula_profit) / parseFloat(price_now);
             let ans_profit_will_take = Math.ceil(ans_sell_n_take_profit) * parseFloat(price_now);
             let ans_share_balance = share - Math.ceil(ans_sell_n_take_profit);
             
             let out_percent = $('#out_percent').html(ans_formula_percent.toFixed(2));
-            let out_result = $('#out_result').html(ans_result.toFixed(2));
+            let out_result_before = $('#out_result_before').html(ans_result_before.toFixed(2));
+            let out_result = $('#out_result').html(ans_result_now.toFixed(2));
             let out_profit = $('#out_profit').html(ans_formula_profit.toFixed(2));
             let out_sell_n_take_profit = $('#share_to_sell').html(Math.ceil(ans_sell_n_take_profit));
             let out_profit_will_take = $('#profit_will_take').html(ans_profit_will_take.toFixed(2));
