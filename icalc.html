@@ -14,6 +14,59 @@
   </head>
   <body>
 
+    <h5 class="m-3">Stock Calculator</h5>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">Price now:</label>
+        <input type="number" class="form-control" id="price_now" placeholder="50">
+    </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">Price Before:</label>
+        <input type="number" class="form-control" id="price_before" placeholder="50">
+    </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">Modal:</label>
+        <input type="number" class="form-control" id="modal" placeholder="50">
+    </div>
+
+    <button id="calc_stock" class="btn btn-primary m-3">Calculate</button><br>
+    <span class="mx-3">Percent = </span><span id="out_percent" class=""></span>%<br>
+    <span class="mx-3">Profit = RM </span><span id="out_profit" class=""></span><br>
+    <span class="mx-3">Result = RM </span><span id="out_result" class=""></span>
+
+    <script>
+        // ATR 2
+        function formula_percent(percent_now,percent_before){
+            let result_percent = ( (percent_now / percent_before) * 100 ) - 100;
+            return result_percent;
+        }
+
+        function formula_profit(result_percent,modal){
+            let profit = (result_percent/100)*modal;
+            return profit;
+        }
+
+
+        $( "#calc_stock" ).click(function() {
+            let price_now = $('#price_now').val();
+            let price_before = $('#price_before').val();
+            let modal = $('#modal').val();
+            
+            let ans_formula_percent = formula_percent(parseFloat(price_now),parseFloat(price_before));
+            let ans_formula_profit = formula_profit(parseFloat(ans_formula_percent),parseFloat(modal));
+            let ans_result = parseFloat(modal) + parseFloat(ans_formula_profit);
+            
+            let out_percent = $('#out_percent').html(ans_formula_percent.toFixed(2));
+            let out_result = $('#out_result').html(ans_result.toFixed(2));
+            let out_profit = $('#out_profit').html(ans_formula_profit.toFixed(2));
+        });
+
+    </script>
+
+    <hr>
+
     <h5 class="m-3">ATR 2 Calculator (uptrend)</h5>
 
     <div class="m-3">
