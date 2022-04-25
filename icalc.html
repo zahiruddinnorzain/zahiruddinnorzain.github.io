@@ -14,6 +14,91 @@
   </head>
   <body>
 
+    <h5 class="m-3">fx Calculator pip</h5>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">pip:</label>
+        <input type="number" class="form-control" id="pip" placeholder="">
+    </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">price:</label>
+        <input type="number" class="form-control" id="price" placeholder="">
+    </div>
+
+    <button id="calc_pip_atas_bawah" class="btn btn-primary m-3">Calculate</button><br>
+
+    <span class="mx-3">Atas = </span><span id="id_atas" style="font-weight: bold;"></span><br>
+    <span class="mx-3">Bawah = </span><span id="id_bawah" style="font-weight: bold;"></span><br>
+
+    <script>
+
+        $( "#calc_pip_atas_bawah" ).click(function() {
+            let pip = $('#pip').val();
+            let price = $('#price').val();
+
+            pip = parseFloat(pip);
+            price = parseFloat(price);
+            
+            let ans_atas = price+pip;
+            let ans_bawah = price-pip;
+
+            out_atas = $('#id_atas').html(parseFloat(ans_atas));
+            out_bawah = $('#id_bawah').html(parseFloat(ans_bawah));
+        });
+
+    </script>
+
+    <hr>
+
+    <h5 class="m-3">fx Calculator</h5>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">pip:</label>
+        <input type="number" class="form-control" id="pip" placeholder="">
+    </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">vol:</label>
+        <input type="number" class="form-control" id="vol" placeholder="">
+    </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">usd:</label>
+        <input type="number" class="form-control" id="usd" placeholder="">
+    </div>
+
+    <button id="calc_pip" class="btn btn-primary m-3">Calculate</button><br>
+
+    <span class="mx-3">pip = </span><span id="id_pip" style="font-weight: bold;"></span><br>
+    <!-- <span class="mx-3">vol = </span><span id="id_vol" style="font-weight: bold;"></span><br> -->
+    <span class="mx-3">usd = </span><span id="id_usd" style="font-weight: bold;"></span><br>
+
+    <script>
+
+        $( "#calc_pip" ).click(function() {
+            let pip = $('#pip').val();
+            let vol = $('#vol').val();
+            let usd = $('#usd').val();
+            
+
+            pip = parseFloat(pip);
+            vol = parseFloat(vol);
+            usd = parseFloat(usd);
+            
+            let ans_usd = pip*(vol*100000);
+            let ans_pip = usd/(vol*100000);
+
+            out_pip = $('#id_pip').html(parseFloat(ans_pip));
+            out_usd = $('#id_usd').html(parseFloat(ans_usd));
+        });
+
+    </script>
+
+    <hr>
+
+
+
     <h5 class="m-3">Stock Calculator</h5>
 
     <div class="m-3">
