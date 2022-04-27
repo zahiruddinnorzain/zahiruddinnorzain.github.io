@@ -71,7 +71,7 @@
     <button id="calc_pip" class="btn btn-primary m-3">Calculate</button><br>
 
     <span class="mx-3">pip = </span><span id="id_pip" style="font-weight: bold;"></span><br>
-    <!-- <span class="mx-3">vol = </span><span id="id_vol" style="font-weight: bold;"></span><br> -->
+    <span class="mx-3">vol = </span><span id="id_vol" style="font-weight: bold;"></span><br>
     <span class="mx-3">usd = </span><span id="id_usd" style="font-weight: bold;"></span><br>
 
     <script>
@@ -88,9 +88,11 @@
             
             let ans_usd = pip*(vol*100000);
             let ans_pip = usd/(vol*100000);
+            let ans_vol = (usd/pip)/100000;
 
             out_pip = $('#id_pip').html(parseFloat(ans_pip));
             out_usd = $('#id_usd').html(parseFloat(ans_usd));
+            out_vol = $('#id_vol').html(parseFloat(ans_vol));
         });
 
     </script>
