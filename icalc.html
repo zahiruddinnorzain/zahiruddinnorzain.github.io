@@ -17,14 +17,26 @@
     <h5 class="m-3">fx Calculator pip</h5>
 
     <div class="m-3">
-        <label for="exampleFormControlInput1" class="form-label">pip:</label>
-        <input type="number" class="form-control" id="pip" placeholder="">
+        <label class="form-label">eur/usd w = 100000</label><br>
+        <label class="form-label">usd/jpy w = 1000</label>
     </div>
 
     <div class="m-3">
         <label for="exampleFormControlInput1" class="form-label">price:</label>
         <input type="number" class="form-control" id="price" placeholder="">
     </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">pip:</label>
+        <input type="number" class="form-control" id="pip" placeholder="" value="200">
+    </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">Weightage:</label>
+        <input type="number" class="form-control" id="w" placeholder="" value="100000">
+    </div>
+
+    
 
     <button id="calc_pip_atas_bawah" class="btn btn-primary m-3">Calculate</button><br>
 
@@ -36,12 +48,14 @@
         $( "#calc_pip_atas_bawah" ).click(function() {
             let pip = $('#pip').val();
             let price = $('#price').val();
+            let w = $('#w').val();
 
             pip = parseFloat(pip);
             price = parseFloat(price);
+            w = parseFloat(w);
             
-            let ans_atas = price+pip;
-            let ans_bawah = price-pip;
+            let ans_atas = price+(pip/w);
+            let ans_bawah = price-(pip/w);
 
             out_atas = $('#id_atas').html(parseFloat(ans_atas));
             out_bawah = $('#id_bawah').html(parseFloat(ans_bawah));
@@ -55,7 +69,7 @@
 
     <div class="m-3">
         <label for="exampleFormControlInput1" class="form-label">pip:</label>
-        <input type="number" class="form-control" id="pip_1" placeholder="">
+        <input type="number" class="form-control" id="pip_1" placeholder="" value="200">
     </div>
 
     <div class="m-3">
@@ -86,9 +100,9 @@
             vol = parseFloat(vol);
             usd = parseFloat(usd);
             
-            let ans_usd = pip*(vol*100000);
-            let ans_pip = usd/(vol*100000);
-            let ans_vol = (usd/pip)/100000;
+            let ans_usd = pip*vol;
+            let ans_pip = usd/vol;
+            let ans_vol = usd/pip;
 
             out_pip = $('#id_pip').html(parseFloat(ans_pip));
             out_usd = $('#id_usd').html(parseFloat(ans_usd));
