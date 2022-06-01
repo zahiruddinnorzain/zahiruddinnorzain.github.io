@@ -13,6 +13,78 @@
     <title>Take Profit Calculator</title>
   </head>
   <body>
+  
+  <h5 class="m-3">btc luno</h5>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">Fee (%):</label>
+        <input type="number" class="form-control" id="fee" value="1.961">
+    </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">Quantity:</label>
+        <input type="number" class="form-control" id="qty" value="0.001">
+    </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">buy BTC (MYR):</label>
+        <input type="number" class="form-control" id="buy_btc" placeholder="" value="">
+    </div>
+
+    <div class="m-3">
+        <div id="price_when_buy" class="text-muted">0</div>
+    </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">sell BTC (MYR):</label>
+        <input type="number" class="form-control" id="sell_btc" placeholder="" value="">
+    </div>
+
+    
+
+    <button id="calc_btc" class="btn btn-primary m-3">Calculate</button><br>
+
+    <span class="mx-3">profit (RM) = </span><span id="ans_profit" style="font-weight: bold;"></span><br>
+
+    <script>
+
+        $('#qty,#buy_btc').keyup(function() {
+            let fee = $('#fee').val();
+            let qty = $('#qty').val();
+            let buy_btc = $('#buy_btc').val();
+
+            let harga = (qty*buy_btc);
+            let yuran = (fee/100)*harga;
+            let netharga = harga-yuran;
+            // console.log(yuran);
+
+            $('#price_when_buy').html("RM "+parseFloat(netharga));
+        });
+
+        $( "#calc_btc" ).click(function() {
+            let fee = $('#fee').val();
+            let qty = $('#qty').val();
+            let buy_btc = $('#buy_btc').val();
+            let sell_btc = $('#sell_btc').val();
+
+            fee = parseFloat(fee);
+            qty = parseFloat(qty);
+            buy_btc = parseFloat(buy_btc);
+            sell_btc = parseFloat(sell_btc);
+
+            let net = (qty*sell_btc) - (qty*buy_btc);
+            
+            let yuran = (fee/100)*(qty*sell_btc);
+
+            let ans = net-yuran;
+
+            ans_profit = $('#ans_profit').html(parseFloat(ans));
+        });
+
+    </script>
+
+    <hr>
+
 
     <h5 class="m-3">fx Calculator pip</h5>
 
