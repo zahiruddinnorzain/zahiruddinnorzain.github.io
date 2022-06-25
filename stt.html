@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TASK STT v1.0</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    .darkmode{
+      background-color: #343a40;
+      color:#f8f9fa;
+    }
+  </style>
+</head>
+<body class="">
+
+<div class="container-fluid p-5 bg-primary text-white text-center">
+  <h1>TASK STT</h1>
+  <p>Tulis task kau kat sini 
+  <div class="btn-group">
+    <button class="btn btn-primary active" id="lightbtn">Light</button>
+    <button class="btn btn-primary" id="darkbtn">Dark</button>
+  </div>
+</div>
+  
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-sm-8">
+      <h3>SENARAI</h3>
+
+      <div class="input-group mb-2 w-50 float-end">
+        <select class="form-select" name="developer_name_filter" id="developer_name_filter">
+          <option value="all" selected>all</option>
+          <option value="zaibo">zaibo</option>
+          <option value="ijoy">ijoy</option>
+          <option value="panjang">panjang</option>
+        </select> 
+        <input type="date" id="dateget" class="form-control">
+        <button class="btn btn-primary bg-gradient" type="button" id="button-filter" onclick="filter()">Submit</button>
+      </div>
+      
+      <table id="list-table" class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nama Dev</th>
+            <th>Task</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="list_item_row">
+          
+        </tbody>
+      </table>
+
+    </div>
+    <div class="col-sm-4">
+      <h3>FORM</h3>
+
+        <label for="comment">Name:</label>
+        <select class="form-select mb-2" name="developer_name" id="developer_name">
+          <option value="zaibo" selected>zaibo</option>
+          <option value="ijoy">ijoy</option>
+          <option value="panjang">panjang</option>
+        </select> 
+
+        <input type="date" id="date_form" name="date_form" class="form-control">
+
+        <label for="comment">Task:</label>
+        <textarea class="form-control mb-2" rows="5" id="task" name="task" placeholder="Task hari ni adalah"></textarea>
+
+        <button type="submit" class="btn btn-primary bg-gradient mb-2" onClick="send()">Submit</button>
+
+      <hr>
+      <p class="text-justify">
+        <div id="list_item_row_output"></div>
+      </p>
+    </div>
+  </div>
+</div>
+
+<footer class="">
+  <p class="text-center my-4"><img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/fbl8cezxywzkuhomv2gw" width="150" height="50"></p>
+</footer>
+
+<script>
+
+// first load
+load_list();
+load_date();
+dark_func();
+
+
+// ###### all function ####### //
+
+function load_date(){
+  //load current date in form section
+  var today = new Date();
+  var dd = String(today.getDate());
+  var mm = String(today.getMonth() + 1); //January is 0!
+  var yyyy = today.getFullYear();
+  today = yyyy + '-' + ('0'+mm).slice(-2) + '-' + dd;
+  $("#date_form").val(today);
+}
+
+function load_list(domain){
+
+  $("#list_item_row").html('');
+  $("#list_item_row_output").html('');
+
+    $.get("http://localhost:8000/read.php", function(data, status){
+      data = JSON.parse(data);
+      var done_btn;
+    
+        for (var item of data.reverse()){
+          // item["status"] = 1;
+
+          // cek status if not 1 show btn check
+          if(item["status"] == 1){
+            done_btn = `<a href="#" class="btn btn-sm btn-success"><i class="fas fa-check"></i></a>`;
+          }else{
+            done_btn = `<a href="#" class="btn btn-sm btn-warning" onclick="done_data(${item["id"]})"><i class="fas fa-check"></i></a>`;
+          }
+  
+          $("#list_item_row").append(`
+          <tr>
+              <td>${item["id"]}</td>
+              <td>${item["developer_name"]}</td>
+              <td>${item["task"]}</td>
+              <td>${item["date"]}</td>
+              <td>
+                <div class="btn-group">
+                  ${done_btn}
+                  <a href="#" class="btn btn-sm btn-danger" onclick="delete_data(${item["id"]})"><i class="fas fa-trash-alt"></i></a>
+                </div>
+              </td>
+          </tr>
+          `);
+  
+          $("#list_item_row_output").append(`
+              - ${item["task"]}<br>
+          `);
+    
+        }
+    
+    });
+
+}
+
+
+function filter(){
+  let datepick = $("#dateget").val();
+
+  $("#list_item_row").html('');
+  $("#list_item_row_output").html('');
+
+  $.get("http://localhost:8000/read.php", function(data, status){
+    data = JSON.parse(data);
+
+    for (var item of data){
+
+      // cek status if not 1 show btn check
+      if(item["status"] == 1){
+        done_btn = `<a href="#" class="btn btn-sm btn-success"><i class="fas fa-check"></i></a>`;
+      }else{
+        done_btn = `<a href="#" class="btn btn-sm btn-warning" onclick="done_data(${item["id"]})"><i class="fas fa-check"></i></a>`;
+      }
+
+      $("#list_item_row").append(`
+      <tr>
+          <td>${item["id"]}</td>
+          <td>${item["developer_name"]}</td>
+          <td>${item["task"]}</td>
+          <td>${item["date"]}</td>
+          <td>
+            <div class="btn-group">
+              ${done_btn}
+              <a href="#" class="btn btn-sm btn-danger" onclick="delete_data(${item["id"]})"><i class="fas fa-trash-alt"></i></a>
+            </div>
+          </td>
+      </tr>
+      `);
+
+      $("#list_item_row_output").append(`
+          - ${item["task"]}<br>
+      `);
+    }
+
+  });
+}
+
+function send(){
+
+  let developer_name = $("#developer_name").val();
+  let date = $("#date_form").val();
+  let task = $("#task").val();
+  let payload = { developer_name:developer_name, date:date, task:task };
+
+  $.get("http://localhost:8000/create.php", payload, function(data, status){
+      // console.log(data);
+      salert("Berjaya");
+      load_list();
+  });
+
+}
+
+function done_data(id){
+  $.get("http://localhost:8000/done.php",{ id:id }, function(data, status){
+      // console.log(data);
+      salert("Berjaya Update");
+      load_list();
+  });
+}
+
+function delete_data(id){
+  $.get("http://localhost:8000/delete.php",{ id:id }, function(data, status){
+      // console.log(data);
+      salert("Berjaya Padam");
+      load_list();
+  });
+}
+
+function salert(masej){
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: masej,
+    showConfirmButton: false,
+    timer: 700
+  })
+}
+
+function dark_func(){
+  $("#darkbtn").attr("class","btn btn-primary active");
+  $("#lightbtn").attr("class","btn btn-primary");
+  $("body").attr("class","darkmode");
+  $("#list-table").attr("class","table table-hover table-dark");
+}
+
+function light_func(){
+  $("#darkbtn").attr("class","btn btn-primary");
+    $("#lightbtn").attr("class","btn btn-primary active");
+    $("body").attr("class","");
+    $("#list-table").attr("class","table table-hover");
+}
+
+$("#darkbtn").click(function(){
+    dark_func();
+});
+
+$("#lightbtn").click(function(){
+    light_func();
+});
+
+</script>
+
+</body>
+</html>
