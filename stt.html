@@ -37,7 +37,7 @@
 
       <div class="input-group mb-2 w-50 float-end">
         <select class="form-select" name="developer_name_filter" id="developer_name_filter">
-          <option value="all" selected>all</option>
+          <option value="" selected>all</option>
           <option value="zaibo">zaibo</option>
           <option value="ijoy">ijoy</option>
           <option value="panjang">panjang</option>
@@ -120,12 +120,12 @@ function load_list(domain){
       data = JSON.parse(data);
       var done_btn;
     
-        for (var item of data.reverse()){
+        for (var item of data){
           // item["status"] = 1;
 
           // cek status if not 1 show btn check
           if(item["status"] == 1){
-            done_btn = `<a href="#" class="btn btn-sm btn-success"><i class="fas fa-check"></i></a>`;
+            done_btn = `<a href="#" class="btn btn-sm btn-success" onclick="untick_done_data(${item["id"]})"><i class="fas fa-check"></i></a>`;
           }else{
             done_btn = `<a href="#" class="btn btn-sm btn-warning" onclick="done_data(${item["id"]})"><i class="fas fa-check"></i></a>`;
           }
@@ -135,7 +135,7 @@ function load_list(domain){
               <td>${item["id"]}</td>
               <td>${item["developer_name"]}</td>
               <td>${item["task"]}</td>
-              <td>${item["date"]}</td>
+              <td>${item["date_task"]}</td>
               <td>
                 <div class="btn-group">
                   ${done_btn}
@@ -158,18 +158,26 @@ function load_list(domain){
 
 function filter(){
   let datepick = $("#dateget").val();
+  let devpick = $("#developer_name_filter").val();
+  let payload;
 
   $("#list_item_row").html('');
   $("#list_item_row_output").html('');
 
-  $.get("http://localhost:8000/read.php", function(data, status){
+  if(devpick == ""){
+    payload = { date:datepick };
+  }else{
+    payload = { developer_name:devpick, date:datepick };
+  }
+
+  $.get("http://localhost:8000/read-filter.php",payload, function(data, status){
     data = JSON.parse(data);
 
     for (var item of data){
 
       // cek status if not 1 show btn check
       if(item["status"] == 1){
-        done_btn = `<a href="#" class="btn btn-sm btn-success"><i class="fas fa-check"></i></a>`;
+        done_btn = `<a href="#" class="btn btn-sm btn-success" onclick="untick_done_data(${item["id"]})"><i class="fas fa-check"></i></a>`;
       }else{
         done_btn = `<a href="#" class="btn btn-sm btn-warning" onclick="done_data(${item["id"]})"><i class="fas fa-check"></i></a>`;
       }
@@ -179,7 +187,7 @@ function filter(){
           <td>${item["id"]}</td>
           <td>${item["developer_name"]}</td>
           <td>${item["task"]}</td>
-          <td>${item["date"]}</td>
+          <td>${item["date_task"]}</td>
           <td>
             <div class="btn-group">
               ${done_btn}
@@ -202,7 +210,7 @@ function send(){
   let developer_name = $("#developer_name").val();
   let date = $("#date_form").val();
   let task = $("#task").val();
-  let payload = { developer_name:developer_name, date:date, task:task };
+  let payload = { developer_name:developer_name, date_task:date, task:task };
 
   $.get("http://localhost:8000/create.php", payload, function(data, status){
       // console.log(data);
@@ -213,7 +221,15 @@ function send(){
 }
 
 function done_data(id){
-  $.get("http://localhost:8000/done.php",{ id:id }, function(data, status){
+  $.get("http://localhost:8000/update.php",{ id:id , status:1 }, function(data, status){
+      // console.log(data);
+      salert("Berjaya Update");
+      load_list();
+  });
+}
+
+function untick_done_data(id){
+  $.get("http://localhost:8000/update.php",{ id:id , status:0 }, function(data, status){
       // console.log(data);
       salert("Berjaya Update");
       load_list();
