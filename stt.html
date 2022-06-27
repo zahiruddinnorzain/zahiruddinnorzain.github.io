@@ -116,7 +116,7 @@ function load_list(domain){
   $("#list_item_row").html('');
   $("#list_item_row_output").html('');
 
-    $.get("http://localhost:8000/read.php", function(data, status){
+    $.get("http://smarttechtank.com:3000/read.php", function(data, status){
       data = JSON.parse(data);
       var done_btn;
     
@@ -170,7 +170,7 @@ function filter(){
     payload = { developer_name:devpick, date:datepick };
   }
 
-  $.get("http://localhost:8000/read-filter.php",payload, function(data, status){
+  $.get("http://smarttechtank.com:3000/read-filter.php",payload, function(data, status){
     data = JSON.parse(data);
 
     for (var item of data){
@@ -212,7 +212,7 @@ function send(){
   let task = $("#task").val();
   let payload = { developer_name:developer_name, date_task:date, task:task };
 
-  $.get("http://localhost:8000/create.php", payload, function(data, status){
+  $.get("http://smarttechtank.com:3000/create.php", payload, function(data, status){
       // console.log(data);
       salert("Berjaya");
       load_list();
@@ -221,7 +221,7 @@ function send(){
 }
 
 function done_data(id){
-  $.get("http://localhost:8000/update.php",{ id:id , status:1 }, function(data, status){
+  $.get("http://smarttechtank.com:3000/update.php",{ id:id , status:1 }, function(data, status){
       // console.log(data);
       salert("Berjaya Update");
       load_list();
@@ -229,7 +229,7 @@ function done_data(id){
 }
 
 function untick_done_data(id){
-  $.get("http://localhost:8000/update.php",{ id:id , status:0 }, function(data, status){
+  $.get("http://smarttechtank.com:3000/update.php",{ id:id , status:0 }, function(data, status){
       // console.log(data);
       salert("Berjaya Update");
       load_list();
@@ -237,7 +237,7 @@ function untick_done_data(id){
 }
 
 function delete_data(id){
-  $.get("http://localhost:8000/delete.php",{ id:id }, function(data, status){
+  $.get("http://smarttechtank.com:3000/delete.php",{ id:id }, function(data, status){
       // console.log(data);
       salert("Berjaya Padam");
       load_list();
