@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+    <title>Dividend Saham</title>
+  </head>
+  <body>
+  
+  <h5 class="m-3">Dividend Saham</h5>
+    
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">modal:</label>
+        <input type="number" class="form-control" id="modal" value="1000">
+    </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">price per share:</label>
+        <input type="number" class="form-control" id="price_per_share" placeholder="0.57">
+    </div>
+
+    <div class="m-3">
+        <label for="exampleFormControlInput1" class="form-label">dividend (%):</label>
+        <input type="number" class="form-control" id="dividend_percent" placeholder="8.3">
+    </div>
+
+    <div class="m-3">
+        <div id="get_share" class="">0</div>
+        <div id="get_share_with_price" class="">0</div>
+        <div id="dividend_tahunan" class="">0</div>
+    </div>
+
+    <button id="calc_btc" class="btn btn-primary m-3">Calculate</button><br>
+
+    <script>
+
+        $('#price_per_share,#dividend_percent').keyup(function() {
+            kira();
+        });
+
+        $('#modal').keyup(function() {
+            kira();
+        });
+
+        $( "#calc_btc" ).click(function() {
+            kira();
+        });
+
+        function kira(){
+            let modal = $('#modal').val();
+            let price_per_share = $('#price_per_share').val();
+            let dividend_percent = $('#dividend_percent').val();
+
+            let dividen_bahagi100 = (parseFloat(dividend_percent/100)).toFixed(6);
+            let share_dapat = Math.floor(parseFloat(modal/price_per_share));
+            let harga_total_share = (share_dapat*price_per_share).toFixed(2);
+            let total_dapat_div_tahunan = (share_dapat*dividen_bahagi100).toFixed(2);
+            console.log(total_dapat_div_tahunan);
+
+            $('#get_share').html("share unit get: <b>"+parseFloat(share_dapat)+"</b>");
+            $('#get_share_with_price').html("With price <b>RM "+parseFloat(harga_total_share)+"</b>");
+            $('#dividend_tahunan').html("Get dividend tahunan <b>RM "+parseFloat(total_dapat_div_tahunan)+"</b>");
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
