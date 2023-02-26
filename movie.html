@@ -63,14 +63,17 @@ $(document).ready(function(){
 
         $.get("https://yts.mx/api/v2/list_movies.json", function(data, status){
             // alert("Data: " + data + "\nStatus: " + status);
-            console.log(data);
-            console.log(data.data.movies[0].title_long);
+            // console.log(data);
+            // console.log(data.data.movies[0].title_long);
             var senarai = data.data.movies;
 
             // console.log(data.data.movies.length)
+            if (data.data.movie_count == 0){
+                $("#id_loop").text('No movies')
+            }else{
+                $("#id_loop").text('')
+            }
             
-            $("#id_loop").text('')
-
             for (var item of senarai){
                 console.log(item.title_long);
                 $("#id_loop").append(`
@@ -132,16 +135,21 @@ $(document).ready(function(){
 
         $.get("https://yts.mx/api/v2/list_movies.json?query_term="+q, function(data, status){
             // alert("Data: " + data + "\nStatus: " + status);
-            console.log(data);
-            console.log(data.data.movies[0].title_long);
+            // console.log(data);
+            // console.log(data.data.movies[0].title_long);
             var senarai = data.data.movies;
 
+            console.log(data.data.movie_count)
             // console.log(data.data.movies.length)
-            
-            $("#id_loop").text('')
 
+            if (data.data.movie_count == 0){
+                $("#id_loop").text('No movies')
+            }else{
+                $("#id_loop").text('')
+            }
+            
             for (var item of senarai){
-                console.log(item.title_long);
+                // console.log(item.title_long);
                 $("#id_loop").append(`
 
                 <div class="row">
