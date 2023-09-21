@@ -61,7 +61,7 @@ $(document).ready(function(){
 
     function main() {
 
-        $.get("https://yts.nz/api/v2/list_movies.json", function(data, status){
+        $.get("https://yts.mx/api/v2/list_movies.json", function(data, status){
             // alert("Data: " + data + "\nStatus: " + status);
             // console.log(data);
             // console.log(data.data.movies[0].title_long);
@@ -133,7 +133,7 @@ $(document).ready(function(){
 
     function search(q){
 
-        $.get("https://yts.nz/api/v2/list_movies.json?genre="+q, function(data, status){
+        $.get("https://yts.mx/api/v2/list_movies.json?genre="+q, function(data, status){
             // alert("Data: " + data + "\nStatus: " + status);
             // console.log(data);
             // console.log(data.data.movies[0].title_long);
