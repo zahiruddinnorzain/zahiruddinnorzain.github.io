@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TMDB</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid p-5 bg-dark text-white text-center">
+  <h1>TMDB</h1>
+  <p>Zahiruddin ❤️ Nur Ain</p> 
+</div>
+  
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <!-- <h3>Home</h3> -->
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search" id="id_q">
+            <button class="btn btn-success" type="submit" id="id_btn_search">Go</button>
+        </div>
+
+        <hr>
+        <div id="id_loop">
+
+            <!-- <div class="row">
+                <div class="col-sm-4">
+                    <img src="https://yts.mx/assets/images/movies/prison_77_2022/medium-cover.jpg" width="200px">
+                </div>
+                <div class="col-sm-8">
+                    <span id='id_title_long'>title_long</span><br>
+    
+                    <div id="id_all_genre">
+                        genre: Documentary<br>
+                    </div>
+                    <span id='id_rating'>rating: 5 star</span><br>
+    
+                    <span id='id_summary'>summary</span><br>
+                </div>
+            </div> -->
+
+        </div>
+
+        <button class="btn btn-sm btn-primary mb-3" id="next">next</button>
+
+
+    </div>
+
+
+    <div class="col-sm-2">
+    </div>
+    </div>
+  </div>
+</div>
+
+<script>
+//http://image.tmdb.org/t/p/w200/mXLOHHc1Zeuwsl4xYKjKh2280oL.jpg
+$(document).ready(function(){
+
+    // load movie
+    function load_movie(page) {
+
+        $("#id_loop").html('')
+
+        let token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MjQ0OTg5MjQyZjc2OTdjNmNiNWVkMWRjYmRmYTc3NyIsInN1YiI6IjY1MTI0YjNmMjZkYWMxMDEwYzc2ZDAxMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.f7DGzYIUKyedUhmhe87tVuDGMqLYP4B3xkQ197-U-z8';
+        axios.get('https://api.themoviedb.org/3/movie/popular?page='+page,
+        {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(function (response) {
+            // handle success
+            // console.log(response['data']['results'][0]);
+
+            for (var i = 0; i < response['data']['results'].length ; i++) {
+
+                let title = response['data']['results'][i]['original_title'];
+                let img = response['data']['results'][i]['poster_path'];
+                let overview = response['data']['results'][i]['overview'];
+                let vote = response['data']['results'][i]['vote_average'];
+                let id = response['data']['results'][i]['id'];
+                let page = response['data']['page'];
+
+                $("#id_loop").append(`
+                
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img src="http://image.tmdb.org/t/p/w200${img}" width="200px">
+                    </div>
+                    <div class="col-sm-8">
+                        <span id='id_title_long'>${title}</span><br>
+        
+                        <div id="id_all_genre">
+                            <a target=_blank class="btn btn-primary btn-sm" href="https://vidsrc.to/embed/movie/${id}">Watch Now</a><br>
+                        </div>
+                        <span id='id_rating'>rating: ${vote} star</span><br><br>
+        
+                        <span id='id_summary'>${overview}</span><br><br>
+                        page: ${page}
+                    </div>
+                </div>
+                <hr>
+                
+                `)
+
+            }
+
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+        .finally(function () {
+            // always executed
+        });
+
+    }
+
+    // search movie
+    function search(q) {
+
+    $("#id_loop").html('')
+
+    let token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MjQ0OTg5MjQyZjc2OTdjNmNiNWVkMWRjYmRmYTc3NyIsInN1YiI6IjY1MTI0YjNmMjZkYWMxMDEwYzc2ZDAxMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.f7DGzYIUKyedUhmhe87tVuDGMqLYP4B3xkQ197-U-z8';
+    axios.get('https://api.themoviedb.org/3/search/movie?query='+q,
+    {
+        headers: { Authorization: `Bearer ${token}` }
+    })
+    .then(function (response) {
+        // handle success
+        // console.log(response['data']['results'][0]);
+
+        for (var i = 0; i < response['data']['results'].length ; i++) {
+
+            let title = response['data']['results'][i]['original_title'];
+            let img = response['data']['results'][i]['poster_path'];
+            let overview = response['data']['results'][i]['overview'];
+            let vote = response['data']['results'][i]['vote_average'];
+            let id = response['data']['results'][i]['id'];
+            let page = response['data']['page'];
+
+            $("#id_loop").append(`
+            
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="http://image.tmdb.org/t/p/w200${img}" width="200px">
+                </div>
+                <div class="col-sm-8">
+                    <span id='id_title_long'>${title}</span><br>
+
+                    <div id="id_all_genre">
+                        <a target=_blank class="btn btn-primary btn-sm" href="https://vidsrc.to/embed/movie/${id}">Watch Now</a><br>
+                    </div>
+                    <span id='id_rating'>rating: ${vote} star</span><br><br>
+
+                    <span id='id_summary'>${overview}</span><br><br>
+                    page: ${page}
+                </div>
+            </div>
+            <hr>
+            
+            `)
+
+        }
+
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+    })
+    .finally(function () {
+        // always executed
+    });
+
+    }
+
+    
+
+    load_movie(1);
+
+    let num = 1;
+
+    $('#next').click(function(){
+        num = num + 1;
+        $("#id_loop").text('Loading...')
+        load_movie(num);
+        $('#next').show()
+        // console.log(num);
+    });
+
+    $('#id_btn_search').click(function(){
+        $("#id_loop").text('Loading...')
+        var getq = $('#id_q').val();
+        search(getq)
+        $('#next').hide()
+    });
+
+    // $(document).on('keypress',function(e) {
+    //     if(e.which == 13) {
+    //         $("#id_loop").text('Loading...')
+    //         var getq = $('#id_q').val();
+    //         search(getq)
+    //     }
+    // });
+
+});
+
+</script>
+
+</body>
+</html>
