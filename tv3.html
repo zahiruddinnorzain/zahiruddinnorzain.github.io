@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV3</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+<center>
+    <video id="video" controls width="600px"></video>
+</center>
+
+<script>
+    if(Hls.isSupported()) {
+        var video = document.getElementById('video');
+        var hls = new Hls();
+        hls.loadSource('https://live-sg1.global.ssl.fastly.net/live-hls/tonton1.m3u8?exp=1697998504&hmac=0x7681311a75acf36e03fbf922010aa106dfa59bf120a74d4de1e47e2d9f275bf8');
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function() {
+            video.play();
+        });
+    }
+    // Add a fallback for browsers that don't support HLS.js
+    else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = 'https://live-sg1.global.ssl.fastly.net/live-hls/tonton1.m3u8?exp=1697998504&hmac=0x7681311a75acf36e03fbf922010aa106dfa59bf120a74d4de1e47e2d9f275bf8';
+        video.addEventListener('loadedmetadata', function() {
+            video.play();
+        });
+    }
+</script>
+
+</body>
+</html>
