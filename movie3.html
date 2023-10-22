@@ -47,7 +47,7 @@
 
         </div>
 
-        <button class="btn btn-sm btn-primary mb-3" id="next">next</button>
+        <button class="btn btn-sm btn-primary mb-3" id="next">Next</button>
 
 
     </div>
@@ -80,6 +80,7 @@ $(document).ready(function(){
             for (var i = 0; i < response['data']['results'].length ; i++) {
 
                 let title = response['data']['results'][i]['original_title'];
+                let release_date = response['data']['results'][i]['release_date'];
                 let img = response['data']['results'][i]['poster_path'];
                 let overview = response['data']['results'][i]['overview'];
                 let vote = response['data']['results'][i]['vote_average'];
@@ -93,12 +94,13 @@ $(document).ready(function(){
                         <img src="http://image.tmdb.org/t/p/w200${img}" width="200px">
                     </div>
                     <div class="col-sm-8">
-                        <span id='id_title_long'>${title}</span><br>
+                        <span id='id_title_long' class='h5'><b>${title}</b></span><br><br>
         
                         <div id="id_all_genre">
-                            <a target=_blank class="btn btn-primary btn-sm" href="https://vidsrc.to/embed/movie/${id}">Watch Now</a><br>
+                            <a target=_blank class="btn btn-primary btn-sm" href="https://vidsrc.to/embed/movie/${id}">Watch Now</a><br><br>
                         </div>
-                        <span id='id_rating'>rating: ${vote} star</span><br><br>
+                        <span id='id_rating'>Release: <b>${release_date}</b></span><br>
+                        <span id='id_rating'>Rating: <b>${vote} star</b></span><br><br>
         
                         <span id='id_summary'>${overview}</span><br><br>
                         page: ${page}
@@ -138,6 +140,7 @@ $(document).ready(function(){
         for (var i = 0; i < response['data']['results'].length ; i++) {
 
             let title = response['data']['results'][i]['original_title'];
+            let release_date = response['data']['results'][i]['release_date'];
             let img = response['data']['results'][i]['poster_path'];
             let overview = response['data']['results'][i]['overview'];
             let vote = response['data']['results'][i]['vote_average'];
@@ -151,12 +154,13 @@ $(document).ready(function(){
                     <img src="http://image.tmdb.org/t/p/w200${img}" width="200px">
                 </div>
                 <div class="col-sm-8">
-                    <span id='id_title_long'>${title}</span><br>
+                    <span id='id_title_long' class='h5'><b>${title}</b></span><br><br>
 
                     <div id="id_all_genre">
-                        <a target=_blank class="btn btn-primary btn-sm" href="https://vidsrc.to/embed/movie/${id}">Watch Now</a><br>
+                        <a target=_blank class="btn btn-primary btn-sm" href="https://vidsrc.to/embed/movie/${id}">Watch Now</a><br><br>
                     </div>
-                    <span id='id_rating'>rating: ${vote} star</span><br><br>
+                    <span id='id_rating'>Release: <b>${release_date}</b></span><br>
+                    <span id='id_rating'>Rating: <b>${vote} star</b></span><br><br>
 
                     <span id='id_summary'>${overview}</span><br><br>
                     page: ${page}
