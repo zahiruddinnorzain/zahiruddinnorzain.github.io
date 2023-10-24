@@ -28,6 +28,7 @@
         <hr>
         <div id="tulis" class="h3">RM <span id="jawapan">0</span></div>
         <div id="tulis" class="h5 text-secondary">Perlu: <span id="jawapan_liter">0</span> liter</div>
+        <div id="semasa" class="h6 text-secondary">Harga Semasa: RM <span id="jawapan_semasa">0</span> liter</div>
 
 
     </div>
@@ -55,7 +56,7 @@ $(document).ready(function(){
 
     // cara baru
     $('#id_btn_search2').click(function(){
-        var seliter = 2.1
+        var seliter = 2.05
         var tangki_full = 30
         var jarak_full = tangki_full * 15
 
@@ -67,6 +68,7 @@ $(document).ready(function(){
 
         $("#jawapan").text(parseFloat(harga_bayar).toFixed(2))
         $("#jawapan_liter").text(parseFloat(liter_perlu).toFixed(2))
+        $("#jawapan_semasa").text(parseFloat(seliter).toFixed(2))
         
     });
 
