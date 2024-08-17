@@ -15,8 +15,8 @@
 <main>
     <div class="container py-2">
         <header class="mb-4 border-bottom">
-            <span class="fs-4">News - Berita Malaysia</span>
-        </a>
+            <span class="fs-4">News - Berita Malaysia <button class="btn btn-sm bg-primary text-light mb-2" id="toggle">Toggle Mode</button></span>
+            
         </header>
     
     
@@ -65,7 +65,15 @@ $(document).ready(async function(){
     // console.log(response['channel']['item']);
     response = response['channel']['item']
     $(response).each(function(index, item) {
-        // console.log(item.title.text);
+        // console.log(item);
+
+        tajuk = item.title.text;
+        description = item.description.text;
+        if(typeof item.title.text == 'undefined'){
+            tajuk = item.title;
+            description = item.description;
+        }
+
         $("#news_awani").append(`
         <div class="col-md-6">
 
@@ -76,9 +84,9 @@ $(document).ready(async function(){
                     </div>
                     <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">${item.title ?? item.title.text}</h5>
+                        <h5 class="card-title">${tajuk}</h5>
                         <small>${item.pubDate} [ Awani ]</small>
-                        <p class="card-text mt-2">${item.description}</p>
+                        <p class="card-text mt-2">${description}</p>
                         <p class="card-text">
                         <a href="${item.link}" target=_blank>
                             <small class="text-body-info">Read more</small>
@@ -99,7 +107,7 @@ $(document).ready(async function(){
     response = response['channel']['item']
     // console.log(response);
     $(response).each(function(index, item) {
-        console.log(item);
+        // console.log(item);
         $("#news_metro_bisnes").append(`
         <div class="col-md-6">
 
@@ -124,6 +132,18 @@ $(document).ready(async function(){
         `)
     });
 
+});
+
+$("#toggle").click(function() {
+    $('body').css({
+        'color': '#fff',
+        'background-color': '#000'
+    });
+    $('.card').css({
+        'color': '#fff',
+        'background-color': '#000',
+        'border-color': 'gray'
+    });
 });
 </script>
 </body>
