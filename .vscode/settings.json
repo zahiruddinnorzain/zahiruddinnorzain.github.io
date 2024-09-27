@@ -1,0 +1,13 @@
+{
+    "editor.fontFamily": "Courier New,Droid Sans Mono,monospace",
+    "editor.fontVariations": false,
+    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.editor.decorations.colors": true,
+    "workbench.colorCustomizations": {
+
+        "editor.background":"#060606",
+        // "editor.background":"#121212",
+        "sideBar.background":"#121212",
+        // "sideBar.background":"#1c1c1c"
+    }
+}

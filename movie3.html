@@ -8,12 +8,41 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    .btn-custom:hover {
+        background-color: #343a40; /* Change background on hover */
+        color: #ffffff;            /* Change text color on hover */
+        /* border-color: #343a40;     Change border color on hover */
+    }
+  </style>
 </head>
 <body>
 
 <div class="container-fluid p-5 bg-dark text-white text-center">
   <h1>MO-VIE</h1>
   <p>Zahiruddin ❤️ Nur Ain</p> 
+
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="input-group mb-3">
+            <span class="input-group-text fw-bold bg-dark text-light"><i class="fas fa-robot"></i></span>
+            <input type="text" name="qai" id="qai_id" class="form-control bg-dark text-light" placeholder="Ask me for movie suggestion">
+            <button class="btn btn-outline-light text-light btn-custom" type="button" id="btn_qai">Submit</button>
+        </div>
+
+        <div class="row">
+            <div class="fw-normal font-monospace text-start" id="ans_qai">
+                Loading...
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+
 </div>
   
 <div class="container mt-5">
@@ -22,7 +51,7 @@
     <div class="col-sm-8">
         <!-- <h3>Home</h3> -->
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search" id="id_q">
+            <input type="text" class="form-control" style="border: 2px solid #6c757d; " placeholder="Search" id="id_q">
             <button class="btn btn-success" type="submit" id="id_btn_search">Go</button>
         </div>
 
@@ -216,6 +245,60 @@ $(document).ready(function(){
 
 });
 
+</script>
+
+<script>
+    $('#ans_qai').hide();
+    document.getElementById('btn_qai').addEventListener('click', async () => {
+        $('#ans_qai').show();
+        $('#ans_qai').html('Loading...');
+        const inputText = document.getElementById('qai_id').value;
+
+        if(inputText == ''){$('#ans_qai').html(':)');return 0;}
+
+        const apiKey = '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';  // Replace with your actual API token
+        const apiUrl = 'https://api.groq.com/openai/v1/chat/completions';
+
+        const requestBody = {
+            "messages": [
+                {
+                    "role": "user",
+                    "content": inputText + ". List 5 point" || "suggest me a good movie to watch"
+                }
+            ],
+            "model": "llama3-8b-8192",
+            "temperature": 1,
+            "max_tokens": 1024,
+            "top_p": 1,
+            "stream": false,
+            "stop": null
+        };
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+
+            console.log(data.choices[0].message.content);
+            ans = data.choices[0].message.content;
+
+            $('#ans_qai').html(marked.parse(ans));
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('response').innerText = 'Error: ' + error.message;
+        }
+    });
 </script>
 
 </body>
