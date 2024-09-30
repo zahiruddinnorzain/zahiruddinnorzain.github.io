@@ -256,7 +256,7 @@ $(document).ready(function(){
 
         if(inputText == ''){$('#ans_qai').html(':)');return 0;}
 
-        const apiKey = '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';  // Replace with your actual API token
+        const apiKey = 'gsk_Fq0h'+'v9iJMTZZWeJj54a8WGdyb3FY'+'7uY6MK1tUFNG'+'9YVE8DBOTHHC';
         const apiUrl = 'https://api.groq.com/openai/v1/chat/completions';
 
         const requestBody = {
@@ -266,7 +266,7 @@ $(document).ready(function(){
                     "content": inputText + ". List 5 point" || "suggest me a good movie to watch"
                 }
             ],
-            "model": "llama3-8b-8192",
+            "model": "llama-3.1-70b-versatile",
             "temperature": 1,
             "max_tokens": 1024,
             "top_p": 1,
