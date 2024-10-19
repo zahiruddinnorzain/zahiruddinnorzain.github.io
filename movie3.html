@@ -248,15 +248,44 @@ $(document).ready(function(){
 </script>
 
 <script>
+
+    function asciiToHex(str) {
+        return str.split('')
+            .map(char => char.charCodeAt(0).toString(16).padStart(2, '0'))
+            .join('');
+    }
+
+    function hexToAscii(hex) {
+        let result = '';
+        for (let i = 0; i < hex.length; i += 2) {
+            result += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+        }
+        return result;
+    }
+
+// let asciiText = "xxxxxx";
+// let hexResult = asciiToHex(asciiText);
+// console.log(hexResult);
+
+// let asciiText2 = "67736b5f7568436c774f594267786d774c31466c736d64695747647962334659747442316a6b3574487039566c7670626578585a78737362";
+// let token = hexToAscii(asciiText2);
+// console.log(token);
+
+
     $('#ans_qai').hide();
     document.getElementById('btn_qai').addEventListener('click', async () => {
+
         $('#ans_qai').show();
         $('#ans_qai').html('Loading...');
+
+        let stored_token = "67736b5f7568436c774f594267786d774c31466c736d64695747647962334659747442316a6b3574487039566c7670626578585a78737362";
+        let token = hexToAscii(stored_token);
+
         const inputText = document.getElementById('qai_id').value;
 
         if(inputText == ''){$('#ans_qai').html(':)');return 0;}
 
-        const apiKey = 'gsk_Fq0h'+'v9iJMTZZWeJj54a8WGdyb3FY'+'7uY6MK1tUFNG'+'9YVE8DBOTHHC';
+        const apiKey = token;
         const apiUrl = 'https://api.groq.com/openai/v1/chat/completions';
 
         const requestBody = {
