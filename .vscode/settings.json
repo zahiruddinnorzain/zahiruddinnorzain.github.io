@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "Courier New,Droid Sans Mono,monospace",
+    "editor.fontFamily": "monospace,Courier New,Droid Sans Mono,monospace",
     "editor.fontVariations": false,
     "workbench.colorTheme": "Default Dark Modern",
     "workbench.editor.decorations.colors": true,
