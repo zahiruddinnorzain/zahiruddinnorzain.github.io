@@ -33,7 +33,7 @@
 
 <div class="container-fluid p-5 bg-dark text-white text-center">
   <h1>MO-VIE</h1>
-  <p>Zahiruddin ❤️ Nur Ain</p> 
+  <p>Zahiruddin <br>❤️<br> Nur Ain <br>( Telah meninggal dunia pada 11 Jan 2025, Al-Fatihah )</p> 
 
   <div class="row">
     <div class="col-sm-4"></div>
@@ -278,7 +278,7 @@ $(document).ready(function(){
 // let hexResult = asciiToHex(asciiText);
 // console.log(hexResult);
 
-// let asciiText2 = "67736b5f7568436c774f594267786d774c31466c736d64695747647962334659747442316a6b3574487039566c7670626578585a78737362";
+// let asciiText2 = "67736b5f494d554b64494545356a54536f33527372714f7057476479623346594f4d484a33614135797851564c7a66785a6b69684b49584e";
 // let token = hexToAscii(asciiText2);
 // console.log(token);
 
@@ -289,7 +289,7 @@ $(document).ready(function(){
         $('#ans_qai').show();
         $('#ans_qai').html('Loading...');
 
-        let stored_token = "67736b5f7568436c774f594267786d774c31466c736d64695747647962334659747442316a6b3574487039566c7670626578585a78737362";
+        let stored_token = "67736b5f494d554b64494545356a54536f33527372714f7057476479623346594f4d484a33614135797851564c7a66785a6b69684b49584e";
         let token = hexToAscii(stored_token);
 
         const inputText = document.getElementById('qai_id').value;
@@ -303,10 +303,11 @@ $(document).ready(function(){
             "messages": [
                 {
                     "role": "user",
-                    "content": inputText + ". List 5 point" || "suggest me a good movie to watch"
+                    "content": inputText + ". List 5 point only with the years and short description" || "suggest me a good movie to watch"
                 }
             ],
-            "model": "llama-3.1-70b-versatile",
+            "model": "qwen-2.5-32b",
+            // "model": "llama-3.1-70b-versatile",
             "temperature": 1,
             "max_tokens": 1024,
             "top_p": 1,
