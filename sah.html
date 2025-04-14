@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->
+    <title>sah</title>
+</head>
+<body>
+
+    <div class="row m-2">
+        <div class="col-12">
+            <pre>
+FV - Future Value (target amount)<br>
+P  - Monthly investment<br>
+r  - Monthly interest rate (e.g. 10% annual = 0.00833)</pre>
+        </div>
+        <div class="col-12">
+
+            <!-- <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Target Amount, FV</span>
+                <input type="text" class="form-control" placeholder="0.00" id="fv" name="fv" value="1300">
+            </div> -->
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Target Amount, FV</span>
+                <input type="text" class="form-control" placeholder="0.00" id="fv" name="fv" value="156000">
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Monthly investment, P</span>
+                <input type="text" class="form-control" placeholder="0.00" id="P" name="P" value="1000">
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Annual Return (in %), r</span>
+                <input type="text" class="form-control" placeholder="0.00" id="r" name="r" value="10">
+            </div>
+
+            <button class="btn btn-primary mb-3" id="kira">Calculate</button>
+
+            
+        </div>
+
+        <div class="col-12">
+            Total Amount:
+            <div id="output_total"><h5>RM 0</h5></div>
+            Perlukan masa selama:
+            <div id="output_bulan"><h5>0 Bulan // 0 Tahun</h5></div>
+            Sebulan dapat dividen:
+            <div id="output_dividen"><h5>RM 0</h5></div>
+        </div>
+    </div>
+
+    
+</body>
+<script>
+/**
+ * Calculates how long it takes to reach a target investment amount (FV)
+ * with regular monthly contributions (P) and monthly return rate (r).
+ *
+ * @param {number} FV - Future Value (target amount)
+ * @param {number} P  - Monthly investment
+ * @param {number} r  - Monthly interest rate (e.g. 10% annual = 0.00833)
+ * @returns {object}  - { months: number, years: number }
+ */
+ function calculateTimeToReachFV(FV, P, r) {
+    if (P <= 0 || r <= 0 || FV <= 0) {
+        throw new Error("FV, P, and r must all be greater than 0");
+    }
+
+    const numerator = Math.log((FV * r / P) + 1);
+    const denominator = Math.log(1 + r);
+    const n = numerator / denominator;
+
+    const months = Math.ceil(n);
+    const years = +(months / 12).toFixed(2); // Rounded to 2 decimal places
+
+    return { months, years };
+}
+
+// Example usage:
+const FV = 156000;
+const P = 1000;
+const r = 0.10 / 12; // 10% annual return → monthly
+
+const result = calculateTimeToReachFV(FV, P, r);
+console.log(`Months needed: ${result.months}`);
+console.log(`Years needed: ${result.years}`);
+
+document.getElementById('kira').addEventListener('click', async () => {
+
+    // $('#ans_qai').show();
+    $('#output_bulan').html('Loading...');
+    $('#output_tahun').html('Loading...');
+
+
+    let FV = $('#fv').val();
+    let P = $('#P').val();
+    let r_asal = $('#r').val();
+
+    let r = (r_asal/100) / 12;
+
+    // kira sebulan dpt dividen berapa
+    // 10% X FV / 12
+    let dividen_bulanan = (r_asal/100 * FV) / 12;
+
+    console.log(FV)
+    console.log(P)
+    console.log(r)
+    console.log(dividen_bulanan)
+    
+    let result = calculateTimeToReachFV(FV, P, r);
+
+    $('#output_total').html(`<h5>RM ${FV.toLocaleString('en-MY')}</h5>`);
+    $('#output_bulan').html(`<h5>${result.months} Bulan // ${result.years} Tahun </h5>`);
+    $('#output_dividen').html(`<h5>RM ${dividen_bulanan} Sebulan</h5>`);
+
+});
+
+
+</script>
+</html>
