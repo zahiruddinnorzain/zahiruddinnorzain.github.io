@@ -21,11 +21,6 @@ r  - Monthly interest rate (e.g. 10% annual = 0.00833)</pre>
         </div>
         <div class="col-12">
 
-            <!-- <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Target Amount, FV</span>
-                <input type="text" class="form-control" placeholder="0.00" id="fv" name="fv" value="1300">
-            </div> -->
-
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Target Amount, FV</span>
                 <input type="text" class="form-control" placeholder="0.00" id="fv" name="fv" value="156000">
@@ -115,10 +110,11 @@ document.getElementById('kira').addEventListener('click', async () => {
     console.log(dividen_bulanan)
     
     let result = calculateTimeToReachFV(FV, P, r);
+    FV = parseInt(FV);
 
     $('#output_total').html(`<h5>RM ${FV.toLocaleString('en-MY')}</h5>`);
     $('#output_bulan').html(`<h5>${result.months} Bulan // ${result.years} Tahun </h5>`);
-    $('#output_dividen').html(`<h5>RM ${dividen_bulanan} Sebulan</h5>`);
+    $('#output_dividen').html(`<h5>RM ${dividen_bulanan.toLocaleString('en-MY')} Sebulan</h5>`);
 
 });
 
