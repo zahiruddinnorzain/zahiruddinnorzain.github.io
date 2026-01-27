@@ -30,7 +30,7 @@
 
             <!-- <div class="row">
                 <div class="col-sm-4">
-                    <img src="https://yts.mx/assets/images/movies/prison_77_2022/medium-cover.jpg" width="200px">
+                    <img src="https://yts.bz/assets/images/movies/prison_77_2022/medium-cover.jpg" width="200px">
                 </div>
                 <div class="col-sm-8">
                     <span id='id_title_long'>title_long</span><br>
@@ -61,7 +61,7 @@ $(document).ready(function(){
 
     function main() {
 
-        $.get("https://yts.mx/api/v2/list_movies.json", function(data, status){
+        $.get("https://yts.bz/api/v2/list_movies.json", function(data, status){
             // alert("Data: " + data + "\nStatus: " + status);
             // console.log(data);
             // console.log(data.data.movies[0].title_long);
@@ -133,7 +133,7 @@ $(document).ready(function(){
 
     function search(q){
 
-        $.get("https://yts.mx/api/v2/list_movies.json?query_term="+q, function(data, status){
+        $.get("https://yts.bz/api/v2/list_movies.json?query_term="+q, function(data, status){
             // alert("Data: " + data + "\nStatus: " + status);
             // console.log(data);
             // console.log(data.data.movies[0].title_long);
