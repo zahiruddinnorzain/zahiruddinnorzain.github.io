@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Zaibo Journal</title>
@@ -12,43 +13,48 @@
         body {
             background-color: #f8f9fa;
         }
+
         .journal-card {
             border-radius: 16px;
         }
+
         .journal-date {
             font-size: 0.9rem;
             color: #6c757d;
         }
+
         .journal-content {
-            white-space: pre-line; /* support newline */
+            white-space: pre-line;
+            /* support newline */
             font-size: 1.05rem;
         }
     </style>
 </head>
+
 <body>
 
-<div class="container py-5">
-    <h2 class="mb-4 text-center">📓 Explicit by z.</h2>
+    <div class="container py-5">
+        <h2 class="mb-4 text-center">📓 Explicit by z.</h2>
 
-    <div id="posts" class="row g-4"></div>
-</div>
+        <div id="posts" class="row g-4"></div>
+    </div>
 
-<script>
-    const API_URL = "https://datas.zaibo.ip-dynamic.org/api/posts";
+    <script>
+        const API_URL = "https://datas.zaibo.ip-dynamic.org:3000/api/posts";
 
-    async function fetchPosts() {
-        try {
-            const res = await fetch(API_URL);
-            const data = await res.json();
+        async function fetchPosts() {
+            try {
+                const res = await fetch(API_URL);
+                const data = await res.json();
 
-            const container = document.getElementById('posts');
-            container.innerHTML = '';
+                const container = document.getElementById('posts');
+                container.innerHTML = '';
 
-            data.forEach(post => {
-                const col = document.createElement('div');
-                col.className = 'col-12';
+                data.forEach(post => {
+                    const col = document.createElement('div');
+                    col.className = 'col-12';
 
-                col.innerHTML = `
+                    col.innerHTML = `
                     <div class="card journal-card shadow-sm p-3">
                         <div class="journal-content mb-2">
                             ${escapeHtml(post.content)}
@@ -59,28 +65,29 @@
                     </div>
                 `;
 
-                container.appendChild(col);
-            });
+                    container.appendChild(col);
+                });
 
-        } catch (err) {
-            console.error(err);
-            document.getElementById('posts').innerHTML = `
+            } catch (err) {
+                console.error(err);
+                document.getElementById('posts').innerHTML = `
                 <div class="alert alert-danger">
                     Failed to load posts.
                 </div>
             `;
+            }
         }
-    }
 
-    // prevent XSS
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.innerText = text;
-        return div.innerHTML;
-    }
+        // prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.innerText = text;
+            return div.innerHTML;
+        }
 
-    fetchPosts();
-</script>
+        fetchPosts();
+    </script>
 
 </body>
+
 </html>
