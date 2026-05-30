@@ -277,17 +277,17 @@
 
                         <div id="id_all_genre">
                             <div class="row g-2 mb-3 mt-2" style="max-width: 400px;">
-                                <div class="col-4">
+                                <div class="col-6">
                                     <select class="form-select form-select-sm season-dropdown" id="season_${id}" data-id="${id}">
                                         ${seasonOptions}
                                     </select>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-6">
                                     <select class="form-select form-select-sm episode-dropdown" id="episode_${id}">
                                         ${episodeOptions}
                                     </select>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-12 mt-2">
                                     <button class="btn btn-warning btn-sm w-100" onclick="window.open('https://vidsrc.me/embed/tv/${id}/' + $('#season_${id}').val() + '/' + $('#episode_${id}').val(), '_blank')"><i class="fas fa-play"></i> Watch</button>
                                 </div>
                                 <div class="col-12 mt-2">
