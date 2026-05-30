@@ -22,23 +22,174 @@
         gtag('config', 'G-PTGKS1F95Z');
     </script>
 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        .btn-custom:hover {
-            background-color: #343a40;
-            color: #ffffff;
+        :root {
+            --bg-color: #0f1014;
+            --card-bg: #1a1c23;
+            --accent: #00d2ff;
+            --accent-glow: #3a7bd5;
+            --text-main: #f0f0f0;
+            --text-muted: #a0a0a0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background: linear-gradient(135deg, #0b0c10 0%, #1a1c23 100%);
+            border-bottom: 1px solid #2a2d3a;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .top-banner h1 {
+            font-weight: 800;
+            background: -webkit-linear-gradient(45deg, var(--accent), var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        /* Cards */
+        .show-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid #2a2d3a;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .show-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: #3a3d4a;
+        }
+
+        /* Posters */
+        .poster-img {
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+            max-height: 350px;
+            object-fit: cover;
+        }
+
+        .show-card:hover .poster-img {
+            transform: scale(1.03);
+        }
+
+        /* Buttons */
+        .btn-warning {
+            background: linear-gradient(45deg, #ff9900, #ff5500);
+            border: none;
+            color: white;
+            font-weight: 600;
+        }
+
+        .btn-warning:hover {
+            background: linear-gradient(45deg, #ff5500, #ff9900);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 85, 0, 0.4);
+        }
+
+        .btn-outline-info {
+            border-color: var(--accent);
+            color: var(--accent);
+            transition: all 0.3s;
+        }
+
+        .btn-outline-info:hover {
+            background-color: var(--accent);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+        }
+
+        .btn-outline-light {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-outline-light:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Inputs & Selects */
+        .form-control,
+        .form-select {
+            background-color: #22252e;
+            border: 1px solid #3a3d4a;
+            color: var(--text-main) !important;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            background-color: #2a2d3a;
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 0.25rem rgba(0, 210, 255, 0.25);
+        }
+
+        .form-select option {
+            background-color: #22252e;
+            color: white;
+        }
+
+        /* Texts */
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        hr {
+            border-color: #3a3d4a;
+        }
+
+        /* Drawer */
+        .offcanvas {
+            background-color: var(--card-bg) !important;
+            border-left: 1px solid #2a2d3a;
+        }
+
+        .offcanvas-header {
+            border-bottom: 1px solid #2a2d3a !important;
+        }
+
+        .offcanvas .card {
+            background-color: #22252e !important;
+            border: 1px solid #3a3d4a !important;
+            transition: transform 0.2s;
+        }
+
+        .offcanvas .card:hover {
+            transform: scale(1.02);
+            border-color: var(--accent) !important;
+        }
+
+        .badge.bg-primary {
+            background-color: var(--accent-glow) !important;
+        }
+
+        .badge.bg-warning {
+            background-color: #ff9900 !important;
+            color: #0f1014 !important;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container-fluid p-5 bg-dark text-white text-center">
+    <div class="container-fluid p-5 top-banner text-white text-center">
         <h1>TV-SERIES</h1>
         <p>Zahiruddin <br>❤️<br> Nur Ain <br>( Telah meninggal dunia pada 11 Jan 2025, Al-Fatihah )</p>
 
-        <div class="mt-4">
-            <a href="movie3.html" class="btn btn-primary me-2"><i class="fas fa-film"></i> Movies</a>
-            <a href="movie4.html" class="btn btn-warning me-2"><i class="fas fa-tv"></i> TV Series</a>
+        <div class="mt-4 d-flex flex-wrap justify-content-center gap-2">
+            <a href="movie3.html" class="btn btn-primary"><i class="fas fa-film"></i> Movies</a>
+            <a href="movie4.html" class="btn btn-warning"><i class="fas fa-tv"></i> TV Series</a>
             <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#wishlistDrawer" aria-controls="wishlistDrawer">
                 <i class="fas fa-heart text-danger"></i> Wishlist (<span id="wishlist-count">0</span>)
@@ -56,7 +207,6 @@
                     <button class="btn btn-success" type="submit" id="id_btn_search">Go</button>
                 </div>
 
-                <hr>
                 <div id="id_loop">
 
                 </div>
@@ -88,7 +238,8 @@
                     let imgSrc = img ? "http://image.tmdb.org/t/p/w200" + img : "https://via.placeholder.com/200x300?text=No+Image";
 
                     // Sediakan container kosong supaya urutan siri tetap terjaga sementara menunggu API
-                    $("#id_loop").append(`<div id="show_container_${id}"><div class="text-muted my-3 text-center"><small><i class="fas fa-spinner fa-spin"></i> Menyemak Musim & Episod ${title}...</small></div></div><hr>`);
+                    $("#id_loop").append(`<div id="show_container_${id}"><div class="text-muted my-3 text-center"><small><i class="fas fa-spinner fa-spin"></i> Menyemak Musim & Episod ${title}...</small></div></div>`);
+
 
                     // Panggil API spesifik untuk dapatkan jumlah Season & Episode
                     axios.get('https://api.themoviedb.org/3/tv/' + id, {
@@ -117,12 +268,12 @@
                         }
 
                         let html = `
-                <div class="row">
-                    <div class="col-sm-4">
-                        <img src="${imgSrc}" width="200px">
+                <div class="row show-card align-items-center">
+                    <div class="col-sm-4 text-center">
+                        <img src="${imgSrc}" class="poster-img img-fluid">
                     </div>
-                    <div class="col-sm-8">
-                        <span id='id_title_long' class='h5'><b>${title}</b></span><br><br>
+                    <div class="col-sm-8 mt-4 mt-sm-0">
+                        <span id='id_title_long' class='h4 fw-bold'>${title}</span><br><br>
 
                         <div id="id_all_genre">
                             <div class="row g-2 mb-3 mt-2" style="max-width: 400px;">
@@ -137,18 +288,18 @@
                                     </select>
                                 </div>
                                 <div class="col-4">
-                                    <button class="btn btn-warning btn-sm w-100" onclick="window.open('https://vidsrc.me/embed/tv/${id}/' + $('#season_${id}').val() + '/' + $('#episode_${id}').val(), '_blank')">Watch Now</button>
+                                    <button class="btn btn-warning btn-sm w-100" onclick="window.open('https://vidsrc.me/embed/tv/${id}/' + $('#season_${id}').val() + '/' + $('#episode_${id}').val(), '_blank')"><i class="fas fa-play"></i> Watch</button>
                                 </div>
                                 <div class="col-12 mt-2">
                                     <button class="btn btn-outline-info btn-sm w-100" onclick="addToWishlist('tv', ${id}, decodeURIComponent('${encodeURIComponent(title)}'), $('#season_${id}').val(), $('#episode_${id}').val())"><i class="fas fa-heart"></i> Add to Wishlist</button>
                                 </div>
                             </div>
                         </div>
-                        <span id='id_rating'>First Aired: <b>${release_date || 'N/A'}</b></span><br>
-                        <span id='id_rating'>Rating: <b>${vote} star</b></span><br><br>
+                        <span id='id_rating' class="text-muted"><i class="far fa-calendar-alt"></i> First Aired: <b>${release_date || 'N/A'}</b></span><br>
+                        <span class="badge bg-warning text-dark my-2"><i class="fas fa-star"></i> ${vote}</span><br>
 
-                        <span id='id_summary'>${overview}</span><br><br>
-                        page: ${pageNumber}
+                        <span id='id_summary' class="text-muted" style="line-height: 1.6;">${overview}</span><br><br>
+                        <small class="text-secondary">page: ${pageNumber}</small>
                     </div>
                 </div>
                 `;
