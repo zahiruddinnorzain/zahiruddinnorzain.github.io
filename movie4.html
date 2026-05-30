@@ -291,7 +291,7 @@
                                     <button class="btn btn-warning btn-sm w-100" onclick="window.open('https://vidsrc.me/embed/tv/${id}/' + $('#season_${id}').val() + '/' + $('#episode_${id}').val(), '_blank')"><i class="fas fa-play"></i> Watch</button>
                                 </div>
                                 <div class="col-12 mt-2">
-                                    <button class="btn btn-outline-info btn-sm w-100" onclick="addToWishlist('tv', ${id}, decodeURIComponent('${encodeURIComponent(title)}'), $('#season_${id}').val(), $('#episode_${id}').val())"><i class="fas fa-heart"></i> Add to Wishlist</button>
+                                    <button class="btn btn-outline-info btn-sm w-100" onclick="addToWishlist('tv', ${id}, decodeURIComponent('${encodeURIComponent(title).replace(/'/g, '%27')}'), $('#season_${id}').val(), $('#episode_${id}').val())"><i class="fas fa-heart"></i> Add to Wishlist</button>
                                 </div>
                             </div>
                         </div>

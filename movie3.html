@@ -276,7 +276,7 @@
                                     <button class="btn btn-warning btn-sm w-100" onclick="window.open('https://vidsrc.me/embed/movie/${id}', '_blank')"><i class="fas fa-play"></i> Watch Now</button>
                                 </div>
                                 <div class="col-12 mt-2">
-                                    <button class="btn btn-outline-info btn-sm w-100" onclick="addToWishlist('movie', ${id}, decodeURIComponent('${encodeURIComponent(title)}'))"><i class="fas fa-heart"></i> Add to Wishlist</button>
+                                    <button class="btn btn-outline-info btn-sm w-100" onclick="addToWishlist('movie', ${id}, decodeURIComponent('${encodeURIComponent(title).replace(/'/g, '%27')}'))"><i class="fas fa-heart"></i> Add to Wishlist</button>
                                 </div>
                             </div>
                         </div>
@@ -340,7 +340,7 @@
                                     <button class="btn btn-warning btn-sm w-100" onclick="window.open('https://vidsrc.me/embed/movie/${id}', '_blank')"><i class="fas fa-play"></i> Watch Now</button>
                                 </div>
                                 <div class="col-12 mt-2">
-                                    <button class="btn btn-outline-info btn-sm w-100" onclick="addToWishlist('movie', ${id}, decodeURIComponent('${encodeURIComponent(title)}'))"><i class="fas fa-heart"></i> Add to Wishlist</button>
+                                    <button class="btn btn-outline-info btn-sm w-100" onclick="addToWishlist('movie', ${id}, decodeURIComponent('${encodeURIComponent(title).replace(/'/g, '%27')}'))"><i class="fas fa-heart"></i> Add to Wishlist</button>
                                 </div>
                             </div>
                         </div>
