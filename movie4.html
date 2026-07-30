@@ -288,7 +288,7 @@
                                     </select>
                                 </div>
                                 <div class="col-12 mt-2">
-                                    <button class="btn btn-warning btn-sm w-100" onclick="window.open('https://vidsrc.me/embed/tv/${id}/' + $('#season_${id}').val() + '/' + $('#episode_${id}').val(), '_blank')"><i class="fas fa-play"></i> Watch</button>
+                                    <button class="btn btn-warning btn-sm w-100" onclick="window.open('https://vidsrcme.su/embed/tv/${id}/' + $('#season_${id}').val() + '/' + $('#episode_${id}').val(), '_blank')"><i class="fas fa-play"></i> Watch</button>
                                 </div>
                                 <div class="col-12 mt-2">
                                     <button class="btn btn-outline-info btn-sm w-100" onclick="addToWishlist('tv', ${id}, decodeURIComponent('${encodeURIComponent(title).replace(/'/g, '%27')}'), $('#season_${id}').val(), $('#episode_${id}').val())"><i class="fas fa-heart"></i> Add to Wishlist</button>
@@ -416,7 +416,7 @@
 
         function addToWishlist(type, id, title, season = null, episode = null) {
             let list = JSON.parse(localStorage.getItem('myWishlist')) || [];
-            let url = type === 'movie' ? `https://vidsrc.me/embed/movie/${id}` : `https://vidsrc.me/embed/tv/${id}/${season}/${episode}`;
+            let url = type === 'movie' ? `https://vidsrcme.su/embed/movie/${id}` : `https://vidsrcme.su/embed/tv/${id}/${season}/${episode}`;
 
             // Check if exists
             let exists = list.find(i => i.url === url);
