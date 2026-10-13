@@ -32,17 +32,20 @@
             --text-main: #f0f0f0;
             --text-muted: #a0a0a0;
         }
+
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
         }
+
         /* Top Banner */
         .top-banner {
             background: linear-gradient(135deg, #0b0c10 0%, #1a1c23 100%);
             border-bottom: 1px solid #2a2d3a;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
+
         .top-banner h1 {
             font-weight: 800;
             background: -webkit-linear-gradient(45deg, var(--accent), var(--accent-glow));
@@ -50,32 +53,37 @@
             -webkit-text-fill-color: transparent;
             letter-spacing: 2px;
         }
+
         /* Cards */
         .show-card {
             background-color: var(--card-bg);
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             border: 1px solid #2a2d3a;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .show-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
             border-color: #3a3d4a;
         }
+
         /* Posters */
         .poster-img {
             border-radius: 8px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease;
             max-height: 350px;
             object-fit: cover;
         }
+
         .show-card:hover .poster-img {
             transform: scale(1.03);
         }
+
         /* Buttons */
         .btn-warning {
             background: linear-gradient(45deg, #ff9900, #ff5500);
@@ -83,71 +91,89 @@
             color: white;
             font-weight: 600;
         }
+
         .btn-warning:hover {
             background: linear-gradient(45deg, #ff5500, #ff9900);
             color: white;
             box-shadow: 0 4px 15px rgba(255, 85, 0, 0.4);
         }
+
         .btn-outline-info {
             border-color: var(--accent);
             color: var(--accent);
             transition: all 0.3s;
         }
+
         .btn-outline-info:hover {
             background-color: var(--accent);
             color: #000;
             box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
         }
+
         .btn-outline-light {
-            border-color: rgba(255,255,255,0.2);
+            border-color: rgba(255, 255, 255, 0.2);
         }
+
         .btn-outline-light:hover {
-            background-color: rgba(255,255,255,0.1);
+            background-color: rgba(255, 255, 255, 0.1);
             color: white;
         }
+
         /* Inputs & Selects */
-        .form-control, .form-select {
+        .form-control,
+        .form-select {
             background-color: #22252e;
             border: 1px solid #3a3d4a;
             color: var(--text-main) !important;
         }
-        .form-control:focus, .form-select:focus {
+
+        .form-control:focus,
+        .form-select:focus {
             background-color: #2a2d3a;
             color: white;
             border-color: var(--accent);
             box-shadow: 0 0 0 0.25rem rgba(0, 210, 255, 0.25);
         }
+
         .form-select option {
             background-color: #22252e;
             color: white;
         }
+
         /* Texts */
         .text-muted {
             color: var(--text-muted) !important;
         }
+
         hr {
             border-color: #3a3d4a;
         }
+
         /* Drawer */
         .offcanvas {
             background-color: var(--card-bg) !important;
             border-left: 1px solid #2a2d3a;
         }
+
         .offcanvas-header {
             border-bottom: 1px solid #2a2d3a !important;
         }
+
         .offcanvas .card {
             background-color: #22252e !important;
             border: 1px solid #3a3d4a !important;
             transition: transform 0.2s;
         }
+
         .offcanvas .card:hover {
             transform: scale(1.02);
             border-color: var(--accent) !important;
         }
+
         .badge.bg-primary {
             background-color: var(--accent-glow) !important;
         }
+
         .badge.bg-warning {
             background-color: #ff9900 !important;
             color: #0f1014 !important;
@@ -256,7 +282,7 @@
                         <div id="id_all_genre">
                             <div class="row g-2 mb-3 mt-2" style="max-width: 400px;">
                                 <div class="col-12">
-                                    <button class="btn btn-warning btn-sm w-100" onclick="window.open('https://vidsrcme.su/embed/movie/${id}', '_blank')"><i class="fas fa-play"></i> Watch Now</button>
+                                    <button class="btn btn-warning btn-sm w-100" onclick="window.open('https://vidsrc.to/embed/movie/${id}', '_blank')"><i class="fas fa-play"></i> Watch Now</button>
                                 </div>
                                 <div class="col-12 mt-2">
                                     <button class="btn btn-outline-info btn-sm w-100" onclick="addToWishlist('movie', ${id}, decodeURIComponent('${encodeURIComponent(title).replace(/'/g, '%27')}'))"><i class="fas fa-heart"></i> Add to Wishlist</button>
@@ -320,7 +346,7 @@
                         <div id="id_all_genre">
                             <div class="row g-2 mb-3 mt-2" style="max-width: 400px;">
                                 <div class="col-12">
-                                    <button class="btn btn-warning btn-sm w-100" onclick="window.open('https://vidsrcme.su/embed/movie/${id}', '_blank')"><i class="fas fa-play"></i> Watch Now</button>
+                                    <button class="btn btn-warning btn-sm w-100" onclick="window.open('https://vidsrc.to/embed/movie/${id}', '_blank')"><i class="fas fa-play"></i> Watch Now</button>
                                 </div>
                                 <div class="col-12 mt-2">
                                     <button class="btn btn-outline-info btn-sm w-100" onclick="addToWishlist('movie', ${id}, decodeURIComponent('${encodeURIComponent(title).replace(/'/g, '%27')}'))"><i class="fas fa-heart"></i> Add to Wishlist</button>
@@ -429,7 +455,7 @@
 
         function addToWishlist(type, id, title, season = null, episode = null) {
             let list = JSON.parse(localStorage.getItem('myWishlist')) || [];
-            let url = type === 'movie' ? `https://vidsrcme.su/embed/movie/${id}` : `https://vidsrcme.su/embed/tv/${id}/${season}/${episode}`;
+            let url = type === 'movie' ? `https://vidsrc.to/embed/movie/${id}` : `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`;
 
             // Check if exists
             let exists = list.find(i => i.url === url);
