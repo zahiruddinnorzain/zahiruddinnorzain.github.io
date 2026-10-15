@@ -1,0 +1,35 @@
+SISTEM AKSES
+
+production:
+172.16.2.143 prd-akses-lb-web/
+172.16.2.144 prd-akses-lb-app/
+172.100.2.10 prd-akses-web-1/
+172.100.2.86 prd-akses-web-2/
+172.16.2.137 prd-akses-app-1 ****
+172.16.2.138 prd-akses-app-2/
+172.16.2.139 prd-akses-sto/
+172.16.2.145 prd-akses-agensi-int/
+172.16.2.140 prd-akses-db-pr/
+172.16.2.141 prd-akses-db-sb/
+172.16.2.142 prd-akses-db-ro/
+172.16.2.153 prd-stg-akses-myidentity/
+172.100.2.80 prd-stg-akses-lhdn/
+172.100.2.35 prd-akses-jump
+172.16.2.67 prd-akses-cache
+172.16.2.68 prd-akses-job
+
+staging:
+172.100.2.55 SSISP APP SERVER 1
+172.100.2.75 SSISP APP SERVER 2
+172.100.2.76 WEB SERVER 1 (laravel) 
+172.100.2.77 WEB SERVER 2
+172.16.2.129 DATABASE SERVER 1
+172.16.2.130 DATABASE SERVER 2
+172.16.2.131 DATABASE SERVER 3
+172.100.2.78 LOAD BALANCER SERVER 1
+172.100.2.79 LOAD BALANCER SERVER 2
+172.100.2.81 STORAGE SERVER
+172.100.2.88 myidentity
+172.100.2.89 integrasi agensi api
+
+sudo useradd -m -s /bin/bash -G sudo aksesbkp && echo 'aksesbkp:xxxxx’ | sudo chpasswd && history -c
