@@ -1,0 +1,3188 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Pemantau Pelaburan Kenanga Shariah Growth Opportunities Fund</title>
+  <meta name="description" content="Papan pemuka pemantauan pelaburan harian bagi Kenanga Shariah Growth Opportunities Fund untuk Akaun 1 dan Akaun 2 bermula 2025.">
+  
+  <!-- Mobile Web App Capable -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#090D16">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js with local fallback -->
+  <script src="chart.umd.min.js"></script>
+  <script>
+    if (typeof Chart === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js"><\/script>');
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-base: #090D16;
+      --bg-surface: #0F172A;
+      --bg-card: #131E35;
+      --bg-card-hover: #182642;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(16, 185, 129, 0.4);
+      
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      
+      --emerald: #10B981;
+      --emerald-glow: rgba(16, 185, 129, 0.15);
+      --emerald-border: rgba(16, 185, 129, 0.3);
+      
+      --gold: #F59E0B;
+      --gold-glow: rgba(245, 158, 11, 0.15);
+      --gold-border: rgba(245, 158, 11, 0.35);
+      
+      --blue: #38BDF8;
+      --purple: #A855F7;
+      --rose: #F43F5E;
+      --rose-glow: rgba(244, 63, 94, 0.15);
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      --shadow-glow: 0 0 25px -5px rgba(16, 185, 129, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      background-image: 
+        radial-gradient(ellipse at 15% 10%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+        radial-gradient(ellipse at 85% 20%, rgba(56, 189, 248, 0.06) 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 90%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+      background-attachment: fixed;
+      padding-bottom: env(safe-area-inset-bottom, 40px);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding-top: env(safe-area-inset-top, 0);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #10B981 0%, #047857 100%);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+      color: white;
+      font-weight: 800;
+      font-size: 19px;
+      flex-shrink: 0;
+    }
+
+    .brand-text h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .brand-text p {
+      font-size: 0.775rem;
+      color: var(--text-muted);
+    }
+
+    .badge-shariah {
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--emerald);
+      border: 1px solid var(--emerald-border);
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: var(--font-sans);
+      font-size: 0.825rem;
+      font-weight: 600;
+      padding: 7px 13px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      touch-action: manipulation;
+    }
+
+    .btn:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #10B981, #059669);
+      border-color: #10B981;
+      color: white;
+      box-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
+    }
+
+    /* Stat Cards Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .card-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .card-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      white-space: nowrap;
+    }
+
+    .card-val {
+      font-family: var(--font-mono);
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .card-sub {
+      font-size: 0.775rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .badge-diff {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .diff-up {
+      background: var(--emerald-glow);
+      color: var(--emerald);
+      border: 1px solid var(--emerald-border);
+    }
+
+    .diff-down {
+      background: var(--rose-glow);
+      color: var(--rose);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+    }
+
+    .diff-flat {
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--text-muted);
+    }
+
+    .card-highlight {
+      border-color: var(--emerald-border);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(19, 30, 53, 0.95) 100%);
+    }
+
+    .card-highlight::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #10B981, #38BDF8);
+    }
+
+    /* ==============================================================
+       STRATEGY & LIQUIDATION SECTION (SASARAN RM 100,000+)
+       ============================================================== */
+    .strategy-section {
+      background: var(--bg-card);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-top: 20px;
+      box-shadow: 0 12px 35px -10px rgba(245, 158, 11, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .strategy-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #F59E0B, #10B981, #38BDF8);
+    }
+
+    .strategy-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .strategy-title-grp h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .strategy-title-grp p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .target-pills {
+      display: flex;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .target-pill-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    .target-pill-btn:hover {
+      color: var(--text-main);
+    }
+
+    .target-pill-btn.active {
+      background: var(--gold);
+      color: #0F172A;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+    }
+
+    /* Progress Banner */
+    .progress-banner {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(24, 38, 66, 0.95));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .progress-stats-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .prog-metric {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .prog-lbl {
+      font-size: 0.725rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .prog-val {
+      font-family: var(--font-mono);
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .prog-gap {
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .progress-bar-track {
+      height: 16px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: var(--radius-full);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10B981 0%, #F59E0B 80%, #FCD34D 100%);
+      border-radius: var(--radius-full);
+      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .progress-bar-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 15px;
+      background: rgba(255, 255, 255, 0.8);
+      filter: blur(3px);
+      border-radius: var(--radius-full);
+    }
+
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+
+    /* Signal Decision Banner */
+    .decision-banner {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+      border: 1px solid transparent;
+      flex-wrap: wrap;
+    }
+
+    .decision-hold {
+      background: rgba(56, 189, 248, 0.1);
+      border-color: rgba(56, 189, 248, 0.3);
+      color: #BAE6FD;
+    }
+
+    .decision-prep {
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.35);
+      color: #FDE68A;
+    }
+
+    .decision-sell {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.4);
+      color: #A7F3D0;
+    }
+
+    .decision-badge {
+      font-family: var(--font-sans);
+      font-size: 0.775rem;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .badge-hold { background: #0284C7; color: white; }
+    .badge-prep { background: #D97706; color: white; }
+    .badge-sell { background: #059669; color: white; }
+
+    .decision-text {
+      flex: 1;
+      font-size: 0.825rem;
+      line-height: 1.45;
+    }
+
+    /* Indicators 3-Column Grid */
+    .indicators-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .indicator-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      position: relative;
+    }
+
+    .ind-title {
+      font-size: 0.775rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ind-val {
+      font-family: var(--font-mono);
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .ind-desc {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    /* RSI Meter */
+    .rsi-track {
+      height: 8px;
+      background: #1E293B;
+      border-radius: var(--radius-full);
+      margin: 10px 0 6px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rsi-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      transition: width 0.3s ease;
+    }
+
+    .rsi-zones {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.675rem;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+
+    /* Liquidation Guidance & Ladder Section */
+    .strategy-subgrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 960px) {
+      .strategy-subgrid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sub-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    .sub-card h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ladder-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.775rem;
+    }
+
+    .ladder-table th {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      padding: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .ladder-table td {
+      padding: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.775rem;
+    }
+
+    .ladder-target-row {
+      background: rgba(245, 158, 11, 0.1);
+      font-weight: 700;
+    }
+
+    .ladder-target-row td {
+      color: var(--gold);
+    }
+
+    /* Liquidation Steps Checklist */
+    .steps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.775rem;
+      color: var(--text-muted);
+    }
+
+    .step-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .step-num {
+      width: 22px;
+      height: 22px;
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* Main Chart Section */
+    .chart-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      margin-top: 20px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .chart-views {
+      display: flex;
+      background: var(--bg-surface);
+      padding: 4px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      gap: 2px;
+      flex-wrap: wrap;
+    }
+
+    .view-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 0.775rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    .view-btn:hover {
+      color: var(--text-main);
+    }
+
+    .view-btn.active {
+      background: var(--bg-card);
+      color: var(--emerald);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .time-filters {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 0.725rem;
+      font-weight: 600;
+      padding: 6px 11px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    .filter-btn:hover {
+      color: var(--text-main);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .filter-btn.active {
+      background: var(--emerald);
+      color: #064E3B;
+      border-color: var(--emerald);
+      font-weight: 700;
+    }
+
+    .chart-container {
+      position: relative;
+      height: 420px;
+      width: 100%;
+    }
+
+    /* Custom Date Range Toolbar */
+    .chart-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .range-inputs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .range-input {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.775rem;
+    }
+
+    .range-input:focus {
+      outline: none;
+      border-color: var(--emerald);
+    }
+
+    .chart-toggles {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .toggle-chip {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.725rem;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    .toggle-chip.active {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--gold);
+      border-color: var(--gold-border);
+      font-weight: 700;
+    }
+
+    .chart-insights {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .insight-item span {
+      color: var(--text-main);
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+
+    /* Simulator Section */
+    .sim-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .sim-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sim-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+
+    .sim-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sim-card p {
+      font-size: 0.775rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .slider-group {
+      margin-bottom: 18px;
+    }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .slider-target {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .slider {
+      width: 100%;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--bg-surface);
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
+      cursor: pointer;
+      border: 2px solid white;
+    }
+
+    .sim-results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .sim-res-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 10px;
+      text-align: center;
+    }
+
+    .sim-res-lbl {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .sim-res-val {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 4px;
+    }
+
+    .sim-res-gain {
+      font-size: 0.725rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* Table Section */
+    .table-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .table-title h3 {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .table-title p {
+      font-size: 0.775rem;
+      color: var(--text-muted);
+    }
+
+    .table-controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .search-input {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      width: 220px;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--emerald);
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.8rem;
+    }
+
+    th {
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-family: var(--font-mono);
+      font-size: 0.775rem;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      margin-top: 8px;
+      font-size: 0.775rem;
+      color: var(--text-muted);
+    }
+
+    .page-btns {
+      display: flex;
+      gap: 6px;
+    }
+
+    /* Modals */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .modal-head h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .modal-close:hover {
+      color: var(--text-main);
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.775rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-input {
+      width: 100%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 9px 12px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--emerald);
+    }
+
+    .form-help {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .api-status-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      margin-bottom: 14px;
+      font-size: 0.775rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 8px var(--emerald);
+      flex-shrink: 0;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(19, 30, 53, 0.95);
+      border: 1px solid var(--emerald-border);
+      color: var(--text-main);
+      padding: 10px 18px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      max-width: 90%;
+      white-space: nowrap;
+      animation: toastSlideUp 0.3s ease;
+    }
+
+    @keyframes toastSlideUp {
+      from { transform: translate(-50%, 20px); opacity: 0; }
+      to { transform: translate(-50%, 0); opacity: 1; }
+    }
+
+    /* ==============================================================
+       MOBILE SMARTPHONE VIEW OPTIMIZATIONS (< 768px)
+       ============================================================== */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 12px;
+      }
+
+      /* Compact Sticky Header */
+      .header-inner {
+        padding: 10px 0;
+        gap: 8px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .brand-group {
+        gap: 10px;
+      }
+
+      .brand-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+        border-radius: var(--radius-sm);
+      }
+
+      .brand-text h1 {
+        font-size: 0.95rem;
+        line-height: 1.25;
+      }
+
+      .brand-text p {
+        font-size: 0.7rem;
+      }
+
+      /* 4 Mobile Quick Action Buttons in 1 Row */
+      .header-actions {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        margin-top: 4px;
+      }
+
+      .header-actions .btn {
+        padding: 6px 4px;
+        font-size: 0.675rem;
+        justify-content: center;
+        flex-direction: column;
+        gap: 3px;
+        text-align: center;
+        border-radius: var(--radius-sm);
+        white-space: nowrap;
+      }
+
+      .header-actions .btn svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      /* Stat Cards: 2-Column Mobile Ergonomics */
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .stats-grid .card:nth-child(1) {
+        grid-column: span 2;
+        padding: 16px;
+      }
+
+      .stats-grid .card:nth-child(4) {
+        grid-column: span 2;
+        padding: 16px;
+      }
+
+      .card {
+        padding: 12px;
+        border-radius: var(--radius-md);
+      }
+
+      .card-val {
+        font-size: 1.45rem;
+      }
+
+      .card-label {
+        font-size: 0.725rem;
+      }
+
+      .card-sub {
+        font-size: 0.7rem;
+      }
+
+      /* Strategy Section on Mobile */
+      .strategy-section {
+        padding: 16px 12px;
+        border-radius: var(--radius-md);
+        margin-top: 14px;
+      }
+
+      .strategy-head {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .strategy-title-grp h2 {
+        font-size: 1.05rem;
+      }
+
+      .target-pills {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        display: flex;
+        scrollbar-width: none;
+      }
+
+      .target-pills::-webkit-scrollbar {
+        display: none;
+      }
+
+      .target-pill-btn {
+        padding: 6px 10px;
+        font-size: 0.725rem;
+        flex-shrink: 0;
+      }
+
+      .progress-banner {
+        padding: 14px 12px;
+      }
+
+      .progress-stats-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .progress-stats-row .prog-metric:nth-child(1) {
+        grid-column: span 2;
+      }
+
+      .progress-stats-row .prog-metric:nth-child(2) {
+        text-align: left !important;
+      }
+
+      .progress-stats-row .prog-metric:nth-child(3) {
+        text-align: right !important;
+      }
+
+      .prog-val {
+        font-size: 1.35rem;
+      }
+
+      .progress-labels {
+        flex-direction: column;
+        gap: 2px;
+        font-size: 0.675rem;
+      }
+
+      .decision-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px;
+        gap: 8px;
+        font-size: 0.775rem;
+      }
+
+      .indicators-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .indicator-box {
+        padding: 14px;
+      }
+
+      .ind-val {
+        font-size: 1.25rem;
+      }
+
+      .sub-card {
+        padding: 14px 10px;
+        overflow-x: auto;
+      }
+
+      .ladder-table th, .ladder-table td {
+        padding: 6px 6px;
+        font-size: 0.725rem;
+        white-space: nowrap;
+      }
+
+      /* Chart Section on Mobile */
+      .chart-section {
+        padding: 14px 10px;
+        border-radius: var(--radius-md);
+        margin-top: 14px;
+      }
+
+      .chart-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+
+      .chart-views {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        display: flex;
+        gap: 4px;
+      }
+
+      .chart-views::-webkit-scrollbar {
+        display: none;
+      }
+
+      .view-btn {
+        padding: 6px 10px;
+        font-size: 0.725rem;
+        flex-shrink: 0;
+      }
+
+      .time-filters {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        display: flex;
+        gap: 4px;
+      }
+
+      .time-filters::-webkit-scrollbar {
+        display: none;
+      }
+
+      .filter-btn {
+        padding: 5px 9px;
+        font-size: 0.7rem;
+        flex-shrink: 0;
+      }
+
+      .chart-container {
+        height: 280px !important;
+      }
+
+      .chart-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding-top: 12px;
+      }
+
+      .range-inputs {
+        display: flex;
+        width: 100%;
+        gap: 6px;
+      }
+
+      .range-input {
+        flex: 1;
+        min-width: 90px;
+        font-size: 0.725rem;
+        padding: 5px 8px;
+      }
+
+      .chart-toggles {
+        display: flex;
+        width: 100%;
+        gap: 6px;
+      }
+
+      .toggle-chip {
+        flex: 1;
+        justify-content: center;
+        padding: 6px 8px;
+        font-size: 0.7rem;
+        text-align: center;
+      }
+
+      .chart-insights {
+        font-size: 0.725rem;
+        gap: 8px;
+        justify-content: space-between;
+      }
+
+      /* Simulator on Mobile */
+      .sim-section {
+        margin-top: 14px;
+      }
+
+      .sim-card {
+        padding: 14px;
+      }
+
+      .sim-results {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      /* Table Section on Mobile */
+      .table-section {
+        padding: 14px 10px;
+        margin-top: 14px;
+      }
+
+      .table-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+
+      .table-controls {
+        width: 100%;
+      }
+
+      .search-input {
+        width: 100%;
+      }
+
+      table th, table td {
+        padding: 8px 6px;
+        font-size: 0.725rem;
+        white-space: nowrap;
+      }
+
+      .pagination {
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+        text-align: center;
+      }
+
+      .page-btns {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="brand-group">
+        <div class="brand-icon">K</div>
+        <div class="brand-text">
+          <h1>
+            Kenanga Shariah Growth Opportunities Fund
+            <span class="badge-shariah">Patuh Syariah</span>
+          </h1>
+          <p>Kod: <strong>IAST</strong> • ID: <strong>29</strong> • Pemantauan Pelaburan Harian (Dari 2025)</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn" id="btnOpenSync" title="Segerak Harga">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+          Segerak
+        </button>
+        <button class="btn" id="btnOpenUnits" title="Urus Akaun">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Akaun
+        </button>
+        <button class="btn btn-primary" id="btnExportCSV" title="Eksport Fail CSV">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          CSV
+        </button>
+        <a href="https://www.kenangainvestors.com.my/kenanga-shariah-growth-opportunity-fund" target="_blank" rel="noopener" class="btn" title="Buka Portal Rasmi Kenanga Investors">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Portal
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Stat Cards Grid -->
+    <section class="stats-grid">
+      <!-- Card 1: Total Portfolio Hero Card -->
+      <div class="card card-highlight">
+        <div class="card-top">
+          <span class="card-label">Jumlah Nilai Portfolio (Gabungan)</span>
+          <span class="card-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--emerald);">Akaun 1 + 2</span>
+        </div>
+        <div class="card-val" id="lblTotalVal">RM 0.00</div>
+        <div class="card-sub">
+          <span class="badge-diff" id="badgeTotalDiff">+RM 0.00</span>
+          <span>Jumlah: <strong id="lblTotalUnits" style="color:var(--text-main);">58,161.41</strong> unit</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Akaun 1 -->
+      <div class="card">
+        <div class="card-top">
+          <span class="card-label" id="lblAkaun1Title">Akaun 1</span>
+          <span class="card-tag" style="background: rgba(56, 189, 248, 0.15); color: var(--blue);" id="lblAkaun1Share">25.03%</span>
+        </div>
+        <div class="card-val" id="lblAkaun1Val">RM 0.00</div>
+        <div class="card-sub">
+          <span class="badge-diff" id="badgeAkaun1Diff">+RM 0.00</span>
+          <span><strong id="lblAkaun1Units" style="color:var(--text-main);">14,558.13</strong> u</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Akaun 2 -->
+      <div class="card">
+        <div class="card-top">
+          <span class="card-label" id="lblAkaun2Title">Akaun 2</span>
+          <span class="card-tag" style="background: rgba(168, 85, 247, 0.15); color: var(--purple);" id="lblAkaun2Share">74.97%</span>
+        </div>
+        <div class="card-val" id="lblAkaun2Val">RM 0.00</div>
+        <div class="card-sub">
+          <span class="badge-diff" id="badgeAkaun2Diff">+RM 0.00</span>
+          <span><strong id="lblAkaun2Units" style="color:var(--text-main);">43,603.28</strong> u</span>
+        </div>
+      </div>
+
+      <!-- Card 4: Latest NAV -->
+      <div class="card">
+        <div class="card-top">
+          <span class="card-label">Harga Seunit (NAV) Terkini</span>
+          <span class="card-tag" style="background: rgba(245, 158, 11, 0.15); color: var(--gold);" id="lblNavDate">-</span>
+        </div>
+        <div class="card-val" id="lblNavVal">RM 0.0000</div>
+        <div class="card-sub">
+          <span class="badge-diff" id="badgeNavDiff">+0.0000 (0.0%)</span>
+          <span>Min: <span id="lblMinNav" style="color:var(--text-main);">-</span> | Max: <span id="lblMaxNav" style="color:var(--text-main);">-</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         PELAN PENEBUSAN & WAKTU SESUAI JUAL (SASARAN RM 100,000+)
+         ============================================================== -->
+    <section class="strategy-section" id="strategySection">
+      <div class="strategy-head">
+        <div class="strategy-title-grp">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            Pelan Penebusan &amp; Waktu Jual (RM 100k+)
+          </h2>
+          <p>Panduan kuantitatif bila waktu terbaik *liquid* pelaburan berpandukan RSI, Purata Bergerak (SMA), dan Tempoh Penunaian (T+3 hingga T+7).</p>
+        </div>
+
+        <div class="target-pills">
+          <button class="target-pill-btn" data-target="95000">RM 95k</button>
+          <button class="target-pill-btn active" data-target="100000">RM 100k</button>
+          <button class="target-pill-btn" data-target="102000">RM 102k (Buffer)</button>
+          <button class="target-pill-btn" data-target="105000">RM 105k</button>
+          <button class="target-pill-btn" data-target="110000">RM 110k</button>
+        </div>
+      </div>
+
+      <!-- Progress Banner -->
+      <div class="progress-banner">
+        <div class="progress-stats-row">
+          <div class="prog-metric">
+            <span class="prog-lbl">Nilai Semasa Portfolio</span>
+            <span class="prog-val" id="stratCurrVal">RM 92,139.31</span>
+            <span class="prog-gap" style="color:var(--emerald);">Berasaskan NAV <strong id="stratCurrNav">RM 1.5842</strong></span>
+          </div>
+
+          <div class="prog-metric">
+            <span class="prog-lbl">Kemajuan Sasaran</span>
+            <span class="prog-val" id="stratProgressPct" style="color:var(--gold);">92.14%</span>
+            <span class="prog-gap" id="stratGapText" style="color:#FBBF24;">Baki: RM 7,860.69 (+8.53%)</span>
+          </div>
+
+          <div class="prog-metric">
+            <span class="prog-lbl">Sasaran Harga (NAV)</span>
+            <span class="prog-val" id="stratTargetNav" style="color:var(--gold);">RM 1.7194</span>
+            <span class="prog-gap" id="stratNavGap" style="color:var(--text-muted);">Perlu naik +RM 0.1352 seunit</span>
+          </div>
+        </div>
+
+        <!-- Progress Bar Track -->
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="stratProgressBar" style="width: 92.14%;"></div>
+        </div>
+
+        <div class="progress-labels">
+          <span>Paras Semasa: <strong id="stratBarCurrent">RM 92,139.31</strong></span>
+          <span>Puncak 2026: <strong id="stratBarPeak">RM 96,350.19</strong></span>
+          <span>Sasaran: <strong id="stratBarTarget" style="color:var(--gold);">RM 100,000.00</strong></span>
+        </div>
+      </div>
+
+      <!-- Dynamic Signal / Action Recommendation Banner -->
+      <div class="decision-banner" id="stratDecisionBanner">
+        <div class="decision-badge badge-hold" id="stratDecisionBadge">TAHAN &amp; TUNGGU (HOLD)</div>
+        <div class="decision-text" id="stratDecisionText">
+          Harga NAV semasa (RM 1.5842) masih dalam fasa konsolidasi selepas berundur dari paras puncak 1.6566. Sasaran RM 100,000 (NAV 1.7194) belum tercapai. Kekalkan pegangan dan tunggu momentum menaik berikutnya.
+        </div>
+      </div>
+
+      <!-- 3 Key Quantitative Indicators -->
+      <div class="indicators-grid">
+        <!-- 1: RSI -->
+        <div class="indicator-box">
+          <div class="ind-title">
+            <span>Momentum RSI (14 Hari)</span>
+            <span id="badgeRsiStatus" class="card-tag" style="background:rgba(56,189,248,0.15); color:var(--blue);">Neutral (44.8)</span>
+          </div>
+          <div class="ind-val" id="lblRsiVal">44.76</div>
+          <div class="rsi-track">
+            <div class="rsi-fill" id="rsiFillBar" style="width: 44.8%; background: var(--blue);"></div>
+          </div>
+          <div class="rsi-zones">
+            <span>0 (Murah)</span>
+            <span>30 (Oversold)</span>
+            <span>50 (Seimbang)</span>
+            <span>70 (Puncak/Jual)</span>
+            <span>100</span>
+          </div>
+          <div class="ind-desc" style="margin-top:8px;" id="lblRsiAdvice">
+            RSI di paras seimbang. <strong>Waktu terbaik untuk jual</strong> adalah apabila NAV mencapai sasaran RM 1.7194 <em>dan</em> RSI melonjak melebihi <strong>65 - 70</strong>.
+          </div>
+        </div>
+
+        <!-- 2: Moving Average Trend -->
+        <div class="indicator-box">
+          <div class="ind-title">
+            <span>Aliran Purata (SMA 20 &amp; 50)</span>
+            <span id="badgeSmaStatus" class="card-tag diff-up">Sokongan Kuat</span>
+          </div>
+          <div class="ind-val" id="lblSmaValues" style="font-size:1.15rem;">
+            SMA20: <span style="color:var(--blue);" id="lblSma20">1.6135</span> | SMA50: <span style="color:var(--emerald);" id="lblSma50">1.5830</span>
+          </div>
+          <div class="ind-desc" style="margin-top:10px;">
+            Harga semasa (<strong>RM 1.5842</strong>) disokong kuat oleh garisan <strong>SMA 50 (1.5830)</strong>. Selagi di atas paras ini, aliran menaik kekal utuh.
+          </div>
+        </div>
+
+        <!-- 3: Liquidation Lead Time Warning -->
+        <div class="indicator-box" style="border-color: rgba(245, 158, 11, 0.3);">
+          <div class="ind-title">
+            <span style="color:var(--gold);">Tempoh Penunaian</span>
+            <span class="card-tag" style="background:rgba(245,158,11,0.15); color:var(--gold);">T+3 hingga T+7</span>
+          </div>
+          <div class="ind-val" style="color:var(--gold);">3 - 7 Hari Bekerja</div>
+          <div class="ind-desc" style="margin-top:6px;">
+            Penunaian (redemption) Kenanga menggunakan <strong>Forward Pricing</strong> (harga dikunci pada 4:00 PM hari permohonan). Duit mengambil masa <strong>5-10 hari kalendar</strong> ke bank.
+          </div>
+        </div>
+      </div>
+
+      <!-- Subgrid: Milestone Ladder & Liquidation SOP -->
+      <div class="strategy-subgrid">
+        <!-- Milestone Ladder Table -->
+        <div class="sub-card">
+          <h4>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 5-5-3-5 3"/><path d="m17 19-5 3-5-3"/><path d="M2 12h20"/></svg>
+            Tangga Sasaran Nilai &amp; NAV
+          </h4>
+          <table class="ladder-table">
+            <thead>
+              <tr>
+                <th>Sasaran</th>
+                <th>NAV</th>
+                <th>Akaun 1</th>
+                <th>Akaun 2</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="ladderTableBody">
+              <!-- Dynamically rendered -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Liquidation SOP Checklist -->
+        <div class="sub-card">
+          <h4>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            Prosedur Jualan Bersih RM 100k+
+          </h4>
+          <ul class="steps-list">
+            <li class="step-item">
+              <div class="step-num">1</div>
+              <div>
+                <strong style="color:var(--text-main);">Buffer Keselamatan (+2% / RM 102k):</strong>
+                Sasarkan penebusan pada <strong>NAV 1.7538 (RM 102,000)</strong> agar nilai bersih dijamin $\ge$ RM 100k walaupun pasaran berayun sewaktu proses *Forward Pricing*.
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-num">2</div>
+              <div>
+                <strong style="color:var(--text-main);">Masa Hantar Arahan:</strong>
+                Hantar borang di portal <em>e-Access Kenanga</em> pada hari <strong>Isnin hingga Rabu sebelum jam 4.00 petang</strong> bagi mengelakkan wang tersangkut cuti hujung minggu.
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-num">3</div>
+              <div>
+                <strong style="color:var(--text-main);">Pilihan Jualan:</strong>
+                Tuan boleh menebus kesemua <strong>58,161.41 unit</strong> (RM 100k+ tunai penuh) atau tebus <strong>Akaun 2</strong> sahaja (~RM 75k tunai) sambil membiarkan Akaun 1 terus berkembang.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Chart Section -->
+    <section class="chart-section">
+      <div class="chart-header">
+        <div class="chart-views">
+          <button class="view-btn active" data-view="total">Gabungan (RM)</button>
+          <button class="view-btn" data-view="acc1">Akaun 1 (RM)</button>
+          <button class="view-btn" data-view="acc2">Akaun 2 (RM)</button>
+          <button class="view-btn" data-view="both">Perbandingan Akaun 1 &amp; 2</button>
+          <button class="view-btn" data-view="nav">Harga Seunit (NAV)</button>
+        </div>
+
+        <div class="time-filters">
+          <button class="filter-btn active" data-range="all">Semua</button>
+          <button class="filter-btn" data-range="2026">2026</button>
+          <button class="filter-btn" data-range="2025">2025</button>
+          <button class="filter-btn" data-range="1y">1 Tahun</button>
+          <button class="filter-btn" data-range="6m">6 Bulan</button>
+          <button class="filter-btn" data-range="3m">3 Bulan</button>
+          <button class="filter-btn" data-range="1m">1 Bulan</button>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="mainChart"></canvas>
+      </div>
+
+      <div class="chart-toolbar">
+        <div class="range-inputs">
+          <span style="font-size:0.75rem;">Dari:</span>
+          <input type="date" id="inputDateFrom" class="range-input">
+          <span style="font-size:0.75rem;">Hingga:</span>
+          <input type="date" id="inputDateTo" class="range-input">
+          <button class="btn" id="btnApplyDateFilter" style="padding: 5px 8px; font-size: 0.725rem;">Guna</button>
+          <button class="btn" id="btnResetDateFilter" style="padding: 5px 8px; font-size: 0.725rem;">Reset</button>
+        </div>
+
+        <div class="chart-toggles">
+          <button class="toggle-chip active" id="btnToggleTargetLine">
+            <span>🎯</span> Sasaran RM 100k
+          </button>
+          <button class="toggle-chip" id="btnToggleSMA">
+            <span>📈</span> SMA 20 &amp; 50
+          </button>
+        </div>
+
+        <div class="chart-insights" id="chartInsights">
+          <div class="insight-item">Perubahan: <span id="insPeriodChange">+RM 0.00 (+0.0%)</span></div>
+          <div class="insight-item">Tertinggi: <span id="insPeriodHigh">RM 0.00</span></div>
+          <div class="insight-item">Terendah: <span id="insPeriodLow">RM 0.00</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Simulator & Portfolio Split -->
+    <section class="sim-section">
+      <!-- What-if Simulator -->
+      <div class="sim-card">
+        <h3>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold);"><circle cx="12" cy="12" r="10"/><path d="m10 15 5-3-5-3v6Z"/></svg>
+          Kalkulator Sasaran Nilai (What-If)
+        </h3>
+        <p>Lihat unjuran nilai pelaburan sekiranya harga NAV mencapai paras sasaran tertentu.</p>
+        
+        <div class="slider-group">
+          <div class="slider-labels">
+            <span style="font-size:0.75rem; color:var(--text-muted);">Sasaran Harga Seunit (NAV):</span>
+            <span class="slider-target" id="lblSimTargetNav">RM 1.7000</span>
+          </div>
+          <input type="range" class="slider" id="simSlider" min="1.2000" max="2.5000" step="0.0050" value="1.7000">
+        </div>
+
+        <div class="sim-results">
+          <div class="sim-res-box">
+            <div class="sim-res-lbl">Akaun 1</div>
+            <div class="sim-res-val" id="lblSimAcc1Val">RM 24,748.82</div>
+            <div class="sim-res-gain" id="lblSimAcc1Gain">+RM 1,685.83</div>
+          </div>
+          <div class="sim-res-box">
+            <div class="sim-res-lbl">Akaun 2</div>
+            <div class="sim-res-val" id="lblSimAcc2Val">RM 74,125.58</div>
+            <div class="sim-res-gain" id="lblSimAcc2Gain">+RM 5,049.26</div>
+          </div>
+          <div class="sim-res-box" style="border-color: rgba(245, 158, 11, 0.3);">
+            <div class="sim-res-lbl">Jumlah Gabungan</div>
+            <div class="sim-res-val" id="lblSimTotalVal" style="color:var(--gold);">RM 98,874.40</div>
+            <div class="sim-res-gain" id="lblSimTotalGain" style="color:var(--gold);">+RM 6,735.09</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Analysis & Summary -->
+      <div class="sim-card">
+        <h3>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--emerald);"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Profil Taburan &amp; Kekuatan Pelaburan
+        </h3>
+        <p>Pecahan ekuiti portfolio mengikut pegangan akaun dan statistik pulangan 2025–2026.</p>
+
+        <div style="display:flex; flex-direction:column; gap:12px; margin-top:8px;">
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:0.775rem; margin-bottom:6px;">
+              <span>Akaun 1 (<strong id="lblBarAcc1Units">14,558.13</strong> u)</span>
+              <span id="lblBarAcc1Pct" style="font-weight:700; color:var(--blue);">25.03%</span>
+            </div>
+            <div style="height:8px; background:var(--bg-surface); border-radius:var(--radius-full); overflow:hidden; display:flex;">
+              <div id="barAcc1" style="width:25.03%; background:var(--blue); transition: width 0.3s ease;"></div>
+              <div id="barAcc2" style="width:74.97%; background:var(--purple); transition: width 0.3s ease;"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:0.775rem; margin-top:6px;">
+              <span>Akaun 2 (<strong id="lblBarAcc2Units">43,603.28</strong> u)</span>
+              <span id="lblBarAcc2Pct" style="font-weight:700; color:var(--purple);">74.97%</span>
+            </div>
+          </div>
+
+          <div style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:10px; font-size:0.75rem;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+              <span style="color:var(--text-muted);">Asal Terendah (Apr 2025 @ 1.1843):</span>
+              <strong id="lblMinPortfolioVal">RM 68,880.56</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+              <span style="color:var(--text-muted);">Puncak 2026 (Okt 2026 @ 1.6566):</span>
+              <strong id="lblMaxPortfolioVal">RM 96,350.19</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="color:var(--text-muted);">Kenaikan dari Terendah:</span>
+              <strong style="color:var(--emerald);" id="lblGrowthFromLowest">+33.77% (+RM 23,258.75)</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Historical Data Table -->
+    <section class="table-section">
+      <div class="table-header">
+        <div class="table-title">
+          <h3>Jadual Sejarah Harga Harian (NAV)</h3>
+          <p>Rekod terperinci nilai aset bersih dan penilaian portfolio mengikut tarikh.</p>
+        </div>
+        <div class="table-controls">
+          <input type="text" id="tableSearch" class="search-input" placeholder="Cari tarikh (cth: 2026-10)...">
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Tarikh</th>
+              <th>Harga NAV (RM)</th>
+              <th>Perubahan Harian</th>
+              <th>Nilai Akaun 1 (RM)</th>
+              <th>Nilai Akaun 2 (RM)</th>
+              <th>Jumlah Nilai (RM)</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Injected by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <span id="lblPageInfo">Memaparkan 1 - 15 daripada 437 rekod</span>
+        <div class="page-btns">
+          <button class="btn" id="btnPrevPage" style="padding:4px 8px; font-size:0.75rem;">&laquo; Sebelum</button>
+          <button class="btn" id="btnNextPage" style="padding:4px 8px; font-size:0.75rem;">Seterusnya &raquo;</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal: Units & Account Settings -->
+  <div class="modal-backdrop" id="modalUnits">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>Tetapan Akaun &amp; Unit</h3>
+        <button class="modal-close" id="btnCloseUnits">&times;</button>
+      </div>
+      <div class="form-group">
+        <label for="inputAcc1Name">Nama Akaun 1</label>
+        <input type="text" id="inputAcc1Name" class="form-input" value="Akaun 1">
+      </div>
+      <div class="form-group">
+        <label for="inputAcc1Units">Jumlah Unit Akaun 1</label>
+        <input type="number" step="0.01" id="inputAcc1Units" class="form-input" value="14558.13">
+        <div class="form-help">Unit asal: 14,558.13</div>
+      </div>
+      <div class="form-group">
+        <label for="inputAcc2Name">Nama Akaun 2</label>
+        <input type="text" id="inputAcc2Name" class="form-input" value="Akaun 2">
+      </div>
+      <div class="form-group">
+        <label for="inputAcc2Units">Jumlah Unit Akaun 2</label>
+        <input type="number" step="0.01" id="inputAcc2Units" class="form-input" value="43603.28">
+        <div class="form-help">Unit asal: 43,603.28</div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn" id="btnResetUnits">Pulihkan Asal</button>
+        <button class="btn btn-primary" id="btnSaveUnits">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Sync API / Add Record -->
+  <div class="modal-backdrop" id="modalSync">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>Segerak &amp; Kemaskini NAV Terkini</h3>
+        <button class="modal-close" id="btnCloseSync">&times;</button>
+      </div>
+
+      <div class="api-status-box">
+        <div class="status-dot"></div>
+        <div>
+          <strong>API Kenanga Investors (ID: 29)</strong>
+          <div style="font-size:0.725rem; color:var(--text-dim);">Titik akhir: /fund/fund/ajax-get-fund-nav</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <button class="btn btn-primary" id="btnFetchLive" style="width:100%; justify-content:center; padding:9px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+          Tarik Data Terkini dari API Kenanga
+        </button>
+        <div id="syncFeedback" style="font-size:0.725rem; color:var(--text-muted); margin-top:6px; text-align:center;"></div>
+      </div>
+
+      <div style="border-top:1px solid var(--border-subtle); padding-top:14px;">
+        <h4 style="font-size:0.825rem; margin-bottom:10px; color:var(--text-main);">Atau Masukkan NAV Hari Ini Secara Manual:</h4>
+        <div class="form-group">
+          <label for="inputManualDate">Tarikh Penilaian</label>
+          <input type="date" id="inputManualDate" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="inputManualNav">Harga Seunit NAV (RM)</label>
+          <input type="number" step="0.0001" id="inputManualNav" class="form-input" placeholder="cth: 1.5842">
+        </div>
+        <button class="btn" id="btnAddManualRecord" style="width:100%; justify-content:center;">
+          + Tambah / Kemaskini Rekod
+        </button>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn" id="btnResetAllData" style="color:var(--rose);">Reset ke Data Asal (437 Rekod)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toastNotification">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <span id="toastMsg">Maklumat berjaya dikemas kini.</span>
+  </div>
+
+  <script>
+    // Embedded initial data directly from Kenanga Investors (437 records from 2025-01-02 to 2026-10-16)
+    const EMBEDDED_NAV_DATA = [{"d":"2025-01-02","n":1.5449,"c":0.0,"p":0.0},{"d":"2025-01-03","n":1.5417,"c":-0.0032,"p":-0.21},{"d":"2025-01-06","n":1.5504,"c":0.0087,"p":0.56},{"d":"2025-01-07","n":1.5645,"c":0.0141,"p":0.91},{"d":"2025-01-08","n":1.5512,"c":-0.0133,"p":-0.85},{"d":"2025-01-09","n":1.5188,"c":-0.0324,"p":-2.09},{"d":"2025-01-10","n":1.5152,"c":-0.0036,"p":-0.24},{"d":"2025-01-13","n":1.4933,"c":-0.0219,"p":-1.45},{"d":"2025-01-14","n":1.4816,"c":-0.0117,"p":-0.78},{"d":"2025-01-15","n":1.4482,"c":-0.0334,"p":-2.25},{"d":"2025-01-16","n":1.4425,"c":-0.0057,"p":-0.39},{"d":"2025-01-17","n":1.4549,"c":0.0124,"p":0.86},{"d":"2025-01-20","n":1.4639,"c":0.009,"p":0.62},{"d":"2025-01-21","n":1.4817,"c":0.0178,"p":1.22},{"d":"2025-01-22","n":1.4741,"c":-0.0076,"p":-0.51},{"d":"2025-01-23","n":1.4616,"c":-0.0125,"p":-0.85},{"d":"2025-01-24","n":1.4512,"c":-0.0104,"p":-0.71},{"d":"2025-01-27","n":1.412,"c":-0.0392,"p":-2.7},{"d":"2025-01-28","n":1.4061,"c":-0.0059,"p":-0.42},{"d":"2025-01-31","n":1.4097,"c":0.0036,"p":0.26},{"d":"2025-02-03","n":1.4123,"c":0.0026,"p":0.18},{"d":"2025-02-04","n":1.4226,"c":0.0103,"p":0.73},{"d":"2025-02-05","n":1.4402,"c":0.0176,"p":1.24},{"d":"2025-02-06","n":1.4481,"c":0.0079,"p":0.55},{"d":"2025-02-07","n":1.4593,"c":0.0112,"p":0.77},{"d":"2025-02-10","n":1.4502,"c":-0.0091,"p":-0.62},{"d":"2025-02-12","n":1.449,"c":-0.0012,"p":-0.08},{"d":"2025-02-13","n":1.4486,"c":-0.0004,"p":-0.03},{"d":"2025-02-14","n":1.4423,"c":-0.0063,"p":-0.43},{"d":"2025-02-17","n":1.4335,"c":-0.0088,"p":-0.61},{"d":"2025-02-18","n":1.4169,"c":-0.0166,"p":-1.16},{"d":"2025-02-19","n":1.4034,"c":-0.0135,"p":-0.95},{"d":"2025-02-20","n":1.3993,"c":-0.0041,"p":-0.29},{"d":"2025-02-21","n":1.4141,"c":0.0148,"p":1.06},{"d":"2025-02-24","n":1.3946,"c":-0.0195,"p":-1.38},{"d":"2025-02-25","n":1.3717,"c":-0.0229,"p":-1.64},{"d":"2025-02-26","n":1.3772,"c":0.0055,"p":0.4},{"d":"2025-02-27","n":1.3887,"c":0.0115,"p":0.84},{"d":"2025-02-28","n":1.3613,"c":-0.0274,"p":-1.97},{"d":"2025-03-03","n":1.3485,"c":-0.0128,"p":-0.94},{"d":"2025-03-04","n":1.3152,"c":-0.0333,"p":-2.47},{"d":"2025-03-05","n":1.3233,"c":0.0081,"p":0.62},{"d":"2025-03-06","n":1.3244,"c":0.0011,"p":0.08},{"d":"2025-03-07","n":1.311,"c":-0.0134,"p":-1.01},{"d":"2025-03-10","n":1.2852,"c":-0.0258,"p":-1.97},{"d":"2025-03-11","n":1.2641,"c":-0.0211,"p":-1.64},{"d":"2025-03-12","n":1.251,"c":-0.0131,"p":-1.04},{"d":"2025-03-13","n":1.2837,"c":0.0327,"p":2.61},{"d":"2025-03-14","n":1.3003,"c":0.0166,"p":1.29},{"d":"2025-03-17","n":1.3152,"c":0.0149,"p":1.15},{"d":"2025-03-19","n":1.3142,"c":-0.001,"p":-0.08},{"d":"2025-03-20","n":1.3164,"c":0.0022,"p":0.17},{"d":"2025-03-21","n":1.3137,"c":-0.0027,"p":-0.21},{"d":"2025-03-24","n":1.304,"c":-0.0097,"p":-0.74},{"d":"2025-03-25","n":1.3173,"c":0.0133,"p":1.02},{"d":"2025-03-26","n":1.3216,"c":0.0043,"p":0.33},{"d":"2025-03-27","n":1.3344,"c":0.0128,"p":0.97},{"d":"2025-03-28","n":1.3241,"c":-0.0103,"p":-0.77},{"d":"2025-04-02","n":1.313,"c":-0.0111,"p":-0.84},{"d":"2025-04-03","n":1.3071,"c":-0.0059,"p":-0.45},{"d":"2025-04-04","n":1.2793,"c":-0.0278,"p":-2.13},{"d":"2025-04-07","n":1.2009,"c":-0.0784,"p":-6.13},{"d":"2025-04-08","n":1.2109,"c":0.01,"p":0.83},{"d":"2025-04-09","n":1.1843,"c":-0.0266,"p":-2.2},{"d":"2025-04-10","n":1.2499,"c":0.0656,"p":5.54},{"d":"2025-04-11","n":1.2501,"c":0.0002,"p":0.02},{"d":"2025-04-14","n":1.2695,"c":0.0194,"p":1.55},{"d":"2025-04-15","n":1.2673,"c":-0.0022,"p":-0.17},{"d":"2025-04-16","n":1.2578,"c":-0.0095,"p":-0.75},{"d":"2025-04-17","n":1.2609,"c":0.0031,"p":0.25},{"d":"2025-04-18","n":1.2707,"c":0.0098,"p":0.78},{"d":"2025-04-21","n":1.2668,"c":-0.0039,"p":-0.31},{"d":"2025-04-22","n":1.2557,"c":-0.0111,"p":-0.88},{"d":"2025-04-23","n":1.2749,"c":0.0192,"p":1.53},{"d":"2025-04-24","n":1.2805,"c":0.0056,"p":0.44},{"d":"2025-04-25","n":1.297,"c":0.0165,"p":1.29},{"d":"2025-04-28","n":1.3042,"c":0.0072,"p":0.56},{"d":"2025-04-29","n":1.3019,"c":-0.0023,"p":-0.18},{"d":"2025-04-30","n":1.3093,"c":0.0074,"p":0.57},{"d":"2025-05-02","n":1.336,"c":0.0267,"p":2.04},{"d":"2025-05-05","n":1.3269,"c":-0.0091,"p":-0.68},{"d":"2025-05-06","n":1.3227,"c":-0.0042,"p":-0.32},{"d":"2025-05-07","n":1.338,"c":0.0153,"p":1.16},{"d":"2025-05-08","n":1.345,"c":0.007,"p":0.52},{"d":"2025-05-09","n":1.3469,"c":0.0019,"p":0.14},{"d":"2025-05-13","n":1.3773,"c":0.0304,"p":2.26},{"d":"2025-05-14","n":1.3902,"c":0.0129,"p":0.94},{"d":"2025-05-15","n":1.3841,"c":-0.0061,"p":-0.44},{"d":"2025-05-16","n":1.3746,"c":-0.0095,"p":-0.69},{"d":"2025-05-19","n":1.3503,"c":-0.0243,"p":-1.77},{"d":"2025-05-20","n":1.3505,"c":0.0002,"p":0.01},{"d":"2025-05-21","n":1.344,"c":-0.0065,"p":-0.48},{"d":"2025-05-22","n":1.3398,"c":-0.0042,"p":-0.31},{"d":"2025-05-23","n":1.3423,"c":0.0025,"p":0.19},{"d":"2025-05-26","n":1.3375,"c":-0.0048,"p":-0.36},{"d":"2025-05-27","n":1.3375,"c":0.0,"p":0.0},{"d":"2025-05-28","n":1.3439,"c":0.0064,"p":0.48},{"d":"2025-05-29","n":1.3468,"c":0.0029,"p":0.22},{"d":"2025-05-30","n":1.3377,"c":-0.0091,"p":-0.68},{"d":"2025-06-03","n":1.3299,"c":-0.0078,"p":-0.58},{"d":"2025-06-04","n":1.3329,"c":0.003,"p":0.23},{"d":"2025-06-05","n":1.3427,"c":0.0098,"p":0.74},{"d":"2025-06-06","n":1.3403,"c":-0.0024,"p":-0.18},{"d":"2025-06-09","n":1.3487,"c":0.0084,"p":0.63},{"d":"2025-06-10","n":1.3522,"c":0.0035,"p":0.26},{"d":"2025-06-11","n":1.3564,"c":0.0042,"p":0.31},{"d":"2025-06-12","n":1.3571,"c":0.0007,"p":0.05},{"d":"2025-06-13","n":1.3452,"c":-0.0119,"p":-0.88},{"d":"2025-06-16","n":1.3433,"c":-0.0019,"p":-0.14},{"d":"2025-06-17","n":1.3396,"c":-0.0037,"p":-0.28},{"d":"2025-06-18","n":1.3393,"c":-0.0003,"p":-0.02},{"d":"2025-06-19","n":1.3344,"c":-0.0049,"p":-0.37},{"d":"2025-06-20","n":1.3309,"c":-0.0035,"p":-0.26},{"d":"2025-06-23","n":1.3283,"c":-0.0026,"p":-0.2},{"d":"2025-06-24","n":1.3369,"c":0.0086,"p":0.65},{"d":"2025-06-25","n":1.3488,"c":0.0119,"p":0.89},{"d":"2025-06-26","n":1.3518,"c":0.003,"p":0.22},{"d":"2025-06-30","n":1.3633,"c":0.0115,"p":0.85},{"d":"2025-07-01","n":1.3787,"c":0.0154,"p":1.13},{"d":"2025-07-02","n":1.3839,"c":0.0052,"p":0.38},{"d":"2025-07-03","n":1.3953,"c":0.0114,"p":0.82},{"d":"2025-07-04","n":1.392,"c":-0.0033,"p":-0.24},{"d":"2025-07-07","n":1.3789,"c":-0.0131,"p":-0.94},{"d":"2025-07-08","n":1.3673,"c":-0.0116,"p":-0.84},{"d":"2025-07-09","n":1.3768,"c":0.0095,"p":0.69},{"d":"2025-07-10","n":1.3817,"c":0.0049,"p":0.36},{"d":"2025-07-11","n":1.3903,"c":0.0086,"p":0.62},{"d":"2025-07-14","n":1.3919,"c":0.0016,"p":0.12},{"d":"2025-07-15","n":1.3851,"c":-0.0068,"p":-0.49},{"d":"2025-07-16","n":1.3799,"c":-0.0052,"p":-0.38},{"d":"2025-07-17","n":1.3889,"c":0.009,"p":0.65},{"d":"2025-07-18","n":1.3993,"c":0.0104,"p":0.75},{"d":"2025-07-21","n":1.3976,"c":-0.0017,"p":-0.12},{"d":"2025-07-22","n":1.3895,"c":-0.0081,"p":-0.58},{"d":"2025-07-23","n":1.3954,"c":0.0059,"p":0.42},{"d":"2025-07-24","n":1.3951,"c":-0.0003,"p":-0.02},{"d":"2025-07-25","n":1.3888,"c":-0.0063,"p":-0.45},{"d":"2025-07-28","n":1.3858,"c":-0.003,"p":-0.22},{"d":"2025-07-29","n":1.3817,"c":-0.0041,"p":-0.3},{"d":"2025-07-30","n":1.376,"c":-0.0057,"p":-0.41},{"d":"2025-07-31","n":1.3869,"c":0.0109,"p":0.79},{"d":"2025-08-01","n":1.3965,"c":0.0096,"p":0.69},{"d":"2025-08-04","n":1.3932,"c":-0.0033,"p":-0.24},{"d":"2025-08-05","n":1.4027,"c":0.0095,"p":0.68},{"d":"2025-08-06","n":1.3977,"c":-0.005,"p":-0.36},{"d":"2025-08-07","n":1.4027,"c":0.005,"p":0.36},{"d":"2025-08-08","n":1.4009,"c":-0.0018,"p":-0.13},{"d":"2025-08-11","n":1.4038,"c":0.0029,"p":0.21},{"d":"2025-08-12","n":1.4069,"c":0.0031,"p":0.22},{"d":"2025-08-13","n":1.4222,"c":0.0153,"p":1.09},{"d":"2025-08-14","n":1.4165,"c":-0.0057,"p":-0.4},{"d":"2025-08-15","n":1.4116,"c":-0.0049,"p":-0.35},{"d":"2025-08-18","n":1.416,"c":0.0044,"p":0.31},{"d":"2025-08-19","n":1.419,"c":0.003,"p":0.21},{"d":"2025-08-20","n":1.4066,"c":-0.0124,"p":-0.87},{"d":"2025-08-21","n":1.4022,"c":-0.0044,"p":-0.31},{"d":"2025-08-22","n":1.4045,"c":0.0023,"p":0.16},{"d":"2025-08-25","n":1.4155,"c":0.011,"p":0.78},{"d":"2025-08-26","n":1.4094,"c":-0.0061,"p":-0.43},{"d":"2025-08-27","n":1.4176,"c":0.0082,"p":0.58},{"d":"2025-08-28","n":1.4139,"c":-0.0037,"p":-0.26},{"d":"2025-08-29","n":1.4022,"c":-0.0117,"p":-0.83},{"d":"2025-09-02","n":1.396,"c":-0.0062,"p":-0.44},{"d":"2025-09-03","n":1.4101,"c":0.0141,"p":1.01},{"d":"2025-09-04","n":1.4085,"c":-0.0016,"p":-0.11},{"d":"2025-09-08","n":1.4108,"c":0.0023,"p":0.16},{"d":"2025-09-09","n":1.4122,"c":0.0014,"p":0.1},{"d":"2025-09-10","n":1.4139,"c":0.0017,"p":0.12},{"d":"2025-09-11","n":1.4211,"c":0.0072,"p":0.51},{"d":"2025-09-12","n":1.4344,"c":0.0133,"p":0.94},{"d":"2025-09-17","n":1.4366,"c":0.0022,"p":0.15},{"d":"2025-09-18","n":1.4381,"c":0.0015,"p":0.1},{"d":"2025-09-19","n":1.4478,"c":0.0097,"p":0.67},{"d":"2025-09-22","n":1.4533,"c":0.0055,"p":0.38},{"d":"2025-09-23","n":1.4565,"c":0.0032,"p":0.22},{"d":"2025-09-24","n":1.4573,"c":0.0008,"p":0.05},{"d":"2025-09-25","n":1.4564,"c":-0.0009,"p":-0.06},{"d":"2025-09-26","n":1.455,"c":-0.0014,"p":-0.1},{"d":"2025-09-29","n":1.4537,"c":-0.0013,"p":-0.09},{"d":"2025-09-30","n":1.4554,"c":0.0017,"p":0.12},{"d":"2025-10-01","n":1.4689,"c":0.0135,"p":0.93},{"d":"2025-10-02","n":1.4972,"c":0.0283,"p":1.93},{"d":"2025-10-03","n":1.4983,"c":0.0011,"p":0.07},{"d":"2025-10-06","n":1.4965,"c":-0.0018,"p":-0.12},{"d":"2025-10-07","n":1.4902,"c":-0.0063,"p":-0.42},{"d":"2025-10-08","n":1.4878,"c":-0.0024,"p":-0.16},{"d":"2025-10-09","n":1.5062,"c":0.0184,"p":1.24},{"d":"2025-10-10","n":1.4982,"c":-0.008,"p":-0.53},{"d":"2025-10-13","n":1.4939,"c":-0.0043,"p":-0.29},{"d":"2025-10-14","n":1.4795,"c":-0.0144,"p":-0.96},{"d":"2025-10-15","n":1.4901,"c":0.0106,"p":0.72},{"d":"2025-10-16","n":1.4927,"c":0.0026,"p":0.17},{"d":"2025-10-17","n":1.463,"c":-0.0297,"p":-1.99},{"d":"2025-10-21","n":1.477,"c":0.014,"p":0.96},{"d":"2025-10-22","n":1.4681,"c":-0.0089,"p":-0.6},{"d":"2025-10-23","n":1.4681,"c":0.0,"p":0.0},{"d":"2025-10-24","n":1.4727,"c":0.0046,"p":0.31},{"d":"2025-10-27","n":1.4781,"c":0.0054,"p":0.37},{"d":"2025-10-28","n":1.4702,"c":-0.0079,"p":-0.53},{"d":"2025-10-29","n":1.4734,"c":0.0032,"p":0.22},{"d":"2025-10-30","n":1.4647,"c":-0.0087,"p":-0.59},{"d":"2025-10-31","n":1.4666,"c":0.0019,"p":0.13},{"d":"2025-11-03","n":1.4637,"c":-0.0029,"p":-0.2},{"d":"2025-11-04","n":1.452,"c":-0.0117,"p":-0.8},{"d":"2025-11-05","n":1.4498,"c":-0.0022,"p":-0.15},{"d":"2025-11-06","n":1.4559,"c":0.0061,"p":0.42},{"d":"2025-11-07","n":1.4516,"c":-0.0043,"p":-0.3},{"d":"2025-11-10","n":1.4543,"c":0.0027,"p":0.19},{"d":"2025-11-11","n":1.4545,"c":0.0002,"p":0.01},{"d":"2025-11-12","n":1.4503,"c":-0.0042,"p":-0.29},{"d":"2025-11-13","n":1.4505,"c":0.0002,"p":0.01},{"d":"2025-11-14","n":1.4389,"c":-0.0116,"p":-0.8},{"d":"2025-11-17","n":1.4394,"c":0.0005,"p":0.03},{"d":"2025-11-18","n":1.4251,"c":-0.0143,"p":-0.99},{"d":"2025-11-19","n":1.4285,"c":0.0034,"p":0.24},{"d":"2025-11-20","n":1.438,"c":0.0095,"p":0.67},{"d":"2025-11-21","n":1.4278,"c":-0.0102,"p":-0.71},{"d":"2025-11-24","n":1.4306,"c":0.0028,"p":0.2},{"d":"2025-11-25","n":1.4335,"c":0.0029,"p":0.2},{"d":"2025-11-26","n":1.4289,"c":-0.0046,"p":-0.32},{"d":"2025-11-27","n":1.4263,"c":-0.0026,"p":-0.18},{"d":"2025-11-28","n":1.4094,"c":-0.0169,"p":-1.18},{"d":"2025-12-01","n":1.4066,"c":-0.0028,"p":-0.2},{"d":"2025-12-02","n":1.3956,"c":-0.011,"p":-0.78},{"d":"2025-12-03","n":1.3982,"c":0.0026,"p":0.19},{"d":"2025-12-04","n":1.4033,"c":0.0051,"p":0.36},{"d":"2025-12-05","n":1.4005,"c":-0.0028,"p":-0.2},{"d":"2025-12-08","n":1.3977,"c":-0.0028,"p":-0.2},{"d":"2025-12-09","n":1.4022,"c":0.0045,"p":0.32},{"d":"2025-12-10","n":1.4003,"c":-0.0019,"p":-0.14},{"d":"2025-12-11","n":1.4016,"c":0.0013,"p":0.09},{"d":"2025-12-12","n":1.4115,"c":0.0099,"p":0.71},{"d":"2025-12-15","n":1.4048,"c":-0.0067,"p":-0.47},{"d":"2025-12-16","n":1.4023,"c":-0.0025,"p":-0.18},{"d":"2025-12-17","n":1.4145,"c":0.0122,"p":0.87},{"d":"2025-12-18","n":1.4165,"c":0.002,"p":0.14},{"d":"2025-12-19","n":1.4293,"c":0.0128,"p":0.9},{"d":"2025-12-22","n":1.4318,"c":0.0025,"p":0.17},{"d":"2025-12-23","n":1.4353,"c":0.0035,"p":0.24},{"d":"2025-12-24","n":1.4357,"c":0.0004,"p":0.03},{"d":"2025-12-26","n":1.4324,"c":-0.0033,"p":-0.23},{"d":"2025-12-29","n":1.4311,"c":-0.0013,"p":-0.09},{"d":"2025-12-30","n":1.4321,"c":0.001,"p":0.07},{"d":"2025-12-31","n":1.4282,"c":-0.0039,"p":-0.27},{"d":"2026-01-02","n":1.424,"c":-0.0042,"p":-0.29},{"d":"2026-01-05","n":1.4323,"c":0.0083,"p":0.58},{"d":"2026-01-06","n":1.4331,"c":0.0008,"p":0.06},{"d":"2026-01-07","n":1.4356,"c":0.0025,"p":0.17},{"d":"2026-01-08","n":1.4402,"c":0.0046,"p":0.32},{"d":"2026-01-09","n":1.4478,"c":0.0076,"p":0.53},{"d":"2026-01-12","n":1.4505,"c":0.0027,"p":0.19},{"d":"2026-01-13","n":1.449,"c":-0.0015,"p":-0.1},{"d":"2026-01-14","n":1.4582,"c":0.0092,"p":0.63},{"d":"2026-01-15","n":1.4618,"c":0.0036,"p":0.25},{"d":"2026-01-16","n":1.4623,"c":0.0005,"p":0.03},{"d":"2026-01-19","n":1.4503,"c":-0.012,"p":-0.82},{"d":"2026-01-20","n":1.4396,"c":-0.0107,"p":-0.74},{"d":"2026-01-21","n":1.4471,"c":0.0075,"p":0.52},{"d":"2026-01-22","n":1.4512,"c":0.0041,"p":0.28},{"d":"2026-01-23","n":1.4485,"c":-0.0027,"p":-0.19},{"d":"2026-01-26","n":1.4526,"c":0.0041,"p":0.28},{"d":"2026-01-27","n":1.4586,"c":0.006,"p":0.41},{"d":"2026-01-28","n":1.4404,"c":-0.0182,"p":-1.25},{"d":"2026-01-29","n":1.4299,"c":-0.0105,"p":-0.73},{"d":"2026-01-30","n":1.4301,"c":0.0002,"p":0.01},{"d":"2026-02-03","n":1.4341,"c":0.004,"p":0.28},{"d":"2026-02-04","n":1.4324,"c":-0.0017,"p":-0.12},{"d":"2026-02-05","n":1.4072,"c":-0.0252,"p":-1.76},{"d":"2026-02-06","n":1.404,"c":-0.0032,"p":-0.23},{"d":"2026-02-09","n":1.4167,"c":0.0127,"p":0.9},{"d":"2026-02-10","n":1.416,"c":-0.0007,"p":-0.05},{"d":"2026-02-11","n":1.4131,"c":-0.0029,"p":-0.2},{"d":"2026-02-12","n":1.4115,"c":-0.0016,"p":-0.11},{"d":"2026-02-13","n":1.4046,"c":-0.0069,"p":-0.49},{"d":"2026-02-16","n":1.4119,"c":0.0073,"p":0.52},{"d":"2026-02-19","n":1.4326,"c":0.0207,"p":1.47},{"d":"2026-02-20","n":1.4268,"c":-0.0058,"p":-0.4},{"d":"2026-02-23","n":1.4329,"c":0.0061,"p":0.43},{"d":"2026-02-24","n":1.4272,"c":-0.0057,"p":-0.4},{"d":"2026-02-25","n":1.4286,"c":0.0014,"p":0.1},{"d":"2026-02-26","n":1.4188,"c":-0.0098,"p":-0.69},{"d":"2026-02-27","n":1.415,"c":-0.0038,"p":-0.27},{"d":"2026-03-02","n":1.3873,"c":-0.0277,"p":-1.96},{"d":"2026-03-03","n":1.3876,"c":0.0003,"p":0.02},{"d":"2026-03-04","n":1.3748,"c":-0.0128,"p":-0.92},{"d":"2026-03-05","n":1.3725,"c":-0.0023,"p":-0.17},{"d":"2026-03-06","n":1.3574,"c":-0.0151,"p":-1.1},{"d":"2026-03-09","n":1.3147,"c":-0.0427,"p":-3.15},{"d":"2026-03-10","n":1.3474,"c":0.0327,"p":2.49},{"d":"2026-03-11","n":1.3527,"c":0.0053,"p":0.39},{"d":"2026-03-12","n":1.3544,"c":0.0017,"p":0.13},{"d":"2026-03-13","n":1.3422,"c":-0.0122,"p":-0.9},{"d":"2026-03-16","n":1.3357,"c":-0.0065,"p":-0.48},{"d":"2026-03-17","n":1.3529,"c":0.0172,"p":1.29},{"d":"2026-03-18","n":1.3803,"c":0.0274,"p":2.03},{"d":"2026-03-19","n":1.3683,"c":-0.012,"p":-0.87},{"d":"2026-03-24","n":1.3556,"c":-0.0127,"p":-0.93},{"d":"2026-03-25","n":1.3631,"c":0.0075,"p":0.55},{"d":"2026-03-26","n":1.3643,"c":0.0012,"p":0.09},{"d":"2026-03-27","n":1.3719,"c":0.0076,"p":0.56},{"d":"2026-03-30","n":1.3384,"c":-0.0335,"p":-2.44},{"d":"2026-03-31","n":1.3305,"c":-0.0079,"p":-0.59},{"d":"2026-04-01","n":1.3576,"c":0.0271,"p":2.04},{"d":"2026-04-02","n":1.344,"c":-0.0136,"p":-1.0},{"d":"2026-04-03","n":1.353,"c":0.009,"p":0.67},{"d":"2026-04-06","n":1.3444,"c":-0.0086,"p":-0.64},{"d":"2026-04-07","n":1.3391,"c":-0.0053,"p":-0.39},{"d":"2026-04-08","n":1.3713,"c":0.0322,"p":2.4},{"d":"2026-04-09","n":1.3661,"c":-0.0052,"p":-0.38},{"d":"2026-04-10","n":1.3815,"c":0.0154,"p":1.13},{"d":"2026-04-13","n":1.375,"c":-0.0065,"p":-0.47},{"d":"2026-04-14","n":1.3912,"c":0.0162,"p":1.18},{"d":"2026-04-15","n":1.4067,"c":0.0155,"p":1.11},{"d":"2026-04-16","n":1.4191,"c":0.0124,"p":0.88},{"d":"2026-04-17","n":1.4246,"c":0.0055,"p":0.39},{"d":"2026-04-20","n":1.4246,"c":0.0,"p":0.0},{"d":"2026-04-21","n":1.4371,"c":0.0125,"p":0.88},{"d":"2026-04-22","n":1.4343,"c":-0.0028,"p":-0.19},{"d":"2026-04-23","n":1.4458,"c":0.0115,"p":0.8},{"d":"2026-04-24","n":1.4595,"c":0.0137,"p":0.95},{"d":"2026-04-27","n":1.464,"c":0.0045,"p":0.31},{"d":"2026-04-28","n":1.466,"c":0.002,"p":0.14},{"d":"2026-04-29","n":1.4647,"c":-0.0013,"p":-0.09},{"d":"2026-04-30","n":1.4548,"c":-0.0099,"p":-0.68},{"d":"2026-05-04","n":1.4707,"c":0.0159,"p":1.09},{"d":"2026-05-05","n":1.4732,"c":0.0025,"p":0.17},{"d":"2026-05-06","n":1.4852,"c":0.012,"p":0.81},{"d":"2026-05-07","n":1.4878,"c":0.0026,"p":0.18},{"d":"2026-05-08","n":1.4835,"c":-0.0043,"p":-0.29},{"d":"2026-05-11","n":1.4851,"c":0.0016,"p":0.11},{"d":"2026-05-12","n":1.4876,"c":0.0025,"p":0.17},{"d":"2026-05-13","n":1.4949,"c":0.0073,"p":0.49},{"d":"2026-05-14","n":1.5038,"c":0.0089,"p":0.6},{"d":"2026-05-15","n":1.4936,"c":-0.0102,"p":-0.68},{"d":"2026-05-18","n":1.4808,"c":-0.0128,"p":-0.86},{"d":"2026-05-19","n":1.4768,"c":-0.004,"p":-0.27},{"d":"2026-05-20","n":1.4694,"c":-0.0074,"p":-0.5},{"d":"2026-05-21","n":1.4738,"c":0.0044,"p":0.3},{"d":"2026-05-22","n":1.4885,"c":0.0147,"p":1.0},{"d":"2026-05-25","n":1.493,"c":0.0045,"p":0.3},{"d":"2026-05-26","n":1.48,"c":-0.013,"p":-0.87},{"d":"2026-05-28","n":1.4852,"c":0.0052,"p":0.35},{"d":"2026-05-29","n":1.5009,"c":0.0157,"p":1.06},{"d":"2026-06-03","n":1.4922,"c":-0.0087,"p":-0.58},{"d":"2026-06-04","n":1.4876,"c":-0.0046,"p":-0.31},{"d":"2026-06-05","n":1.4903,"c":0.0027,"p":0.18},{"d":"2026-06-08","n":1.4647,"c":-0.0256,"p":-1.72},{"d":"2026-06-09","n":1.4687,"c":0.004,"p":0.27},{"d":"2026-06-10","n":1.4633,"c":-0.0054,"p":-0.37},{"d":"2026-06-11","n":1.4714,"c":0.0081,"p":0.55},{"d":"2026-06-12","n":1.475,"c":0.0036,"p":0.24},{"d":"2026-06-15","n":1.511,"c":0.036,"p":2.44},{"d":"2026-06-16","n":1.5171,"c":0.0061,"p":0.4},{"d":"2026-06-18","n":1.514,"c":-0.0031,"p":-0.2},{"d":"2026-06-19","n":1.524,"c":0.01,"p":0.66},{"d":"2026-06-22","n":1.5169,"c":-0.0071,"p":-0.47},{"d":"2026-06-23","n":1.4874,"c":-0.0295,"p":-1.94},{"d":"2026-06-24","n":1.5087,"c":0.0213,"p":1.43},{"d":"2026-06-25","n":1.5111,"c":0.0024,"p":0.16},{"d":"2026-06-26","n":1.4922,"c":-0.0189,"p":-1.25},{"d":"2026-06-29","n":1.5068,"c":0.0146,"p":0.98},{"d":"2026-06-30","n":1.5138,"c":0.007,"p":0.46},{"d":"2026-07-01","n":1.5157,"c":0.0019,"p":0.13},{"d":"2026-07-02","n":1.5007,"c":-0.015,"p":-0.99},{"d":"2026-07-03","n":1.5039,"c":0.0032,"p":0.21},{"d":"2026-07-06","n":1.4969,"c":-0.007,"p":-0.47},{"d":"2026-07-07","n":1.4958,"c":-0.0011,"p":-0.07},{"d":"2026-07-08","n":1.4848,"c":-0.011,"p":-0.74},{"d":"2026-07-09","n":1.4936,"c":0.0088,"p":0.59},{"d":"2026-07-10","n":1.5001,"c":0.0065,"p":0.44},{"d":"2026-07-13","n":1.4879,"c":-0.0122,"p":-0.81},{"d":"2026-07-14","n":1.4903,"c":0.0024,"p":0.16},{"d":"2026-07-15","n":1.5083,"c":0.018,"p":1.21},{"d":"2026-07-16","n":1.5145,"c":0.0062,"p":0.41},{"d":"2026-07-17","n":1.4945,"c":-0.02,"p":-1.32},{"d":"2026-07-20","n":1.5101,"c":0.0156,"p":1.04},{"d":"2026-07-21","n":1.5285,"c":0.0184,"p":1.22},{"d":"2026-07-22","n":1.5202,"c":-0.0083,"p":-0.54},{"d":"2026-07-23","n":1.5177,"c":-0.0025,"p":-0.16},{"d":"2026-07-24","n":1.5117,"c":-0.006,"p":-0.4},{"d":"2026-07-27","n":1.5238,"c":0.0121,"p":0.8},{"d":"2026-07-28","n":1.5083,"c":-0.0155,"p":-1.02},{"d":"2026-07-29","n":1.5149,"c":0.0066,"p":0.44},{"d":"2026-07-30","n":1.5137,"c":-0.0012,"p":-0.08},{"d":"2026-07-31","n":1.5319,"c":0.0182,"p":1.2},{"d":"2026-08-03","n":1.5259,"c":-0.006,"p":-0.39},{"d":"2026-08-04","n":1.5404,"c":0.0145,"p":0.95},{"d":"2026-08-05","n":1.5563,"c":0.0159,"p":1.03},{"d":"2026-08-06","n":1.5674,"c":0.0111,"p":0.71},{"d":"2026-08-07","n":1.5674,"c":0.0,"p":0.0},{"d":"2026-08-10","n":1.5793,"c":0.0119,"p":0.76},{"d":"2026-08-11","n":1.5791,"c":-0.0002,"p":-0.01},{"d":"2026-08-12","n":1.5836,"c":0.0045,"p":0.28},{"d":"2026-08-13","n":1.5776,"c":-0.006,"p":-0.38},{"d":"2026-08-14","n":1.5729,"c":-0.0047,"p":-0.3},{"d":"2026-08-17","n":1.5757,"c":0.0028,"p":0.18},{"d":"2026-08-18","n":1.5743,"c":-0.0014,"p":-0.09},{"d":"2026-08-19","n":1.5608,"c":-0.0135,"p":-0.86},{"d":"2026-08-20","n":1.5669,"c":0.0061,"p":0.39},{"d":"2026-08-21","n":1.5583,"c":-0.0086,"p":-0.55},{"d":"2026-08-24","n":1.5487,"c":-0.0096,"p":-0.62},{"d":"2026-08-26","n":1.5702,"c":0.0215,"p":1.39},{"d":"2026-08-27","n":1.5799,"c":0.0097,"p":0.62},{"d":"2026-08-28","n":1.5753,"c":-0.0046,"p":-0.29},{"d":"2026-09-01","n":1.5468,"c":-0.0285,"p":-1.81},{"d":"2026-09-02","n":1.5359,"c":-0.0109,"p":-0.7},{"d":"2026-09-03","n":1.5535,"c":0.0176,"p":1.15},{"d":"2026-09-04","n":1.5452,"c":-0.0083,"p":-0.53},{"d":"2026-09-07","n":1.5507,"c":0.0055,"p":0.36},{"d":"2026-09-08","n":1.5691,"c":0.0184,"p":1.19},{"d":"2026-09-09","n":1.5829,"c":0.0138,"p":0.88},{"d":"2026-09-10","n":1.5805,"c":-0.0024,"p":-0.15},{"d":"2026-09-11","n":1.5572,"c":-0.0233,"p":-1.47},{"d":"2026-09-14","n":1.5414,"c":-0.0158,"p":-1.01},{"d":"2026-09-15","n":1.5287,"c":-0.0127,"p":-0.82},{"d":"2026-09-17","n":1.5399,"c":0.0112,"p":0.73},{"d":"2026-09-18","n":1.557,"c":0.0171,"p":1.11},{"d":"2026-09-21","n":1.5717,"c":0.0147,"p":0.94},{"d":"2026-09-22","n":1.5881,"c":0.0164,"p":1.04},{"d":"2026-09-23","n":1.5912,"c":0.0031,"p":0.2},{"d":"2026-09-24","n":1.5859,"c":-0.0053,"p":-0.33},{"d":"2026-09-25","n":1.6188,"c":0.0329,"p":2.07},{"d":"2026-09-28","n":1.607,"c":-0.0118,"p":-0.73},{"d":"2026-09-29","n":1.6187,"c":0.0117,"p":0.73},{"d":"2026-09-30","n":1.6173,"c":-0.0014,"p":-0.09},{"d":"2026-10-01","n":1.598,"c":-0.0193,"p":-1.19},{"d":"2026-10-02","n":1.6102,"c":0.0122,"p":0.76},{"d":"2026-10-05","n":1.6347,"c":0.0245,"p":1.52},{"d":"2026-10-06","n":1.6535,"c":0.0188,"p":1.15},{"d":"2026-10-07","n":1.6566,"c":0.0031,"p":0.19},{"d":"2026-10-08","n":1.6334,"c":-0.0232,"p":-1.4},{"d":"2026-10-09","n":1.6493,"c":0.0159,"p":0.97},{"d":"2026-10-12","n":1.6488,"c":-0.0005,"p":-0.03},{"d":"2026-10-13","n":1.6205,"c":-0.0283,"p":-1.72},{"d":"2026-10-14","n":1.6087,"c":-0.0118,"p":-0.73},{"d":"2026-10-15","n":1.573,"c":-0.0357,"p":-2.22},{"d":"2026-10-16","n":1.5842,"c":0.0112,"p":0.71}];
+
+    // State
+    const STATE = {
+      data: [],
+      units: {
+        acc1: 14558.13,
+        acc2: 43603.28,
+        name1: 'Akaun 1',
+        name2: 'Akaun 2'
+      },
+      view: 'total', // 'total', 'acc1', 'acc2', 'both', 'nav'
+      range: 'all',  // 'all', '2026', '2025', '1y', '6m', '3m', '1m', 'custom'
+      customFrom: null,
+      customTo: null,
+      targetVal: 100000.0,
+      showTargetLine: true,
+      showSMA: false,
+      currentPage: 1,
+      pageSize: 15,
+      searchQuery: '',
+      chartInstance: null
+    };
+
+    // Load from localStorage or use defaults
+    function initData() {
+      const savedUnits = localStorage.getItem('kenanga_units');
+      if (savedUnits) {
+        try {
+          STATE.units = JSON.parse(savedUnits);
+        } catch(e) {}
+      }
+
+      const savedData = localStorage.getItem('kenanga_nav_data');
+      if (savedData) {
+        try {
+          STATE.data = JSON.parse(savedData);
+        } catch(e) {
+          STATE.data = [...EMBEDDED_NAV_DATA];
+        }
+      } else {
+        STATE.data = [...EMBEDDED_NAV_DATA];
+      }
+
+      // Ensure sorted by date ascending
+      STATE.data.sort((a, b) => new Date(a.d) - new Date(b.d));
+    }
+
+    function saveUnits() {
+      localStorage.setItem('kenanga_units', JSON.stringify(STATE.units));
+    }
+
+    function saveData() {
+      localStorage.setItem('kenanga_nav_data', JSON.stringify(STATE.data));
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastMsg').innerText = msg;
+      toast.style.display = 'flex';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3200);
+    }
+
+    function formatRM(val, decimals = 2) {
+      return 'RM ' + Number(val).toLocaleString('en-MY', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+      });
+    }
+
+    function formatDateDisplay(dStr) {
+      if (!dStr) return '-';
+      const parts = dStr.split('-');
+      if (parts.length !== 3) return dStr;
+      const months = ['Jan', 'Feb', 'Mac', 'Apr', 'Mei', 'Jun', 'Jul', 'Ogo', 'Sep', 'Okt', 'Nov', 'Dis'];
+      const mIdx = parseInt(parts[1], 10) - 1;
+      return `${parseInt(parts[2], 10)} ${months[mIdx]} ${parts[0]}`;
+    }
+
+    // Compute RSI 14
+    function calculateRSI14(dataArray) {
+      if (dataArray.length < 15) return 50.0;
+      let gains = 0, losses = 0;
+      const period = 14;
+      const start = dataArray.length - period;
+      
+      for (let i = start; i < dataArray.length; i++) {
+        const diff = dataArray[i].n - dataArray[i - 1].n;
+        if (diff >= 0) gains += diff;
+        else losses += Math.abs(diff);
+      }
+
+      const avgGain = gains / period;
+      const avgLoss = losses / period;
+      if (avgLoss === 0) return 100.0;
+      const rs = avgGain / avgLoss;
+      return +(100 - (100 / (1 + rs))).toFixed(2);
+    }
+
+    // Compute Moving Averages for array
+    function computeSMA(dataArray, windowSize) {
+      const result = [];
+      for (let i = 0; i < dataArray.length; i++) {
+        if (i < windowSize - 1) {
+          result.push(null);
+        } else {
+          let sum = 0;
+          for (let j = 0; j < windowSize; j++) {
+            sum += dataArray[i - j].n;
+          }
+          result.push(+(sum / windowSize).toFixed(4));
+        }
+      }
+      return result;
+    }
+
+    // Update Top Stat Cards & Strategy Section
+    function renderStats() {
+      if (!STATE.data || STATE.data.length === 0) return;
+      
+      const latest = STATE.data[STATE.data.length - 1];
+      const prev = STATE.data.length > 1 ? STATE.data[STATE.data.length - 2] : latest;
+
+      const nav = latest.n;
+      const prevNav = prev.n;
+      const navDiff = nav - prevNav;
+      const navPct = prevNav ? (navDiff / prevNav) * 100 : 0;
+
+      const totalUnits = STATE.units.acc1 + STATE.units.acc2;
+      const acc1Val = STATE.units.acc1 * nav;
+      const acc2Val = STATE.units.acc2 * nav;
+      const totalVal = totalUnits * nav;
+
+      const prevTotalVal = totalUnits * prevNav;
+      const totalValDiff = totalVal - prevTotalVal;
+      const totalValPct = prevTotalVal ? (totalValDiff / prevTotalVal) * 100 : 0;
+
+      const prevAcc1Val = STATE.units.acc1 * prevNav;
+      const acc1Diff = acc1Val - prevAcc1Val;
+
+      const prevAcc2Val = STATE.units.acc2 * prevNav;
+      const acc2Diff = acc2Val - prevAcc2Val;
+
+      const acc1Share = totalUnits ? ((STATE.units.acc1 / totalUnits) * 100).toFixed(2) : 0;
+      const acc2Share = totalUnits ? ((STATE.units.acc2 / totalUnits) * 100).toFixed(2) : 0;
+
+      // Min & Max in entire dataset
+      const allNavs = STATE.data.map(d => d.n);
+      const minNav = Math.min(...allNavs);
+      const maxNav = Math.max(...allNavs);
+
+      // DOM Elements
+      document.getElementById('lblTotalVal').innerText = formatRM(totalVal);
+      document.getElementById('lblTotalUnits').innerText = totalUnits.toLocaleString('en-MY', {minimumFractionDigits: 2});
+      
+      const badgeTotal = document.getElementById('badgeTotalDiff');
+      badgeTotal.className = 'badge-diff ' + (totalValDiff >= 0 ? 'diff-up' : 'diff-down');
+      badgeTotal.innerText = `${totalValDiff >= 0 ? '+' : ''}${formatRM(totalValDiff)} (${totalValPct.toFixed(2)}%)`;
+
+      // Akaun 1
+      document.getElementById('lblAkaun1Title').innerText = STATE.units.name1;
+      document.getElementById('lblAkaun1Val').innerText = formatRM(acc1Val);
+      document.getElementById('lblAkaun1Units').innerText = STATE.units.acc1.toLocaleString('en-MY', {minimumFractionDigits: 2});
+      document.getElementById('lblAkaun1Share').innerText = acc1Share + '%';
+      const badgeA1 = document.getElementById('badgeAkaun1Diff');
+      badgeA1.className = 'badge-diff ' + (acc1Diff >= 0 ? 'diff-up' : 'diff-down');
+      badgeA1.innerText = `${acc1Diff >= 0 ? '+' : ''}${formatRM(acc1Diff)}`;
+
+      // Akaun 2
+      document.getElementById('lblAkaun2Title').innerText = STATE.units.name2;
+      document.getElementById('lblAkaun2Val').innerText = formatRM(acc2Val);
+      document.getElementById('lblAkaun2Units').innerText = STATE.units.acc2.toLocaleString('en-MY', {minimumFractionDigits: 2});
+      document.getElementById('lblAkaun2Share').innerText = acc2Share + '%';
+      const badgeA2 = document.getElementById('badgeAkaun2Diff');
+      badgeA2.className = 'badge-diff ' + (acc2Diff >= 0 ? 'diff-up' : 'diff-down');
+      badgeA2.innerText = `${acc2Diff >= 0 ? '+' : ''}${formatRM(acc2Diff)}`;
+
+      // NAV Card
+      document.getElementById('lblNavVal').innerText = formatRM(nav, 4);
+      document.getElementById('lblNavDate').innerText = formatDateDisplay(latest.d);
+      document.getElementById('lblMinNav').innerText = formatRM(minNav, 4);
+      document.getElementById('lblMaxNav').innerText = formatRM(maxNav, 4);
+      const badgeNav = document.getElementById('badgeNavDiff');
+      badgeNav.className = 'badge-diff ' + (navDiff >= 0 ? 'diff-up' : 'diff-down');
+      badgeNav.innerText = `${navDiff >= 0 ? '+' : ''}${navDiff.toFixed(4)} (${navPct.toFixed(2)}%)`;
+
+      // Taburan Card
+      document.getElementById('lblBarAcc1Units').innerText = STATE.units.acc1.toLocaleString('en-MY', {minimumFractionDigits: 2});
+      document.getElementById('lblBarAcc2Units').innerText = STATE.units.acc2.toLocaleString('en-MY', {minimumFractionDigits: 2});
+      document.getElementById('lblBarAcc1Pct').innerText = acc1Share + '%';
+      document.getElementById('lblBarAcc2Pct').innerText = acc2Share + '%';
+      document.getElementById('barAcc1').style.width = acc1Share + '%';
+      document.getElementById('barAcc2').style.width = acc2Share + '%';
+
+      const minPortfolioVal = totalUnits * minNav;
+      const maxPortfolioVal = totalUnits * maxNav;
+      document.getElementById('lblMinPortfolioVal').innerText = formatRM(minPortfolioVal);
+      document.getElementById('lblMaxPortfolioVal').innerText = formatRM(maxPortfolioVal);
+      const growthFromMin = minPortfolioVal ? ((totalVal - minPortfolioVal) / minPortfolioVal) * 100 : 0;
+      document.getElementById('lblGrowthFromLowest').innerText = `+${growthFromMin.toFixed(2)}% (+${formatRM(totalVal - minPortfolioVal)})`;
+
+      // Update simulator defaults
+      updateSimulator(parseFloat(document.getElementById('simSlider').value));
+
+      // Render Strategy Section
+      renderStrategySection(totalVal, nav, totalUnits, minNav, maxNav);
+    }
+
+    // Render Strategy Section (Sasaran RM 100k+)
+    function renderStrategySection(currVal, currNav, totalUnits, minNav, maxNav) {
+      const targetVal = STATE.targetVal;
+      const targetNav = targetVal / totalUnits;
+      const gapVal = targetVal - currVal;
+      const gapPct = (gapVal / currVal) * 100;
+      const progress = Math.min(100, Math.max(0, (currVal / targetVal) * 100));
+
+      // Progress Banner Elements
+      document.getElementById('stratCurrVal').innerText = formatRM(currVal);
+      document.getElementById('stratCurrNav').innerText = formatRM(currNav, 4);
+      document.getElementById('stratProgressPct').innerText = progress.toFixed(2) + '%';
+      document.getElementById('stratTargetNav').innerText = formatRM(targetNav, 4);
+      
+      const navGap = targetNav - currNav;
+      if (gapVal > 0) {
+        document.getElementById('stratGapText').innerHTML = `Baki Sasaran: <strong>${formatRM(gapVal)} (+${gapPct.toFixed(2)}%)</strong>`;
+        document.getElementById('stratGapText').style.color = '#FBBF24';
+        document.getElementById('stratNavGap').innerText = `Perlu naik +${formatRM(navGap, 4)} seunit`;
+      } else {
+        document.getElementById('stratGapText').innerHTML = `<strong style="color:var(--emerald);">MELEPASI SASARAN (+${formatRM(Math.abs(gapVal))})</strong>`;
+        document.getElementById('stratNavGap').innerText = `Melebihi sasaran seunit (+${formatRM(Math.abs(navGap), 4)})`;
+      }
+
+      document.getElementById('stratProgressBar').style.width = progress.toFixed(2) + '%';
+      document.getElementById('stratBarCurrent').innerText = formatRM(currVal);
+      document.getElementById('stratBarPeak').innerText = formatRM(totalUnits * maxNav);
+      document.getElementById('stratBarTarget').innerText = formatRM(targetVal);
+
+      // Quantitative Indicators: RSI 14
+      const rsi14 = calculateRSI14(STATE.data);
+      document.getElementById('lblRsiVal').innerText = rsi14.toFixed(2);
+      document.getElementById('rsiFillBar').style.width = Math.min(100, rsi14) + '%';
+
+      const rsiBadge = document.getElementById('badgeRsiStatus');
+      const rsiAdvice = document.getElementById('lblRsiAdvice');
+
+      if (rsi14 >= 70) {
+        rsiBadge.className = 'card-tag diff-up';
+        rsiBadge.innerText = 'Overbought (>70) Puncak';
+        document.getElementById('rsiFillBar').style.background = 'var(--emerald)';
+        rsiAdvice.innerHTML = `<strong>ZON OPTIMUM JUAL:</strong> RSI melebihi 70 menandakan belian agresif berada di kemuncak. Bersedia untuk menebus (liquid) sebelum pembetulan teknikal.`;
+      } else if (rsi14 >= 60) {
+        rsiBadge.className = 'card-tag';
+        rsiBadge.style.background = 'rgba(245,158,11,0.2)';
+        rsiBadge.style.color = 'var(--gold)';
+        document.getElementById('rsiFillBar').style.background = 'var(--gold)';
+        rsiAdvice.innerHTML = `<strong>MOMENTUM KUAT:</strong> RSI melebihi 60 menunjukkan lonjakan belian sihat. Pantau rapat jika nilai menghampiri RM 100k.`;
+      } else if (rsi14 <= 30) {
+        rsiBadge.className = 'card-tag diff-down';
+        rsiBadge.innerText = 'Oversold (<30) Lembah';
+        document.getElementById('rsiFillBar').style.background = 'var(--rose)';
+        rsiAdvice.innerHTML = `<strong>JANGAN JUAL:</strong> Harga berada di zon diskaun/terlebih jual. Sebarang penjualan waktu ini berisiko rugi sebelum melantun naik.`;
+      } else {
+        rsiBadge.className = 'card-tag';
+        rsiBadge.style.background = 'rgba(56,189,248,0.15)';
+        rsiBadge.style.color = 'var(--blue)';
+        document.getElementById('rsiFillBar').style.background = 'var(--blue)';
+        rsiAdvice.innerHTML = `RSI di paras seimbang (${rsi14.toFixed(1)}). Waktu terbaik untuk jual adalah apabila NAV mencapai sasaran <strong>${formatRM(targetNav, 4)}</strong> dan RSI melepasi <strong>65 - 70</strong>.`;
+      }
+
+      // Quantitative Indicators: SMA 20 & SMA 50
+      const navSeries = STATE.data.map(d => d.n);
+      const last20 = navSeries.slice(-20);
+      const last50 = navSeries.slice(-50);
+      const sma20 = last20.length ? (last20.reduce((a, b) => a + b, 0) / last20.length) : currNav;
+      const sma50 = last50.length ? (last50.reduce((a, b) => a + b, 0) / last50.length) : currNav;
+
+      document.getElementById('lblSma20').innerText = sma20.toFixed(4);
+      document.getElementById('lblSma50').innerText = sma50.toFixed(4);
+
+      // Decision & Action Recommendation Banner
+      const decBanner = document.getElementById('stratDecisionBanner');
+      const decBadge = document.getElementById('stratDecisionBadge');
+      const decText = document.getElementById('stratDecisionText');
+
+      if (currVal >= targetVal) {
+        if (rsi14 >= 65) {
+          decBanner.className = 'decision-banner decision-sell';
+          decBadge.className = 'decision-badge badge-sell';
+          decBadge.innerText = 'SIAP SEDIA JUAL / TAKE PROFIT';
+          decText.innerHTML = `<strong>TAHNIAH! Sasaran RM ${Number(targetVal).toLocaleString()} telah tercapai (Nilai: ${formatRM(currVal)})</strong> dan indikator RSI (${rsi14.toFixed(1)}) berada dalam zon momentum puncak. Dinasihatkan mengemukakan permohonan penebusan di portal <em>e-Access Kenanga</em> hari ini sebelum jam 4.00 petang.`;
+        } else {
+          decBanner.className = 'decision-banner decision-prep';
+          decBadge.className = 'decision-badge badge-prep';
+          decBadge.innerText = 'SASARAN TERCAPAI (PANTAU)';
+          decText.innerHTML = `Portfolio kini bernilai <strong>${formatRM(currVal)}</strong> (melepasi sasaran ${formatRM(targetVal)}). Walau bagaimanapun, momentum RSI (${rsi14.toFixed(1)}) masih stabil. Tuan boleh mula menjual sekarang atau meletakkan <em>trailing stop</em> di paras ${formatRM(targetVal)}.`;
+        }
+      } else if (progress >= 95) {
+        decBanner.className = 'decision-banner decision-prep';
+        decBadge.className = 'decision-badge badge-prep';
+        decBadge.innerText = 'AMARAN AWAL (HAMPIR CAPAI)';
+        decText.innerHTML = `Portfolio telah mencapai <strong>${progress.toFixed(2)}%</strong> daripada sasaran (${formatRM(currVal)} / ${formatRM(targetVal)}). Oleh kerana penebusan mengambil masa <strong>3 hingga 7 hari bekerja</strong>, pastikan butiran akaun bank di portal Kenanga telah sedia untuk tindakan pantas.`;
+      } else {
+        decBanner.className = 'decision-banner decision-hold';
+        decBadge.className = 'decision-badge badge-hold';
+        decBadge.innerText = 'TAHAN & TUNGGU (HOLD)';
+        decText.innerHTML = `Harga NAV semasa (<strong>${formatRM(currNav, 4)}</strong>) sedang berkonsolidasi di atas sokongan SMA 50 (${sma50.toFixed(4)}). Sasaran ${formatRM(targetVal)} (NAV ${targetNav.toFixed(4)}) berbaki <strong>${formatRM(gapVal)} (+${gapPct.toFixed(2)}%)</strong> lagi. Kekalkan pegangan (*Hold & Ride*).`;
+      }
+
+      // Render Milestone Ladder
+      renderMilestoneLadder(currNav, totalUnits);
+    }
+
+    // Render Milestone Ladder
+    function renderMilestoneLadder(currNav, totalUnits) {
+      const milestones = [
+        { label: 'RM 95,000', val: 95000 },
+        { label: 'RM 100,000 (Sasaran Utama)', val: 100000, primary: true },
+        { label: 'RM 102,000 (Buffer +2%)', val: 102000, buffer: true },
+        { label: 'RM 105,000 (Optimum)', val: 105000 },
+        { label: 'RM 110,000 (Maksima)', val: 110000 }
+      ];
+
+      const tbody = document.getElementById('ladderTableBody');
+      tbody.innerHTML = '';
+
+      milestones.forEach(m => {
+        const reqNav = m.val / totalUnits;
+        const a1 = STATE.units.acc1 * reqNav;
+        const a2 = STATE.units.acc2 * reqNav;
+        const diffNav = reqNav - currNav;
+        const diffPct = ((reqNav - currNav) / currNav) * 100;
+
+        const tr = document.createElement('tr');
+        if (m.val === STATE.targetVal) {
+          tr.className = 'ladder-target-row';
+        }
+
+        let statusText = '';
+        if (diffNav <= 0) {
+          statusText = `<span style="color:var(--emerald); font-weight:700;">✓ TERCAPAI</span>`;
+        } else {
+          statusText = `<span style="color:var(--gold);">+${diffPct.toFixed(2)}%</span>`;
+        }
+
+        tr.innerHTML = `
+          <td><strong>${m.label}</strong></td>
+          <td>${formatRM(reqNav, 4)}</td>
+          <td>${formatRM(a1)}</td>
+          <td>${formatRM(a2)}</td>
+          <td>${statusText}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Filter data by selected date range
+    function getFilteredData() {
+      if (!STATE.data || STATE.data.length === 0) return [];
+      
+      const lastDate = new Date(STATE.data[STATE.data.length - 1].d);
+      let startDate = null;
+      let endDate = null;
+
+      if (STATE.range === 'all') {
+        return STATE.data;
+      } else if (STATE.range === '2026') {
+        startDate = new Date('2026-01-01');
+        endDate = new Date('2026-12-31');
+      } else if (STATE.range === '2025') {
+        startDate = new Date('2025-01-01');
+        endDate = new Date('2025-12-31');
+      } else if (STATE.range === '1y') {
+        startDate = new Date(lastDate);
+        startDate.setFullYear(startDate.getFullYear() - 1);
+      } else if (STATE.range === '6m') {
+        startDate = new Date(lastDate);
+        startDate.setMonth(startDate.getMonth() - 6);
+      } else if (STATE.range === '3m') {
+        startDate = new Date(lastDate);
+        startDate.setMonth(startDate.getMonth() - 3);
+      } else if (STATE.range === '1m') {
+        startDate = new Date(lastDate);
+        startDate.setMonth(startDate.getMonth() - 1);
+      } else if (STATE.range === 'custom') {
+        if (STATE.customFrom) startDate = new Date(STATE.customFrom);
+        if (STATE.customTo) endDate = new Date(STATE.customTo);
+      }
+
+      return STATE.data.filter(item => {
+        const itemDate = new Date(item.d);
+        if (startDate && itemDate < startDate) return false;
+        if (endDate && itemDate > endDate) return false;
+        return true;
+      });
+    }
+
+    // Render / Update Chart.js
+    function renderChart() {
+      const filtered = getFilteredData();
+      if (filtered.length === 0) return;
+
+      const labels = filtered.map(d => formatDateDisplay(d.d));
+      const totalUnits = STATE.units.acc1 + STATE.units.acc2;
+
+      let datasets = [];
+      const view = STATE.view;
+
+      if (view === 'total') {
+        datasets = [{
+          label: 'Jumlah Nilai Portfolio (RM)',
+          data: filtered.map(d => (d.n * totalUnits).toFixed(2)),
+          borderColor: '#10B981',
+          backgroundColor: 'rgba(16, 185, 129, 0.12)',
+          borderWidth: 2.2,
+          pointRadius: filtered.length > 90 ? 0 : 3,
+          pointHoverRadius: 6,
+          fill: true,
+          tension: 0.25
+        }];
+
+        // Target Line for RM 100k
+        if (STATE.showTargetLine) {
+          datasets.push({
+            label: `Sasaran RM ${Number(STATE.targetVal).toLocaleString()}`,
+            data: filtered.map(() => STATE.targetVal),
+            borderColor: '#F59E0B',
+            borderWidth: 2,
+            borderDash: [6, 6],
+            pointRadius: 0,
+            fill: false,
+            tension: 0
+          });
+        }
+      } else if (view === 'acc1') {
+        datasets = [{
+          label: `${STATE.units.name1} (RM)`,
+          data: filtered.map(d => (d.n * STATE.units.acc1).toFixed(2)),
+          borderColor: '#38BDF8',
+          backgroundColor: 'rgba(56, 189, 248, 0.12)',
+          borderWidth: 2.2,
+          pointRadius: filtered.length > 90 ? 0 : 3,
+          pointHoverRadius: 6,
+          fill: true,
+          tension: 0.25
+        }];
+      } else if (view === 'acc2') {
+        datasets = [{
+          label: `${STATE.units.name2} (RM)`,
+          data: filtered.map(d => (d.n * STATE.units.acc2).toFixed(2)),
+          borderColor: '#A855F7',
+          backgroundColor: 'rgba(168, 85, 247, 0.12)',
+          borderWidth: 2.2,
+          pointRadius: filtered.length > 90 ? 0 : 3,
+          pointHoverRadius: 6,
+          fill: true,
+          tension: 0.25
+        }];
+      } else if (view === 'both') {
+        datasets = [
+          {
+            label: `${STATE.units.name1} (14,558.13 u)`,
+            data: filtered.map(d => (d.n * STATE.units.acc1).toFixed(2)),
+            borderColor: '#38BDF8',
+            backgroundColor: 'transparent',
+            borderWidth: 2,
+            pointRadius: 0,
+            pointHoverRadius: 5,
+            tension: 0.25
+          },
+          {
+            label: `${STATE.units.name2} (43,603.28 u)`,
+            data: filtered.map(d => (d.n * STATE.units.acc2).toFixed(2)),
+            borderColor: '#A855F7',
+            backgroundColor: 'transparent',
+            borderWidth: 2,
+            pointRadius: 0,
+            pointHoverRadius: 5,
+            tension: 0.25
+          }
+        ];
+      } else if (view === 'nav') {
+        datasets = [{
+          label: 'Harga Seunit NAV (RM)',
+          data: filtered.map(d => d.n),
+          borderColor: '#F59E0B',
+          backgroundColor: 'rgba(245, 158, 11, 0.12)',
+          borderWidth: 2.2,
+          pointRadius: filtered.length > 90 ? 0 : 3,
+          pointHoverRadius: 6,
+          fill: true,
+          tension: 0.25
+        }];
+
+        // Target Line on NAV
+        if (STATE.showTargetLine) {
+          const tNav = +(STATE.targetVal / totalUnits).toFixed(4);
+          datasets.push({
+            label: `Sasaran NAV RM ${tNav}`,
+            data: filtered.map(() => tNav),
+            borderColor: '#F59E0B',
+            borderWidth: 2,
+            borderDash: [6, 6],
+            pointRadius: 0,
+            fill: false,
+            tension: 0
+          });
+        }
+
+        // SMA Lines on NAV
+        if (STATE.showSMA) {
+          const fullSma20 = computeSMA(STATE.data, 20);
+          const fullSma50 = computeSMA(STATE.data, 50);
+
+          const mappedSma20 = filtered.map(item => {
+            const idx = STATE.data.findIndex(x => x.d === item.d);
+            return idx !== -1 ? fullSma20[idx] : null;
+          });
+          const mappedSma50 = filtered.map(item => {
+            const idx = STATE.data.findIndex(x => x.d === item.d);
+            return idx !== -1 ? fullSma50[idx] : null;
+          });
+
+          datasets.push({
+            label: 'SMA 20 (Purata 20 Hari)',
+            data: mappedSma20,
+            borderColor: '#38BDF8',
+            borderWidth: 1.5,
+            pointRadius: 0,
+            fill: false,
+            tension: 0.25
+          });
+
+          datasets.push({
+            label: 'SMA 50 (Purata 50 Hari)',
+            data: mappedSma50,
+            borderColor: '#10B981',
+            borderWidth: 1.5,
+            pointRadius: 0,
+            fill: false,
+            tension: 0.25
+          });
+        }
+      }
+
+      // Compute Period Insights
+      let valArray = [];
+      if (view === 'nav') {
+        valArray = filtered.map(d => d.n);
+      } else if (view === 'acc1') {
+        valArray = filtered.map(d => d.n * STATE.units.acc1);
+      } else if (view === 'acc2') {
+        valArray = filtered.map(d => d.n * STATE.units.acc2);
+      } else {
+        valArray = filtered.map(d => d.n * totalUnits);
+      }
+
+      const firstVal = valArray[0];
+      const lastVal = valArray[valArray.length - 1];
+      const diffVal = lastVal - firstVal;
+      const pctVal = firstVal ? (diffVal / firstVal) * 100 : 0;
+      const highVal = Math.max(...valArray);
+      const lowVal = Math.min(...valArray);
+
+      const isNav = view === 'nav';
+      const dec = isNav ? 4 : 2;
+      const prefix = diffVal >= 0 ? '+' : '';
+      document.getElementById('insPeriodChange').innerHTML = `<span style="color:${diffVal >= 0 ? 'var(--emerald)' : 'var(--rose)'}">${prefix}${formatRM(diffVal, dec)} (${prefix}${pctVal.toFixed(2)}%)</span>`;
+      document.getElementById('insPeriodHigh').innerText = formatRM(highVal, dec);
+      document.getElementById('insPeriodLow').innerText = formatRM(lowVal, dec);
+
+      const ctx = document.getElementById('mainChart').getContext('2d');
+
+      if (STATE.chartInstance) {
+        STATE.chartInstance.destroy();
+      }
+
+      const isMobile = window.innerWidth <= 768;
+
+      STATE.chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: datasets
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: 'index',
+            intersect: false,
+          },
+          plugins: {
+            legend: {
+              display: view === 'both' || STATE.showTargetLine || (view === 'nav' && STATE.showSMA),
+              labels: {
+                color: '#94A3B8',
+                font: { family: "'Plus Jakarta Sans', sans-serif", size: isMobile ? 10 : 12 },
+                boxWidth: isMobile ? 12 : 20,
+                padding: isMobile ? 8 : 10
+              }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(15, 23, 42, 0.95)',
+              titleColor: '#F8FAFC',
+              bodyColor: '#E2E8F0',
+              borderColor: 'rgba(255, 255, 255, 0.1)',
+              borderWidth: 1,
+              padding: isMobile ? 8 : 12,
+              boxPadding: 4,
+              usePointStyle: true,
+              callbacks: {
+                title: function(items) {
+                  const idx = items[0].dataIndex;
+                  return formatDateDisplay(filtered[idx].d);
+                },
+                label: function(item) {
+                  const val = parseFloat(item.raw);
+                  return ` ${item.dataset.label}: ${formatRM(val, isNav ? 4 : 2)}`;
+                },
+                afterBody: function(items) {
+                  const idx = items[0].dataIndex;
+                  const item = filtered[idx];
+                  const a1 = item.n * STATE.units.acc1;
+                  const a2 = item.n * STATE.units.acc2;
+                  const tot = item.n * (STATE.units.acc1 + STATE.units.acc2);
+                  const chg = item.c !== undefined ? item.c : 0;
+                  
+                  return [
+                    '------------------------',
+                    `NAV: ${formatRM(item.n, 4)} (${chg >= 0 ? '+' : ''}${chg.toFixed(4)})`,
+                    `${STATE.units.name1}: ${formatRM(a1)}`,
+                    `${STATE.units.name2}: ${formatRM(a2)}`,
+                    `Jumlah: ${formatRM(tot)}`
+                  ];
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: {
+                color: 'rgba(255, 255, 255, 0.04)',
+                drawBorder: false
+              },
+              ticks: {
+                color: '#64748B',
+                font: { family: "'JetBrains Mono', monospace", size: isMobile ? 9 : 11 },
+                maxTicksLimit: isMobile ? 6 : 12,
+                maxRotation: 0
+              }
+            },
+            y: {
+              position: 'right',
+              grid: {
+                color: 'rgba(255, 255, 255, 0.04)',
+                drawBorder: false
+              },
+              ticks: {
+                color: '#64748B',
+                font: { family: "'JetBrains Mono', monospace", size: isMobile ? 9 : 11 },
+                callback: function(value) {
+                  if (isNav) return value.toFixed(3);
+                  return isMobile ? (value / 1000).toFixed(0) + 'k' : 'RM ' + Number(value).toLocaleString();
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // Simulator logic
+    function updateSimulator(targetNav) {
+      const latestNav = STATE.data.length ? STATE.data[STATE.data.length - 1].n : 1.5842;
+      const u1 = STATE.units.acc1;
+      const u2 = STATE.units.acc2;
+      const uTot = u1 + u2;
+
+      const projA1 = u1 * targetNav;
+      const projA2 = u2 * targetNav;
+      const projTot = uTot * targetNav;
+
+      const currA1 = u1 * latestNav;
+      const currA2 = u2 * latestNav;
+      const currTot = uTot * latestNav;
+
+      const gainA1 = projA1 - currA1;
+      const gainA2 = projA2 - currA2;
+      const gainTot = projTot - currTot;
+
+      document.getElementById('lblSimTargetNav').innerText = formatRM(targetNav, 4);
+      document.getElementById('lblSimAcc1Val').innerText = formatRM(projA1);
+      document.getElementById('lblSimAcc2Val').innerText = formatRM(projA2);
+      document.getElementById('lblSimTotalVal').innerText = formatRM(projTot);
+
+      document.getElementById('lblSimAcc1Gain').innerText = `${gainA1 >= 0 ? '+' : ''}${formatRM(gainA1)}`;
+      document.getElementById('lblSimAcc1Gain').style.color = gainA1 >= 0 ? 'var(--emerald)' : 'var(--rose)';
+
+      document.getElementById('lblSimAcc2Gain').innerText = `${gainA2 >= 0 ? '+' : ''}${formatRM(gainA2)}`;
+      document.getElementById('lblSimAcc2Gain').style.color = gainA2 >= 0 ? 'var(--emerald)' : 'var(--rose)';
+
+      document.getElementById('lblSimTotalGain').innerText = `${gainTot >= 0 ? '+' : ''}${formatRM(gainTot)}`;
+      document.getElementById('lblSimTotalGain').style.color = gainTot >= 0 ? 'var(--gold)' : 'var(--rose)';
+    }
+
+    // Table rendering with pagination
+    function renderTable() {
+      const query = STATE.searchQuery.toLowerCase().trim();
+      let filtered = [...STATE.data].reverse(); // latest first
+
+      if (query) {
+        filtered = filtered.filter(item => item.d.toLowerCase().includes(query) || item.n.toString().includes(query));
+      }
+
+      const totalItems = filtered.length;
+      const totalPages = Math.ceil(totalItems / STATE.pageSize) || 1;
+      if (STATE.currentPage > totalPages) STATE.currentPage = totalPages;
+      if (STATE.currentPage < 1) STATE.currentPage = 1;
+
+      const startIdx = (STATE.currentPage - 1) * STATE.pageSize;
+      const endIdx = Math.min(startIdx + STATE.pageSize, totalItems);
+      const pageData = filtered.slice(startIdx, endIdx);
+
+      const tbody = document.getElementById('tableBody');
+      tbody.innerHTML = '';
+
+      if (pageData.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:30px; color:var(--text-dim);">Tiada rekod dijumpai.</td></tr>';
+      } else {
+        pageData.forEach(item => {
+          const tr = document.createElement('tr');
+          const nav = item.n;
+          const chg = item.c !== undefined ? item.c : 0;
+          const pct = item.p !== undefined ? item.p : 0;
+          const a1 = nav * STATE.units.acc1;
+          const a2 = nav * STATE.units.acc2;
+          const tot = a1 + a2;
+
+          const diffClass = chg > 0 ? 'diff-up' : (chg < 0 ? 'diff-down' : 'diff-flat');
+          const diffSign = chg > 0 ? '+' : '';
+
+          tr.innerHTML = `
+            <td><strong>${formatDateDisplay(item.d)}</strong> <span style="font-size:0.65rem; color:var(--text-dim);">(${item.d})</span></td>
+            <td style="color:var(--gold); font-weight:600;">${formatRM(nav, 4)}</td>
+            <td>
+              <span class="badge-diff ${diffClass}">${diffSign}${chg.toFixed(4)} (${diffSign}${pct.toFixed(2)}%)</span>
+            </td>
+            <td>${formatRM(a1)}</td>
+            <td>${formatRM(a2)}</td>
+            <td style="font-weight:700; color:var(--emerald);">${formatRM(tot)}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      document.getElementById('lblPageInfo').innerText = `Memaparkan ${totalItems === 0 ? 0 : startIdx + 1} - ${endIdx} daripada ${totalItems} rekod (Halaman ${STATE.currentPage}/${totalPages})`;
+      document.getElementById('btnPrevPage').disabled = STATE.currentPage <= 1;
+      document.getElementById('btnNextPage').disabled = STATE.currentPage >= totalPages;
+    }
+
+    // Export CSV
+    function exportToCSV() {
+      if (!STATE.data || STATE.data.length === 0) return;
+      
+      const headers = ['Tarikh', 'NAV (RM)', 'Perubahan Harian (RM)', 'Peratus (%)', 'Nilai Akaun 1 (RM)', 'Nilai Akaun 2 (RM)', 'Jumlah Nilai (RM)'];
+      const rows = STATE.data.map(item => {
+        const a1 = (item.n * STATE.units.acc1).toFixed(2);
+        const a2 = (item.n * STATE.units.acc2).toFixed(2);
+        const tot = (item.n * (STATE.units.acc1 + STATE.units.acc2)).toFixed(2);
+        const chg = item.c !== undefined ? item.c : 0;
+        const pct = item.p !== undefined ? item.p : 0;
+        return [item.d, item.n, chg, pct, a1, a2, tot];
+      });
+
+      let csvContent = 'data:text/csv;charset=utf-8,' 
+        + headers.join(',') + '\n'
+        + rows.map(e => e.join(',')).join('\n');
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', `Kenanga_Shariah_Growth_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('Fail CSV berjaya dimuat turun!');
+    }
+
+    // Live API Fetcher
+    async function fetchLiveNAV() {
+      const feedback = document.getElementById('syncFeedback');
+      feedback.innerHTML = '<span style="color:var(--gold);">Sedang menghubungi pelayan Kenanga...</span>';
+
+      const today = new Date();
+      const dd = String(today.getDate()).padStart(2, '0');
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const yyyy = today.getFullYear();
+      const endDateStr = `${dd}-${mm}-${yyyy}`;
+
+      const targetUrl = 'https://www.kenangainvestors.com.my/fund/fund/ajax-get-fund-nav';
+      const postBody = `id=29&from_date=01-01-2025&end_date=${endDateStr}`;
+
+      let success = false;
+      let records = null;
+
+      try {
+        const res = await fetch(targetUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: postBody
+        });
+        if (res.ok) {
+          const json = await res.json();
+          if (json.status === 'success' && json.fund_record) {
+            records = json.fund_record;
+            success = true;
+          }
+        }
+      } catch(err) {
+        console.log('Direct fetch blocked by CORS, trying fallback proxy...');
+      }
+
+      if (!success) {
+        try {
+          const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(targetUrl)}`;
+          const res = await fetch(proxyUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+              'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: postBody
+          });
+          if (res.ok) {
+            const json = await res.json();
+            if (json.status === 'success' && json.fund_record) {
+              records = json.fund_record;
+              success = true;
+            }
+          }
+        } catch(proxyErr) {
+          console.log('Proxy fetch failed:', proxyErr);
+        }
+      }
+
+      if (success && records) {
+        const clean = [];
+        let prev = null;
+        for (const r of records) {
+          const n = parseFloat(r.nav);
+          const c = prev !== null ? +(n - prev).toFixed(4) : 0;
+          const p = prev ? +((c / prev) * 100).toFixed(2) : 0;
+          clean.push({
+            d: r.valuation_date,
+            n: n,
+            c: c,
+            p: p
+          });
+          prev = n;
+        }
+
+        clean.sort((a, b) => new Date(a.d) - new Date(b.d));
+        STATE.data = clean;
+        saveData();
+        renderStats();
+        renderChart();
+        renderTable();
+        feedback.innerHTML = `<span style="color:var(--emerald);">Berjaya! ${clean.length} rekod dikemaskini dari Kenanga.</span>`;
+        showToast('Data berjaya disegerakkan daripada pelayan Kenanga!');
+      } else {
+        feedback.innerHTML = `
+          <span style="color:var(--rose);">Pelayar menyekat akses langsung (CORS).</span><br>
+          <span style="color:var(--text-dim); font-size:0.7rem;">Gunakan skrip Python <code>python3 update_data.py</code> atau masukkan NAV hari ini secara manual di bawah.</span>
+        `;
+      }
+    }
+
+    // Event Handlers
+    document.addEventListener('DOMContentLoaded', function() {
+      initData();
+      renderStats();
+      renderChart();
+      renderTable();
+
+      // Handle window resize for chart responsiveness
+      window.addEventListener('resize', () => {
+        if (STATE.chartInstance) {
+          renderChart();
+        }
+      });
+
+      // Target selection pills in Strategy Section
+      document.querySelectorAll('.target-pill-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.target-pill-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          STATE.targetVal = parseFloat(this.dataset.target);
+          renderStats();
+          renderChart();
+        });
+      });
+
+      // View selector buttons
+      document.querySelectorAll('.view-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          STATE.view = this.dataset.view;
+          renderChart();
+        });
+      });
+
+      // Range selector buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          STATE.range = this.dataset.range;
+          renderChart();
+        });
+      });
+
+      // Toggle Target Line on Chart
+      const btnToggleTarget = document.getElementById('btnToggleTargetLine');
+      btnToggleTarget.addEventListener('click', function() {
+        STATE.showTargetLine = !STATE.showTargetLine;
+        this.classList.toggle('active', STATE.showTargetLine);
+        renderChart();
+      });
+
+      // Toggle SMA Lines on Chart
+      const btnToggleSMA = document.getElementById('btnToggleSMA');
+      btnToggleSMA.addEventListener('click', function() {
+        STATE.showSMA = !STATE.showSMA;
+        this.classList.toggle('active', STATE.showSMA);
+        if (STATE.showSMA && STATE.view !== 'nav') {
+          document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+          document.querySelector('.view-btn[data-view="nav"]').classList.add('active');
+          STATE.view = 'nav';
+        }
+        renderChart();
+      });
+
+      // Custom date filter
+      document.getElementById('btnApplyDateFilter').addEventListener('click', function() {
+        const from = document.getElementById('inputDateFrom').value;
+        const to = document.getElementById('inputDateTo').value;
+        if (!from && !to) return;
+        STATE.range = 'custom';
+        STATE.customFrom = from;
+        STATE.customTo = to;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        renderChart();
+      });
+
+      document.getElementById('btnResetDateFilter').addEventListener('click', function() {
+        document.getElementById('inputDateFrom').value = '';
+        document.getElementById('inputDateTo').value = '';
+        STATE.range = 'all';
+        STATE.customFrom = null;
+        STATE.customTo = null;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector('.filter-btn[data-range="all"]').classList.add('active');
+        renderChart();
+      });
+
+      // Simulator slider
+      const slider = document.getElementById('simSlider');
+      slider.addEventListener('input', function() {
+        updateSimulator(parseFloat(this.value));
+      });
+
+      // Table search & pagination
+      document.getElementById('tableSearch').addEventListener('input', function() {
+        STATE.searchQuery = this.value;
+        STATE.currentPage = 1;
+        renderTable();
+      });
+
+      document.getElementById('btnPrevPage').addEventListener('click', function() {
+        if (STATE.currentPage > 1) {
+          STATE.currentPage--;
+          renderTable();
+        }
+      });
+
+      document.getElementById('btnNextPage').addEventListener('click', function() {
+        STATE.currentPage++;
+        renderTable();
+      });
+
+      // Export CSV
+      document.getElementById('btnExportCSV').addEventListener('click', exportToCSV);
+
+      // Units Modal
+      const modalUnits = document.getElementById('modalUnits');
+      document.getElementById('btnOpenUnits').addEventListener('click', () => {
+        document.getElementById('inputAcc1Name').value = STATE.units.name1;
+        document.getElementById('inputAcc1Units').value = STATE.units.acc1;
+        document.getElementById('inputAcc2Name').value = STATE.units.name2;
+        document.getElementById('inputAcc2Units').value = STATE.units.acc2;
+        modalUnits.classList.add('show');
+      });
+      document.getElementById('btnCloseUnits').addEventListener('click', () => modalUnits.classList.remove('show'));
+
+      document.getElementById('btnSaveUnits').addEventListener('click', () => {
+        STATE.units.name1 = document.getElementById('inputAcc1Name').value || 'Akaun 1';
+        STATE.units.acc1 = parseFloat(document.getElementById('inputAcc1Units').value) || 14558.13;
+        STATE.units.name2 = document.getElementById('inputAcc2Name').value || 'Akaun 2';
+        STATE.units.acc2 = parseFloat(document.getElementById('inputAcc2Units').value) || 43603.28;
+        saveUnits();
+        modalUnits.classList.remove('show');
+        renderStats();
+        renderChart();
+        renderTable();
+        showToast('Tetapan unit akaun berjaya disimpan!');
+      });
+
+      document.getElementById('btnResetUnits').addEventListener('click', () => {
+        STATE.units = {
+          acc1: 14558.13,
+          acc2: 43603.28,
+          name1: 'Akaun 1',
+          name2: 'Akaun 2'
+        };
+        saveUnits();
+        modalUnits.classList.remove('show');
+        renderStats();
+        renderChart();
+        renderTable();
+        showToast('Unit telah dipulihkan kepada nilai asal!');
+      });
+
+      // Sync Modal
+      const modalSync = document.getElementById('modalSync');
+      document.getElementById('btnOpenSync').addEventListener('click', () => {
+        document.getElementById('inputManualDate').value = new Date().toISOString().slice(0, 10);
+        document.getElementById('syncFeedback').innerText = '';
+        modalSync.classList.add('show');
+      });
+      document.getElementById('btnCloseSync').addEventListener('click', () => modalSync.classList.remove('show'));
+
+      // Fetch Live
+      document.getElementById('btnFetchLive').addEventListener('click', fetchLiveNAV);
+
+      // Add Manual Record
+      document.getElementById('btnAddManualRecord').addEventListener('click', function() {
+        const d = document.getElementById('inputManualDate').value;
+        const n = parseFloat(document.getElementById('inputManualNav').value);
+        if (!d || isNaN(n) || n <= 0) {
+          alert('Sila masukkan tarikh dan nilai harga NAV yang sah.');
+          return;
+        }
+
+        const existingIdx = STATE.data.findIndex(item => item.d === d);
+        if (existingIdx !== -1) {
+          STATE.data[existingIdx].n = n;
+        } else {
+          STATE.data.push({ d, n });
+        }
+
+        STATE.data.sort((a, b) => new Date(a.d) - new Date(b.d));
+        let prev = null;
+        for (const item of STATE.data) {
+          item.c = prev !== null ? +(item.n - prev).toFixed(4) : 0;
+          item.p = prev ? +((item.c / prev) * 100).toFixed(2) : 0;
+          prev = item.n;
+        }
+
+        saveData();
+        renderStats();
+        renderChart();
+        renderTable();
+        modalSync.classList.remove('show');
+        showToast(`Harga NAV untuk tarikh ${d} (RM ${n.toFixed(4)}) berjaya disimpan!`);
+      });
+
+      // Reset All Data
+      document.getElementById('btnResetAllData').addEventListener('click', function() {
+        if (confirm('Adakah anda pasti ingin memulihkan semula dataset kepada 437 rekod asal (Jan 2025 - Okt 2026)?')) {
+          localStorage.removeItem('kenanga_nav_data');
+          STATE.data = [...EMBEDDED_NAV_DATA];
+          renderStats();
+          renderChart();
+          renderTable();
+          modalSync.classList.remove('show');
+          showToast('Dataset dipulihkan ke 437 rekod rasmi asal.');
+        }
+      });
+
+      // Close modal on backdrop click
+      window.addEventListener('click', function(e) {
+        if (e.target === modalUnits) modalUnits.classList.remove('show');
+        if (e.target === modalSync) modalSync.classList.remove('show');
+      });
+    });
+  </script>
+</body>
+</html>
